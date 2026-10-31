@@ -14,8 +14,6 @@ FEEDS = [  # (source, country, category, url)
  ("The Guardian","World","World","https://www.theguardian.com/world/rss"),
  ("Al Jazeera","World","World","https://www.aljazeera.com/xml/rss/all.xml"),
  ("NPR","USA","Top stories","https://feeds.npr.org/1001/rss.xml"),
- ("Sun.mv","Maldives","Top stories","https://sun.mv/feed"),
- ("Mihaaru English","Maldives","Top stories","https://en.mihaaru.com/rss"),
  ("Dhauru","Maldives","Top stories","https://dhauru.com/feed"),
  ("Google News","Maldives","Top stories","https://news.google.com/rss/search?q=Maldives&hl=en-MV&gl=MV&ceid=MV:en"),
  ("The Verge","Tech","Gadgets","https://www.theverge.com/rss/index.xml"),
@@ -43,7 +41,7 @@ FEEDS = [  # (source, country, category, url)
  ("ABC News AU","Australia","Top stories","https://www.abc.net.au/news/feed/51120/rss.xml"),
  ("Dawn","Pakistan","Top stories","https://www.dawn.com/feeds/home"),
 ]
-MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 420, 15, 25, 80
+MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 450, 15, 25, 120
 MEDIA = "{http://search.yahoo.com/mrss/}"
 
 def clean(t, n=220):
@@ -106,6 +104,12 @@ def main():
         for f, fut in [(f, ex.submit(fetch, f)) for f in FEEDS]:
             try: r = fut.result(); items += r; report.append(f"OK   {len(r):3} {f[0]} [{f[1]}] {f[3]}")
             except Exception as e: report.append(f"FAIL     {f[0]} [{f[1]}] {f[3]} -> {type(e).__name__}: {e}")
+    try:  # HTML headline scraper for outlets without RSS; never breaks the build
+        import os, sys; sys.path.insert(0, os.path.dirname(__file__)); from scrape_mv import scrape_all
+        try: prev = {i["link"]: i["published"] for i in json.load(open("data/news.json"))["items"]}
+        except Exception: prev = {}
+        r, rep = scrape_all(prev); items += r; report += rep
+    except Exception as e: report.append(f"FAIL     scraper -> {type(e).__name__}: {e}")
     seen, uniq = set(), []
     items.sort(key=lambda i: i["published"] or "", reverse=True)
     for i in items:
