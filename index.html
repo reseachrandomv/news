@@ -1,5 +1,8 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><script>if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);{const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q}if(localStorage.theme=="light")document.documentElement.dataset.theme="light"</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>News – Made by Fathimath Malaak Jaufar</title>
+<script>if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")</script><script src="i18n.js"></script>
+<link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Malaak's News"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/news/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thaana:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--fs:19px;--scale:1;--bg:#0b1a33;--card:#132a4d;--ink:#eef4ff;--muted:#b7c8e3;--blue:#8cc4ff;--blue2:#1f3f6e;--head:#06122a;--btnbg:#132a4d;--on:#06122a;color-scheme:dark}
 :root[data-theme=light]{--bg:#eef4fb;--card:#fff;--ink:#0b2340;--muted:#3a5470;--blue:#0b4f9c;--blue2:#e1ecf8;--head:#0b4f9c;--btnbg:#fff;--on:#fff;color-scheme:light}
@@ -17,51 +20,68 @@ article{background:var(--card);border-radius:14px;padding:16px 18px;box-shadow:0
 article h2{font-size:1.15em;margin:4px 0 6px;line-height:1.35}article h2 a{color:var(--ink);text-decoration:none}article h2 a:hover{text-decoration:underline}
 article p{margin:0 0 8px}.src{display:inline-block;background:var(--blue2);color:var(--blue);font-weight:700;border-radius:6px;padding:0 8px;font-size:.8em}
 .read{color:var(--blue);font-weight:700}
+html[lang=dv] body{font-family:"Noto Sans Thaana",system-ui,sans-serif;line-height:1.9}html[lang=dv] h1,html[lang=dv] h2{line-height:1.7}
+[dir=rtl] article{border-left:0;border-right:5px solid var(--blue)}.brand{display:flex;gap:12px;align-items:center}.brand img{width:48px;height:48px}
+header a.ab{color:#fff;font-weight:700;padding:6px 8px}.filt{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.filt button{min-height:38px;padding:4px 12px;font-size:.85em}
 footer{text-align:center;padding:24px 16px;color:var(--muted);font-size:.9em}
 </style></head><body>
-<header><div class="w"><div><h1>News</h1><div class="sub">Made by Fathimath Malaak Jaufar</div></div>
-<div class="tools"><div class="fsz" role="group" aria-label="Text size"><button id="fsm" aria-label="Make text smaller">A−</button><button id="fsr" aria-label="Reset text size">A</button><button id="fsp" aria-label="Make text larger">A+</button></div><button id="tm" aria-pressed="false">Light mode</button></div></div></header>
-<nav id="countries" aria-label="Choose country"></nav>
-<main id="list" aria-live="polite"><p>Loading headlines…</p></main>
-<footer><strong>Made by Fathimath Malaak Jaufar</strong><br>Contact: WhatsApp <a href="https://wa.me/9609424572" rel="noopener">+960 9424572</a> · Email <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br> Headlines, summaries and links come from each outlet's public RSS feed or headline page (Sun, Mihaaru, Avas, Edition, Raajje); full stories belong to the named source. <span id="upd"></span></footer>
+<header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Malaak's News</h1><div class="sub" data-t="madeBy"></div></div></div>
+<div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
+<nav id="countries"></nav>
+<main id="list" aria-live="polite"><p data-t="loading"></p></main>
+<footer><strong data-t="madeBy"></strong><br><span data-t="contact"></span> WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br><span data-t="srcNote"></span> <span id="upd"></span></footer>
 <script>
-const tm=document.getElementById('tm');function applyTheme(t){if(t=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=t=='light'?'Dark mode':'Light mode';tm.setAttribute('aria-label','Switch to '+(t=='light'?'dark':'light')+' mode')}
-let theme=localStorage.theme||'dark';applyTheme(theme);tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
-const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
-const LABEL={Courses:"Courses & Announcements",Tech:"Tech & Gadgets",Population:"World Population",Science:"Science & Discoveries"};let pop=null,timer=null;
+const $=id=>document.getElementById(id);
+function staticText(){document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
+ $('countries').setAttribute('aria-label',t('chooseTab'));$('fsg').setAttribute('aria-label',t('textSize'));$('fsm').setAttribute('aria-label',t('smaller'));$('fsp').setAttribute('aria-label',t('larger'));
+ const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'))}
+const tm=$('tm');function applyTheme(x){if(x=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=x=='light'?t('dark'):t('light');tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'))}
+let theme=localStorage.theme||'dark';tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
+const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];let pop=null,timer=null;
 const STEPS=[.85,1,1.15,1.3,1.4];let si=STEPS.indexOf(+localStorage.fontScale);if(si<0)si=1;
-const fsm=document.getElementById('fsm'),fsr=document.getElementById('fsr'),fsp=document.getElementById('fsp');
-function applySize(){const v=STEPS[si];document.documentElement.style.setProperty('--scale',v);localStorage.fontScale=v;fsm.disabled=si==0;fsp.disabled=si==STEPS.length-1;fsr.setAttribute('aria-pressed',si==1);fsr.setAttribute('aria-label','Reset text size (now '+Math.round(v*100)+'%)')}
-fsm.onclick=()=>{if(si>0)si--;applySize()};fsp.onclick=()=>{if(si<STEPS.length-1)si++;applySize()};fsr.onclick=()=>{si=1;applySize()};applySize();
-let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives";
+const fsm=$('fsm'),fsr=$('fsr'),fsp=$('fsp');
+function applySize(){const v=STEPS[si];document.documentElement.style.setProperty('--scale',v);localStorage.fontScale=v;fsm.disabled=si==0;fsp.disabled=si==STEPS.length-1;fsr.setAttribute('aria-pressed',si==1);fsr.setAttribute('aria-label',t('reset',{p:Math.round(v*100)}))}
+fsm.onclick=()=>{if(si>0)si--;applySize()};fsp.onclick=()=>{if(si<STEPS.length-1)si++;applySize()};fsr.onclick=()=>{si=1;applySize()};
+let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives",dvOnly=localStorage.dvOnly=="1";
 const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?Math.max(1,m|0)+" min ago":m<1440?(m/60|0)+" h ago":new Date(d).toLocaleDateString()};
+const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
+const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
+const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?t('minAgo',{n:Math.max(1,m|0)}):m<1440?t('hAgo',{n:m/60|0}):new Date(d).toLocaleDateString(loc())};
+const tab=c=>STR[LANG].tabs[c]||STR.en.tabs[c]||c,cat=c=>STR[LANG].cats[c]||c;
+function applyAll(){setLangAttrs();staticText();applyTheme(theme);applySize();if(data){$('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});render()}}
+$('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;applyAll()};
 function render(){
- const nav=document.getElementById('countries');const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
+ const nav=$('countries');const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
  if(!cs.includes(cur))cur="Maldives";
- nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${LABEL[c]||c}</button>`).join('');
+ nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${esc(tab(c))}</button>`).join('');
  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.c;localStorage.country=cur;render();scrollTo(0,0)});
  clearInterval(timer);if(cur=="Population")return renderPop();
  let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
- document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">${esc(LABEL[cur]||cur+" news")}</h2>`+items.map(i=>`<article><span class="src">${esc(i.source)}</span> <span class="meta">${esc(i.category)} · ${ago(i.published)}</span>
- <h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p>${esc(i.summary)}</p>`:''}
- <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">Read at ${esc(i.source)} →</a></article>`).join('');
+ const hasDv=items.some(isDv);
+ if(hasDv&&dvOnly)items=items.filter(isDv);else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
+ const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="0" aria-pressed="${!dvOnly}">${esc(t('fAll'))}</button><button data-f="1" aria-pressed="${dvOnly}">${esc(t('fDv'))}</button></div>`:'';
+ const head=STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur);
+ $('list').innerHTML=`<h2 style="margin:4px 0">${esc(head)}</h2>${filt}`+(items.length?items.map(i=>`<article><span class="src" dir="auto">${esc(i.source)}</span> <span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span>
+ <h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p dir="auto">${esc(i.summary)}</p>`:''}
+ <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`).join(''):`<p>${esc(t('empty'))}</p>`);
+ $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{dvOnly=b.dataset.f=="1";localStorage.dvOnly=dvOnly?"1":"0";render()});
 }
 const nf=n=>Math.round(n).toLocaleString('en-US');
 function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
  const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
- const cards=[["World population (live estimate)","pop"],["Births this year (estimate)","b"],["Deaths this year (estimate)","d"],["Population growth this year (estimate)","n"]];
- const src=`Source: <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
- document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">World Population</h2><p class="meta">These are <strong>estimates</strong>, not exact counts. They start from the World Bank's ${w.pop.year} figure (${nf(b)}) and add the ${w.growth.year} growth rate (${w.growth.value.toFixed(2)}% a year), birth rate (${w.birth_rate.value.toFixed(1)} per 1,000) and death rate (${w.death_rate.value.toFixed(1)} per 1,000). ${src}</p>`+
- cards.map(([t,k])=>`<article><span class="meta">${t}</span><h2 id="pc-${k}" style="font-size:1.8em;margin:4px 0">…</h2></article>`).join('')+
- `<article><span class="meta">Maldives population (World Bank, ${pop.maldives.pop.year})</span><h2 style="font-size:1.6em;margin:4px 0">${nf(pop.maldives.pop.value)}</h2><p>Growth ${pop.maldives.growth.value.toFixed(2)}% a year (${pop.maldives.growth.year}). ${src}</p></article>`+
- `<article><span class="meta">Other facts (World Bank, ${w.life_exp.year})</span><p>Life expectancy worldwide: <strong>${w.life_exp.value.toFixed(1)} years</strong><br>People living in cities: <strong>${w.urban_pct.value.toFixed(1)}%</strong></p><p class="meta">${src}</p></article>`+
- `<article><span class="meta">Most populated countries (World Bank, ${pop.top[0].year})</span><ol>${pop.top.map(t=>`<li>${esc(t.name)}: <strong>${nf(t.pop)}</strong></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
- const tick=()=>{const t=Date.now(),P=b*Math.exp(g*(t-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(t-ys)/yr;
+ const cards=[["popLive","pop"],["popBirths","b"],["popDeaths","d"],["popGrowth","n"]];
+ const src=`${esc(t('source'))} <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
+ $('list').innerHTML=`<h2 style="margin:4px 0">${esc(t('popTitle'))}</h2><p class="meta">${t('popNote',{y:w.pop.year,b:nf(b),gy:w.growth.year,g:w.growth.value.toFixed(2),br:w.birth_rate.value.toFixed(1),dr:w.death_rate.value.toFixed(1)})} ${src}</p>`+
+ cards.map(([k1,k])=>`<article><span class="meta">${esc(t(k1))}</span><h2 id="pc-${k}" dir="ltr" style="font-size:1.8em;margin:4px 0;text-align:start">…</h2></article>`).join('')+
+ `<article><span class="meta">${esc(t('mvPop',{y:pop.maldives.pop.year}))}</span><h2 style="font-size:1.6em;margin:4px 0">${nf(pop.maldives.pop.value)}</h2><p>${esc(t('mvGrowth',{g:pop.maldives.growth.value.toFixed(2),y:pop.maldives.growth.year}))} ${src}</p></article>`+
+ `<article><span class="meta">${esc(t('other',{y:w.life_exp.year}))}</span><p>${esc(t('life'))} <strong>${w.life_exp.value.toFixed(1)} ${esc(t('years'))}</strong><br>${esc(t('urban'))} <strong>${w.urban_pct.value.toFixed(1)}%</strong></p><p class="meta">${src}</p></article>`+
+ `<article><span class="meta">${esc(t('top',{y:pop.top[0].year}))}</span><ol>${pop.top.map(x=>`<li>${esc(x.name)}: <strong>${nf(x.pop)}</strong></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
+ const tick=()=>{const T=Date.now(),P=b*Math.exp(g*(T-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(T-ys)/yr;
   const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
-  for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=document.getElementById('pc-'+k);if(e)e.textContent=nf(v)}};
+  for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=$('pc-'+k);if(e)e.textContent=nf(v)}};
  tick();timer=setInterval(tick,1000);}
+applyAll();
 fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=p;if(data)render()}).catch(()=>{});
-fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;document.getElementById('upd').textContent='Updated '+new Date(d.updated).toLocaleString()+'. Refreshes every hour.';render()})
-.catch(()=>document.getElementById('list').innerHTML='<p>Could not load news. Please try again.</p>');
+fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;applyAll()})
+.catch(()=>$('list').innerHTML=`<p>${esc(t('loadFail'))}</p>`);
 </script></body></html>
