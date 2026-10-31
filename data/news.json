@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T09:13:31.456032+00:00",
+ "updated": "2026-10-31T09:14:28.733472+00:00",
  "items": [
   {
    "title": "DMT reintroduces online appointment system from November 2",
@@ -62,6 +62,16 @@
    "published": "2026-10-31T11:15:00+00:00"
   },
   {
+   "title": "Six-year-old girl critically injured in alleged assault by boy at Chandigarh’s Panchkula school",
+   "link": "https://www.thehindu.com/news/national/chandigarh/six-year-old-girl-critically-injured-in-alleged-assault-by-boy-at-chandigarhs-panchkula-school/article71648784.ece",
+   "source": "The Hindu",
+   "country": "India",
+   "category": "Top stories",
+   "summary": "The police said the eight-year-old boy is undergoing a medical assessment, while the girl remains under treatment at PGIMER, Chandigarh",
+   "image": "https://th-i.thgim.com/public/incoming/qzq1bi/article71648815.ece/alternates/LANDSCAPE_1200/iStock-1079175324.jpg",
+   "published": "2026-10-31T09:09:54+00:00"
+  },
+  {
    "title": "Several petitions challenge constitutionality of Prevention of Organised Crime Bill",
    "link": "https://www.dailymirror.lk/breaking-news/Several-petitions-challenge-constitutionality-of-Prevention-of-Organised-Crime-Bill/108-353822",
    "source": "Daily Mirror LK",
@@ -122,16 +132,6 @@
    "published": "2026-10-31T09:00:09+00:00"
   },
   {
-   "title": "Plans for a data center threaten scenic wilderness and dark skies in West Virginia",
-   "link": "https://www.npr.org/2026/10/31/nx-s1-5992790/data-centers-west-virginia-skiing-dark-skies",
-   "source": "NPR",
-   "country": "USA",
-   "category": "Top stories",
-   "summary": "Residents are fighting back against plans for a project that would span thousands of acres near the Monongahela National Forest and popular outdoor recreation, ski areas and dark sky sites.",
-   "image": null,
-   "published": "2026-10-31T09:00:00+00:00"
-  },
-  {
    "title": "Oyster stocks have plunged in the Chesapeake. This resident wants to bring them back",
    "link": "https://www.npr.org/2026/10/31/nx-s1-6011228/oyster-farming-conservation-chesapeake-bay",
    "source": "NPR",
@@ -142,32 +142,12 @@
    "published": "2026-10-31T09:00:00+00:00"
   },
   {
-   "title": "100 years later, Harry Houdini's death still haunts Detroit",
-   "link": "https://www.npr.org/2026/10/31/nx-s1-6008110/100-years-harry-houdinis-death-haunts-detroit",
+   "title": "Plans for a data center threaten scenic wilderness and dark skies in West Virginia",
+   "link": "https://www.npr.org/2026/10/31/nx-s1-5992790/data-centers-west-virginia-skiing-dark-skies",
    "source": "NPR",
    "country": "USA",
    "category": "Top stories",
-   "summary": "The legacy of magician Harry Houdini still looms large in Detroit 100 years after his death there. Some mark the anniversary of Houdini's death by trying to make contact with his spirit.",
-   "image": null,
-   "published": "2026-10-31T09:00:00+00:00"
-  },
-  {
-   "title": "Oil company earnings skyrocket — again",
-   "link": "https://www.npr.org/2026/10/31/nx-s1-6008072/oil-company-profits-gasoline-diesel-prices",
-   "source": "NPR",
-   "country": "USA",
-   "category": "Top stories",
-   "summary": "Oil companies are reporting another quarter of sky-high profits as the war in Iran pushes up the price of oil — and prices at the pump.",
-   "image": null,
-   "published": "2026-10-31T09:00:00+00:00"
-  },
-  {
-   "title": "After last year's storm, this remote Alaska town is still picking up the pieces",
-   "link": "https://www.npr.org/2026/10/31/nx-s1-6021471/ex-typhoon-halong-damages-western-alaska-native-villages-kipnuk",
-   "source": "NPR",
-   "country": "USA",
-   "category": "Top stories",
-   "summary": "In October, 2025, the remnants of a typhoon seriously damaged Alaska Native villages in the far western part of the state. A year later, one of the hardest hit communities is still recovering.",
+   "summary": "Residents are fighting back against plans for a project that would span thousands of acres near the Monongahela National Forest and popular outdoor recreation, ski areas and dark sky sites.",
    "image": null,
    "published": "2026-10-31T09:00:00+00:00"
   },
@@ -182,6 +162,36 @@
    "published": "2026-10-31T09:00:00+00:00"
   },
   {
+   "title": "After last year's storm, this remote Alaska town is still picking up the pieces",
+   "link": "https://www.npr.org/2026/10/31/nx-s1-6021471/ex-typhoon-halong-damages-western-alaska-native-villages-kipnuk",
+   "source": "NPR",
+   "country": "USA",
+   "category": "Top stories",
+   "summary": "In October, 2025, the remnants of a typhoon seriously damaged Alaska Native villages in the far western part of the state. A year later, one of the hardest hit communities is still recovering.",
+   "image": null,
+   "published": "2026-10-31T09:00:00+00:00"
+  },
+  {
+   "title": "Oil company earnings skyrocket — again",
+   "link": "https://www.npr.org/2026/10/31/nx-s1-6008072/oil-company-profits-gasoline-diesel-prices",
+   "source": "NPR",
+   "country": "USA",
+   "category": "Top stories",
+   "summary": "Oil companies are reporting another quarter of sky-high profits as the war in Iran pushes up the price of oil — and prices at the pump.",
+   "image": null,
+   "published": "2026-10-31T09:00:00+00:00"
+  },
+  {
+   "title": "100 years later, Harry Houdini's death still haunts Detroit",
+   "link": "https://www.npr.org/2026/10/31/nx-s1-6008110/100-years-harry-houdinis-death-haunts-detroit",
+   "source": "NPR",
+   "country": "USA",
+   "category": "Top stories",
+   "summary": "The legacy of magician Harry Houdini still looms large in Detroit 100 years after his death there. Some mark the anniversary of Houdini's death by trying to make contact with his spirit.",
+   "image": null,
+   "published": "2026-10-31T09:00:00+00:00"
+  },
+  {
    "title": "Your writing was flagged as AI. What does that actually mean?",
    "link": "https://www.npr.org/2026/10/31/nx-s1-5963520/ai-writing-detectors-pangram",
    "source": "NPR",
@@ -190,16 +200,6 @@
    "summary": "As editors turn to imperfect AI detection tools to weed out machine-generated submissions, writers who say they were falsely accused of using AI are left wondering what triggered a positive result.",
    "image": null,
    "published": "2026-10-31T09:00:00+00:00"
-  },
-  {
-   "title": "A UN protection force must be urgently deployed to Palestine",
-   "link": "https://www.aljazeera.com/opinions/2026/10/31/a-un-protection-force-must-be-urgently-deployed-to-palestine?traffic_source=rss",
-   "source": "Al Jazeera",
-   "country": "World",
-   "category": "World",
-   "summary": "Israel is making Palestinian existence in Palestine increasingly impossible.",
-   "image": null,
-   "published": "2026-10-31T08:57:35+00:00"
   },
   {
    "title": "Have YOU seen a ghost? Analysis of 2,000 first-hand supernatural encounters reveals the most common sightings",
@@ -512,6 +512,16 @@
    "published": "2026-10-31T08:15:35+00:00"
   },
   {
+   "title": "Sri Lanka’s IT/BPO export earnings drop 15.5% in 2026",
+   "link": "https://www.newswire.lk/2026/10/31/sri-lankas-it-bpo-export-earnings-drop-15-5-in-2026/",
+   "source": "Newswire LK",
+   "country": "Sri Lanka",
+   "category": "Top stories",
+   "summary": "Sri Lanka’s earnings from computer and IT/BPO services declined by 15.5% during the first nine months of 2026, according to Continue Reading The post Sri Lanka’s IT/BPO export earnings drop 15.5% in 2026 appeared first…",
+   "image": "https://www.newswire.lk/wp-content/uploads/2026/10/Screenshot_20261030_224326_ChatGPT.jpg",
+   "published": "2026-10-31T08:13:48+00:00"
+  },
+  {
    "title": "PM Modi inaugurates tourism, infrastructure projects worth ₹307 crore in Gujarat's Ekta Nagar",
    "link": "https://www.thehindu.com/news/national/gujarat/pm-modi-inaugurates-tourism-infrastructure-projects-in-gujarats-ekta-nagar/article71648518.ece",
    "source": "The Hindu",
@@ -560,16 +570,6 @@
    "summary": "West Bengal Forest Minister Manoj Oraon is all set to visit the tigress in Assam and finalise the plan to tranquilise it and bring back to Bengal’s territory",
    "image": "https://th-i.thgim.com/public/incoming/ygrd9p/article71648367.ece/alternates/LANDSCAPE_1200/Tigress-T138-fiGNPGK2KSL.12.jpg.jpg",
    "published": "2026-10-31T08:06:49+00:00"
-  },
-  {
-   "title": "DMK women cadre protest across Tamil Nadu over price rise, law and order",
-   "link": "https://www.thehindu.com/news/national/tamil-nadu/dmk-women-cadre-protest-across-tamil-nadu-over-price-rise-law-and-order/article71648544.ece",
-   "source": "The Hindu",
-   "country": "India",
-   "category": "Top stories",
-   "summary": "DMK MP Kanimozhi accused CM Vijay of seeking children’s support to mobilise votes without ensuring their safety",
-   "image": "https://th-i.thgim.com/public/news/national/tamil-nadu/8ef9be/article71648673.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-10-31%20at%2012.09.10.jpeg",
-   "published": "2026-10-31T08:06:39+00:00"
   },
   {
    "title": "UAE residents’ update: Fuel prices, oil spill recovery and flight disruptions amid US-Iran tensions",
@@ -730,26 +730,6 @@
    "summary": "Sri Lankan cricket fans can watch the ODI Tri-Series final between Sri Lanka and Pakistan live on television and digital Continue Reading The post How to watch Sri Lanka vs Pakistan Tri-Series final live appeared first…",
    "image": "https://www.newswire.lk/wp-content/uploads/2026/10/Screenshot_20261030_205449_X.jpg",
    "published": "2026-10-31T07:20:43+00:00"
-  },
-  {
-   "title": "Nimunu aharu 500 ah vure gina meehunnah stroke jehigen IGMH ga admit kuri",
-   "link": "https://sun.mv/229870",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T07:18:05+00:00"
-  },
-  {
-   "title": "November 3 ge harakaaiy thakah jumhooree maidhaanaa e sarahahdhuge falhu vaki gadi thakehgai bandhukuran nimmaifi",
-   "link": "https://sun.mv/229871",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T07:14:53+00:00"
   },
   {
    "title": "More tax cuts coming in 2027 Budget, President AKD announces",
@@ -952,16 +932,6 @@
    "published": "2026-10-31T06:29:24+00:00"
   },
   {
-   "title": "LGA board ah memberun inthikhaabukurumah vote lun fashaifi",
-   "link": "https://sun.mv/229869",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T06:26:31+00:00"
-  },
-  {
    "title": "Two sent off after high shot and punch as Kiwis humiliate Fiji 78-0",
    "link": "https://www.abc.net.au/news/2026-10-31/new-zealand-kiwis-thrash-fiji-bati-rugby-league-world-cup/107332040",
    "source": "ABC News AU",
@@ -1022,16 +992,6 @@
    "published": "2026-10-31T06:08:19+00:00"
   },
   {
-   "title": "Digital thaareekhugai hingi enme bodu vakkan: Binance hack koh 6.3 billion dollar feyrigenfi",
-   "link": "https://sun.mv/229868",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T06:07:51+00:00"
-  },
-  {
    "title": "What has it cost to keep Al Jazeera on air for 30 years?",
    "link": "https://www.aljazeera.com/video/by-the-numbers-3/2026/10/31/what-has-it-cost-to-keep-al-jazeera-on-air-for-30-years?traffic_source=rss",
    "source": "Al Jazeera",
@@ -1060,16 +1020,6 @@
    "summary": "Maldives and Bangladesh discuss hosting a Dhaka business summit to boost trade and investment.",
    "image": null,
    "published": "2026-10-31T05:55:00+00:00"
-  },
-  {
-   "title": "Musaara bodu kurumashaai kharadhuthakaa dhekolhah Italy ge 40 ah vure gina city gai ethah haas bayaku halhuthaalu kuranee",
-   "link": "https://sun.mv/229867",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T05:53:23+00:00"
   },
   {
    "title": "Thilamalé Bridge connects Vilimalé and Gulhifalhu",
@@ -1122,16 +1072,6 @@
    "published": "2026-10-31T05:44:21+00:00"
   },
   {
-   "title": "Ukraine ah 2.1 billion dollar ge patriot missile vikkumuge hudha America in dheefi",
-   "link": "https://sun.mv/229866",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T05:44:03+00:00"
-  },
-  {
    "title": "Man fined Rs. 310,000 for setting trap gun to harm wild elephants",
    "link": "https://www.newswire.lk/2026/10/31/man-fined-rs-310000-for-setting-trap-gun-intended-to-harm-wild-elephants/",
    "source": "Newswire LK",
@@ -1160,16 +1100,6 @@
    "summary": "Reactors could revolutionise moon exploration, providing energy for bases and mining, but risks of contamination remain.",
    "image": null,
    "published": "2026-10-31T05:37:51+00:00"
-  },
-  {
-   "title": "Shradhdha ge neshumuge hunaru fennaane film 'Eetha'ge trailer dhakkaalaifi",
-   "link": "https://sun.mv/229865",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T05:36:29+00:00"
   },
   {
    "title": "Three airlines to resume flights to Sri Lanka",
@@ -1272,26 +1202,6 @@
    "published": "2026-10-31T05:09:38+00:00"
   },
   {
-   "title": "Sri Lanka’s fuel import bill jumps 51.5% to US$ 4.5 billion",
-   "link": "https://www.newswire.lk/2026/10/31/sri-lankas-fuel-import-bill-jumps-51-5-to-us-4-5-billion/",
-   "source": "Newswire LK",
-   "country": "Sri Lanka",
-   "category": "Top stories",
-   "summary": "Sri Lanka’s expenditure on fuel imports increased by 51.5% during the first nine months of 2026 compared to the corresponding Continue Reading The post Sri Lanka’s fuel import bill jumps 51.5% to US$ 4.5 billion…",
-   "image": "https://www.newswire.lk/wp-content/uploads/2026/10/Screenshot_20261030_223852_ChatGPT.jpg",
-   "published": "2026-10-31T05:08:57+00:00"
-  },
-  {
-   "title": "ChatGPT ge lafayakah beys huttaali anhenaku maruvi massalai gai OpenAI aa dhekolhah dhauva ufulaifi",
-   "link": "https://sun.mv/229864",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T05:07:36+00:00"
-  },
-  {
    "title": "Mohammed Deif, rare footage and October 7 documents",
    "link": "https://www.aljazeera.com/video/newsfeed/2026/10/31/mohammed-deif-rare-footage-and-october-7-documents?traffic_source=rss",
    "source": "Al Jazeera",
@@ -1302,54 +1212,14 @@
    "published": "2026-10-31T05:07:34+00:00"
   },
   {
-   "title": "WhatsApp Group Chat thakah 4 aa feature eh: dhaaimee koh message pin kurevey goi hadhaifi",
-   "link": "https://sun.mv/229862",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
+   "title": "Trump tells voters to send El-Sayed ‘back to where he came from’",
+   "link": "https://www.aljazeera.com/video/newsfeed/2026/10/31/trump-tells-voters-to-send-el-sayed-back-to-where-he-came?traffic_source=rss",
+   "source": "Al Jazeera",
+   "country": "World",
+   "category": "World",
+   "summary": "Speaking at a campaign rally, Donald Trump told voters to send Michigan’s Abdul El-Sayed ‘back to where he came from’.",
    "image": null,
-   "published": "2026-10-31T04:58:28+00:00"
-  },
-  {
-   "title": "200 Megapixel camera aa eku Motorola Signature 27 anna mahu nerenee",
-   "link": "https://sun.mv/229863",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T04:54:57+00:00"
-  },
-  {
-   "title": "Visnun thoonukoh, nafsaanee dhulhaheyokan ithurukurumah sikundi thamreenu kuraanee kihineh?",
-   "link": "https://sun.mv/229859",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T04:52:30+00:00"
-  },
-  {
-   "title": "Massaru dhuvasvaru migrane ge rihun gadhavanee keevve?",
-   "link": "https://sun.mv/229861",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T04:48:03+00:00"
-  },
-  {
-   "title": "Viheumah fahu hashigandah anna badhaluthakah faadukiyaa meehunnah Katrina ge harudhanaa rahdhdheh",
-   "link": "https://sun.mv/229857",
-   "source": "Sun.mv",
-   "country": "Maldives",
-   "category": "Top stories",
-   "summary": "",
-   "image": null,
-   "published": "2026-10-31T04:45:35+00:00"
+   "published": "2026-10-31T05:07:25+00:00"
   },
   {
    "title": "Trump admin approves potential Patriot missiles sale to Ukraine",
@@ -1452,6 +1322,36 @@
    "published": "2026-10-31T03:45:50+00:00"
   },
   {
+   "title": "Ferrari fastest as Verstappen says Kiwi rival should 'act a little smarter'",
+   "link": "https://www.abc.net.au/news/2026-10-31/charles-leclerc-fastest-in-both-f1-mexico-practice-sessions/107331904",
+   "source": "ABC News AU",
+   "country": "Australia",
+   "category": "Top stories",
+   "summary": "Ferrari's Charles Leclerc was fastest in both practice sessions for a Mexico City Grand Prix set to crown 20-year-old Mercedes driver Kimi Antonelli as Formula 1's youngest champion.",
+   "image": "https://live-production.wcms.abc-cdn.net.au/95a19060a0639e1336dd66dcf9664778?impolicy=wcms_crop_resize&cropH=3333&cropW=2500&xPos=1250&yPos=0&width=862&height=1149",
+   "published": "2026-10-31T03:45:25+00:00"
+  },
+  {
+   "title": "Flavio Bolsonaro says in livestream he left Brazil due to 'persecution'",
+   "link": "https://www.abc.net.au/news/2026-10-31/flavio-bolsonaro-says-he-left-brazil-because-of-persecution/107331760",
+   "source": "ABC News AU",
+   "country": "Australia",
+   "category": "Top stories",
+   "summary": "In an Instagram livestream, the defeated Brazilian conservative presidential candidate says he and his wife fled to the United States \"without anyone knowing\".",
+   "image": "https://live-production.wcms.abc-cdn.net.au/31cbc91fd6d424fde2b425a4031cc45b?impolicy=wcms_crop_resize&cropH=960&cropW=720&xPos=0&yPos=243&width=862&height=1149",
+   "published": "2026-10-31T03:41:16+00:00"
+  },
+  {
+   "title": "Burnham 'open' to calls for slavery apology but not reparations",
+   "link": "https://www.bbc.co.uk/news/articles/c5398239je88o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "UK",
+   "category": "Top stories",
+   "summary": "The prime minister says Britain must \"face up to the past\" for its role in the transatlantic slave trade but reparations are \"not the right answer\".",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7a09/live/908b67d0-d4cf-11f1-b441-2b33b063138f.jpg",
+   "published": "2026-10-31T03:12:08+00:00"
+  },
+  {
    "title": "Smoke-emitting vehicles fined in Lahore",
    "link": "https://www.dawn.com/news/2041115/smoke-emitting-vehicles-fined-in-lahore",
    "source": "Dawn",
@@ -1460,6 +1360,16 @@
    "summary": "LAHORE: During the current month in Lahore, as many as 1,763 smoke-emitting vehicles were fined, while a total penalty of Rs5.5 million was imposed. During the same period, 739 vehicles were impounded and overloaded…",
    "image": "https://i.dawn.com/thumbnail/2026/10/231226052161f95.webp",
    "published": "2026-10-31T03:03:29+00:00"
+  },
+  {
+   "title": "Trump's tariffs could shutter this Canadian town - its residents are fighting to save it",
+   "link": "https://www.bbc.co.uk/news/articles/cmly016ep243o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "World",
+   "category": "World",
+   "summary": "A century-old paper mill in Témiscaming, Quebec is indefinitely closed after the US imposed 50% tariffs on its products, putting hundreds out of work.",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b7be/live/dab6afd0-d223-11f1-93e1-3b657b665bcf.jpg",
+   "published": "2026-10-31T02:39:25+00:00"
   },
   {
    "title": "PM Shehbaz forms body to review proposed LPG policy reforms",
@@ -1482,6 +1392,66 @@
    "published": "2026-10-31T02:26:54+00:00"
   },
   {
+   "title": "Celebrity Traitors comes to a climax in nail-biting final",
+   "link": "https://www.bbc.co.uk/news/articles/cw4g17z11l45o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "UK",
+   "category": "Top stories",
+   "summary": "The second series of the hit show reached its climax on Friday after attracting 15 million viewers.",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/b017/live/6daf0760-d477-11f1-9dda-1ba6fcc7d159.jpg",
+   "published": "2026-10-31T02:18:59+00:00"
+  },
+  {
+   "title": "Why North Korea's 'elite' hackers are the prime suspect in major Binance hack",
+   "link": "https://www.bbc.co.uk/news/articles/ck9dz3v7z7v3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "World",
+   "category": "World",
+   "summary": "If the accusations are true, the record-making heist shows how powerful suspected North Korean hackers have become.",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/7b98/live/c9241530-d4aa-11f1-b441-2b33b063138f.jpg",
+   "published": "2026-10-31T02:12:19+00:00"
+  },
+  {
+   "title": "KP police get tech to monitor counterterrorism operations",
+   "link": "https://www.dawn.com/news/2041110/kp-police-get-tech-to-monitor-counterterrorism-operations",
+   "source": "Dawn",
+   "country": "Pakistan",
+   "category": "Top stories",
+   "summary": "PESHAWAR: The Khyber Pakhtunkhwa police have integrated anti-drone systems and surveillance drones operating across the province into the Safe City Peshawar’s Command and Control Centre to strengthen security and…",
+   "image": "https://i.dawn.com/thumbnail/2024/04/181124207bc5347.jpg",
+   "published": "2026-10-31T02:09:47+00:00"
+  },
+  {
+   "title": "UAE weekend traffic: Road closures, parking updates, Salik rates, revised Metro timings and new speed limits",
+   "link": "https://gulfnews.com/uae/transport/uae-weekend-traffic-road-closures-parking-updates-salik-rates-metro-timings-and-new-speed-limits-1.500730222",
+   "source": "Gulf News",
+   "country": "UAE",
+   "category": "Top stories",
+   "summary": "",
+   "image": "https://media.assettype.com/gulfnews/import/2023/11/13/20231113-dubai-ride_18bc6ebf5cd_large.jpg?w=280",
+   "published": "2026-10-31T02:00:00+00:00"
+  },
+  {
+   "title": "Global nature talks reach deal but money remains an issue",
+   "link": "https://www.bbc.co.uk/news/articles/cw1l32qyj8pqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "World",
+   "category": "World",
+   "summary": "Countries have been trying to get a global agreement to halt nature decline back on track.",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/5c07/live/57283d20-d4b5-11f1-a58c-6d26609b0a57.jpg",
+   "published": "2026-10-31T01:27:05+00:00"
+  },
+  {
+   "title": "Police deployed during stand-off over control of top Poland court",
+   "link": "https://www.bbc.co.uk/news/articles/crz9824d5e88o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "country": "World",
+   "category": "World",
+   "summary": "The escalation came after the government suspended two senior justices and moved to bring criminal charges against them.",
+   "image": "https://ichef.bbci.co.uk/ace/standard/240/cpsprodpb/9663/live/1662e2b0-d508-11f1-a701-fddedf244c16.jpg",
+   "published": "2026-10-31T01:11:43+00:00"
+  },
+  {
    "title": "Despite concerns, the Trump administration still sends pregnant migrant minors to south Texas",
    "link": "https://www.npr.org/2026/10/30/nx-s1-6022578/minors-pregnant-migrant-texas-trump",
    "source": "NPR",
@@ -1500,6 +1470,36 @@
    "summary": "A federal judge is opening an formal inquiry into Trump officials' conduct in the East Potomac case, including whether they misled the court about their plans for the municipal golf course.",
    "image": null,
    "published": "2026-10-30T21:56:52+00:00"
+  },
+  {
+   "title": "The Long Road From Rent to Ownership",
+   "link": "https://corporatemaldives.com/the-long-road-from-rent-to-ownership/",
+   "source": "Corporate Maldives",
+   "country": "Maldives",
+   "category": "Business",
+   "summary": "Maldivian housing grants aim to ease the steep deposit barrier blocking renters from ownership.",
+   "image": null,
+   "published": "2026-10-30T08:50:02+00:00"
+  },
+  {
+   "title": "Man sentenced to 20 years in prison for abusing 3-year-old",
+   "link": "https://atolltimes.mv/post/news/17574",
+   "source": "Atoll Times",
+   "country": "Maldives",
+   "category": "Top stories",
+   "summary": "The convicted man was identified as Mohamed Naish Adam, from Hudhuhudhaage, HA. Hoarafushi.",
+   "image": "https://cdn.atolltimes.mv/media/s3/media/2026/10/29/feec09aa-28af-41d5-9041-d6d7c2b3158c.webp?fit=crop-50-50&w=1200&h=630&mark=%2Fmark.png&markpos=bottom-right&fm=jpg",
+   "published": "2026-10-29T17:49:07+00:00"
+  },
+  {
+   "title": "Solih calls for Eagle Hills project halt, citing lack of benefits",
+   "link": "https://atolltimes.mv/post/news/17573",
+   "source": "Atoll Times",
+   "country": "Maldives",
+   "category": "Top stories",
+   "summary": "Solih said a fair commercial transaction should benefit both parties, whether it involves the sale or purchase of property or a lease agreement.",
+   "image": "https://cdn.atolltimes.mv/media/s3/media/2026/10/29/f46cde67-ba12-455e-b8f6-ca0f26facd12.webp?fit=crop-50-50&w=1200&h=630&mark=%2Fmark.png&markpos=bottom-right&fm=jpg",
+   "published": "2026-10-29T17:47:35+00:00"
   }
  ]
 }
