@@ -15,6 +15,9 @@ FEEDS = [  # (source, country, category, url)
  ("Al Jazeera","World","World","https://www.aljazeera.com/xml/rss/all.xml"),
  ("NPR","USA","Top stories","https://feeds.npr.org/1001/rss.xml"),
  ("Sun.mv","Maldives","Top stories","https://sun.mv/feed"),
+ ("Mihaaru English","Maldives","Top stories","https://en.mihaaru.com/rss"),
+ ("Dhauru","Maldives","Top stories","https://dhauru.com/feed"),
+ ("Google News","Maldives","Top stories","https://news.google.com/rss/search?q=Maldives&hl=en-MV&gl=MV&ceid=MV:en"),
  ("Atoll Times","Maldives","Top stories","https://atolltimes.mv/feed"),
  ("Corporate Maldives","Maldives","Business","https://corporatemaldives.com/feed/"),
  ("The Hindu","India","Top stories","https://www.thehindu.com/news/national/feeder/default.rss"),
@@ -25,7 +28,7 @@ FEEDS = [  # (source, country, category, url)
  ("ABC News AU","Australia","Top stories","https://www.abc.net.au/news/feed/51120/rss.xml"),
  ("Dawn","Pakistan","Top stories","https://www.dawn.com/feeds/home"),
 ]
-MAX_ITEMS, PER_FEED = 150, 15
+MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 240, 15, 25, 80
 MEDIA = "{http://search.yahoo.com/mrss/}"
 
 def clean(t, n=220):
@@ -53,15 +56,23 @@ def image(it):
 def fetch(f):
     src, country, cat, url = f
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (News RSS reader)"})
-    root = ET.fromstring(urllib.request.urlopen(req, timeout=20).read().strip())
+    try: raw = urllib.request.urlopen(req, timeout=20).read()
+    except Exception:
+        import subprocess
+        raw = subprocess.run(["curl", "-sL", "-m", "20", "-A", "Mozilla/5.0", url], capture_output=True, check=True).stdout
+    root = ET.fromstring(raw.strip())
     out = []
     for it in root.iter("item"):
         title, link = clean(it.findtext("title"), 200), (it.findtext("link") or "").strip()
         if not title or not link: continue
-        out.append(dict(title=title, link=link, source=src, country=country, category=cat,
+        s2 = src
+        if src == "Google News":
+            s2 = (it.findtext("source") or "Google News").strip()
+            title = re.sub(r"\s+-\s+" + re.escape(s2) + r"$", "", title)
+        out.append(dict(title=title, link=link, source=s2, country=country, category=cat,
                         summary=clean(it.findtext("description")), image=image(it),
                         published=when(it.findtext("pubDate") or it.findtext("{http://purl.org/dc/elements/1.1/}date"))))
-        if len(out) >= PER_FEED: break
+        if len(out) >= (MV_PER_FEED if country == "Maldives" else PER_FEED): break
     return out
 
 def main():
@@ -79,7 +90,7 @@ def main():
     # keep balance: guarantee each country some slots, then fill by recency
     by = {}
     for i in uniq: by.setdefault(i["country"], []).append(i)
-    keep = [i for v in by.values() for i in v[:10]]
+    keep = [i for v in by.values() for i in v[:(MV_QUOTA if v[0]["country"] == "Maldives" else 10)]]
     rest = [i for i in uniq if i not in keep]
     keep = (keep + rest)[:MAX_ITEMS]
     keep.sort(key=lambda i: i["published"] or "", reverse=True)

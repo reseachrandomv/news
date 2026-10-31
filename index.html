@@ -1,29 +1,32 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><script>if(localStorage.theme=="light")document.documentElement.dataset.theme="light"</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>News – Made by Fathimath Malaak Jaufar</title>
 <style>
-:root{--bg:#eef4fb;--card:#fff;--ink:#0b2340;--muted:#3a5470;--blue:#0b4f9c;--blue2:#e1ecf8;--fs:19px}
+:root{--fs:19px;--bg:#0b1a33;--card:#132a4d;--ink:#eef4ff;--muted:#b7c8e3;--blue:#8cc4ff;--blue2:#1f3f6e;--head:#06122a;--btnbg:#132a4d;--on:#06122a;color-scheme:dark}
+:root[data-theme=light]{--bg:#eef4fb;--card:#fff;--ink:#0b2340;--muted:#3a5470;--blue:#0b4f9c;--blue2:#e1ecf8;--head:#0b4f9c;--btnbg:#fff;--on:#fff;color-scheme:light}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--fs)/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:var(--blue);color:#fff;padding:18px 16px}header .w{max-width:1000px;margin:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+header{background:var(--head);color:#fff;padding:18px 16px}header .w{max-width:1000px;margin:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 h1{margin:0;font-size:1.6em}.sub{font-size:.85em;opacity:.95}
-button{font:inherit;cursor:pointer;border-radius:999px;border:2px solid var(--blue);min-height:44px;padding:6px 16px;background:#fff;color:var(--blue);font-weight:600}
+button{font:inherit;cursor:pointer;border-radius:999px;border:2px solid var(--blue);min-height:44px;padding:6px 16px;background:var(--btnbg);color:var(--blue);font-weight:600}
 button:focus-visible,a:focus-visible{outline:3px solid #f5b400;outline-offset:2px}
-header button{border-color:#fff}
+header button{border-color:#fff;background:transparent;color:#fff}.tools{display:flex;gap:8px;flex-wrap:wrap}footer a{color:var(--blue);font-weight:700}
 nav{max-width:1000px;margin:14px auto 0;padding:0 16px;display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
-nav button{white-space:nowrap}nav button[aria-pressed=true]{background:var(--blue);color:#fff}
+nav button{white-space:nowrap}nav button[aria-pressed=true]{background:var(--blue);color:var(--on)}
 main{max-width:1000px;margin:auto;padding:12px 16px 30px;display:grid;gap:14px}
 .meta{color:var(--muted);font-size:.85em}
-article{background:var(--card);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px #0b234020;border-left:5px solid var(--blue)}
+article{background:var(--card);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px #0006;border-left:5px solid var(--blue)}
 article h2{font-size:1.15em;margin:4px 0 6px;line-height:1.35}article h2 a{color:var(--ink);text-decoration:none}article h2 a:hover{text-decoration:underline}
 article p{margin:0 0 8px}.src{display:inline-block;background:var(--blue2);color:var(--blue);font-weight:700;border-radius:6px;padding:0 8px;font-size:.8em}
 .read{color:var(--blue);font-weight:700}
 footer{text-align:center;padding:24px 16px;color:var(--muted);font-size:.9em}
 </style></head><body>
 <header><div class="w"><div><h1>News</h1><div class="sub">Made by Fathimath Malaak Jaufar</div></div>
-<button id="ts" aria-label="Change text size">Text size: A</button></div></header>
+<div class="tools"><button id="ts" aria-label="Change text size">Text size: A</button><button id="tm" aria-pressed="false">Light mode</button></div></div></header>
 <nav id="countries" aria-label="Choose country"></nav>
 <main id="list" aria-live="polite"><p>Loading headlines…</p></main>
-<footer>Made by Fathimath Malaak Jaufar · Headlines, summaries and links come from each outlet's public RSS feed; full stories belong to the named source. <span id="upd"></span></footer>
+<footer><strong>Made by Fathimath Malaak Jaufar</strong><br>Contact: WhatsApp <a href="https://wa.me/9609424572" rel="noopener">+960 9424572</a> · Email <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br> Headlines, summaries and links come from each outlet's public RSS feed; full stories belong to the named source. <span id="upd"></span></footer>
 <script>
+const tm=document.getElementById('tm');function applyTheme(t){if(t=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=t=='light'?'Dark mode':'Light mode';tm.setAttribute('aria-label','Switch to '+(t=='light'?'dark':'light')+' mode')}
+let theme=localStorage.theme||'dark';applyTheme(theme);tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
 const ORDER=["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
 const sizes=[19,22,26],labels=["A","A+","A++"];let si=+(localStorage.ts||0);
 const ts=document.getElementById('ts');function applySize(){document.documentElement.style.setProperty('--fs',sizes[si]+'px');ts.textContent='Text size: '+labels[si]}
