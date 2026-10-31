@@ -95,7 +95,7 @@ def fetch(f):
             s2 = (it.findtext("source") or "Google News").strip()
             title = re.sub(r"\s+-\s+" + re.escape(s2) + r"$", "", title)
         out.append(dict(title=title, link=link, source=s2, country=country, category=cat,
-                        summary="" if country == "Courses" else clean(it.findtext("description")), image=image(it),
+                        summary="" if country == "Courses" or src == "Google News" else clean(it.findtext("description")), image=image(it),
                         published=when(it.findtext("pubDate") or it.findtext("{http://purl.org/dc/elements/1.1/}date"))))
         if len(out) >= (MV_PER_FEED if country in ("Maldives","Courses") else PER_FEED): break
     return out
