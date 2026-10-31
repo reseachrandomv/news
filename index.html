@@ -44,7 +44,7 @@ function render(){
  clearInterval(timer);if(cur=="Population")return renderPop();
  let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
  document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">${esc(LABEL[cur]||cur+" news")}</h2>`+items.map(i=>`<article><span class="src">${esc(i.source)}</span> <span class="meta">${esc(i.category)} · ${ago(i.published)}</span>
- <h2><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p>${esc(i.summary)}</p>`:''}
+ <h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p>${esc(i.summary)}</p>`:''}
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">Read at ${esc(i.source)} →</a></article>`).join('');
 }
 const nf=n=>Math.round(n).toLocaleString('en-US');
