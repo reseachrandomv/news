@@ -18,6 +18,14 @@ FEEDS = [  # (source, country, category, url)
  ("Mihaaru English","Maldives","Top stories","https://en.mihaaru.com/rss"),
  ("Dhauru","Maldives","Top stories","https://dhauru.com/feed"),
  ("Google News","Maldives","Top stories","https://news.google.com/rss/search?q=Maldives&hl=en-MV&gl=MV&ceid=MV:en"),
+ ("The Verge","Tech","Gadgets","https://www.theverge.com/rss/index.xml"),
+ ("Engadget","Tech","Gadgets","https://www.engadget.com/rss.xml"),
+ ("GSMArena","Tech","Phones","https://www.gsmarena.com/rss-news-reviews.php3"),
+ ("TechCrunch","Tech","Tech","https://techcrunch.com/feed/"),
+ ("Ars Technica","Tech","Gadgets","https://feeds.arstechnica.com/arstechnica/gadgets"),
+ ("Maldives National University","Courses","Announcements","https://mnu.edu.mv/feed/"),
+ ("Google News","Courses","Courses & admissions","https://news.google.com/rss/search?q=Maldives+course+OR+admission+OR+scholarship+OR+school+announcement&hl=en-MV&gl=MV&ceid=MV:en"),
+ ("Google News","Courses","Education","https://news.google.com/rss/search?q=Maldives+education+OR+university+OR+scholarship&hl=en&gl=US&ceid=US:en"),
  ("Atoll Times","Maldives","Top stories","https://atolltimes.mv/feed"),
  ("Corporate Maldives","Maldives","Business","https://corporatemaldives.com/feed/"),
  ("The Hindu","India","Top stories","https://www.thehindu.com/news/national/feeder/default.rss"),
@@ -28,7 +36,7 @@ FEEDS = [  # (source, country, category, url)
  ("ABC News AU","Australia","Top stories","https://www.abc.net.au/news/feed/51120/rss.xml"),
  ("Dawn","Pakistan","Top stories","https://www.dawn.com/feeds/home"),
 ]
-MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 240, 15, 25, 80
+MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 330, 15, 25, 80
 MEDIA = "{http://search.yahoo.com/mrss/}"
 
 def clean(t, n=220):
@@ -62,7 +70,17 @@ def fetch(f):
         raw = subprocess.run(["curl", "-sL", "-m", "20", "-A", "Mozilla/5.0", url], capture_output=True, check=True).stdout
     root = ET.fromstring(raw.strip())
     out = []
-    for it in root.iter("item"):
+    A = "{http://www.w3.org/2005/Atom}"
+    entries = list(root.iter("item")) or list(root.iter(A+"entry"))
+    for it in entries:
+        if it.tag == A+"entry":
+            for c in list(it):
+                t = c.tag.replace(A, "")
+                if t == "link" and not it.find("link") is not None: pass
+            ln = it.find(A+"link"); e = ET.SubElement(it, "link"); e.text = ln.get("href") if ln is not None else ""
+            for a, b in (("title","title"),("summary","description"),("updated","pubDate")):
+                v = it.findtext(A+a) or (it.findtext(A+"content") if a == "summary" else None)
+                if v: ET.SubElement(it, b).text = v
         title, link = clean(it.findtext("title"), 200), (it.findtext("link") or "").strip()
         if not title or not link: continue
         s2 = src
@@ -70,9 +88,9 @@ def fetch(f):
             s2 = (it.findtext("source") or "Google News").strip()
             title = re.sub(r"\s+-\s+" + re.escape(s2) + r"$", "", title)
         out.append(dict(title=title, link=link, source=s2, country=country, category=cat,
-                        summary=clean(it.findtext("description")), image=image(it),
+                        summary="" if country == "Courses" else clean(it.findtext("description")), image=image(it),
                         published=when(it.findtext("pubDate") or it.findtext("{http://purl.org/dc/elements/1.1/}date"))))
-        if len(out) >= (MV_PER_FEED if country == "Maldives" else PER_FEED): break
+        if len(out) >= (MV_PER_FEED if country in ("Maldives","Courses") else PER_FEED): break
     return out
 
 def main():
@@ -90,7 +108,7 @@ def main():
     # keep balance: guarantee each country some slots, then fill by recency
     by = {}
     for i in uniq: by.setdefault(i["country"], []).append(i)
-    keep = [i for v in by.values() for i in v[:(MV_QUOTA if v[0]["country"] == "Maldives" else 10)]]
+    keep = [i for v in by.values() for i in v[:(MV_QUOTA if v[0]["country"] == "Maldives" else 40 if v[0]["country"] in ("Tech","Courses") else 10)]]
     rest = [i for i in uniq if i not in keep]
     keep = (keep + rest)[:MAX_ITEMS]
     keep.sort(key=lambda i: i["published"] or "", reverse=True)

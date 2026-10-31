@@ -27,23 +27,40 @@ footer{text-align:center;padding:24px 16px;color:var(--muted);font-size:.9em}
 <script>
 const tm=document.getElementById('tm');function applyTheme(t){if(t=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=t=='light'?'Dark mode':'Light mode';tm.setAttribute('aria-label','Switch to '+(t=='light'?'dark':'light')+' mode')}
 let theme=localStorage.theme||'dark';applyTheme(theme);tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
-const ORDER=["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
+const ORDER=["Maldives","Courses","Tech","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
+const LABEL={Courses:"Courses & Announcements",Tech:"Tech & Gadgets",Population:"World Population"};let pop=null,timer=null;
 const sizes=[19,22,26],labels=["A","A+","A++"];let si=+(localStorage.ts||0);
 const ts=document.getElementById('ts');function applySize(){document.documentElement.style.setProperty('--fs',sizes[si]+'px');ts.textContent='Text size: '+labels[si]}
 ts.onclick=()=>{si=(si+1)%3;localStorage.ts=si;applySize()};applySize();
-let data,cur=localStorage.country||"Maldives";
+let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives";
 const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?Math.max(1,m|0)+" min ago":m<1440?(m/60|0)+" h ago":new Date(d).toLocaleDateString()};
 function render(){
- const nav=document.getElementById('countries');const cs=ORDER.filter(c=>data.items.some(i=>i.country==c));
+ const nav=document.getElementById('countries');const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
  if(!cs.includes(cur))cur="Maldives";
- nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${c}</button>`).join('');
+ nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${LABEL[c]||c}</button>`).join('');
  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.c;localStorage.country=cur;render();scrollTo(0,0)});
+ clearInterval(timer);if(cur=="Population")return renderPop();
  const items=data.items.filter(i=>i.country==cur);
- document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">${esc(cur)} news</h2>`+items.map(i=>`<article><span class="src">${esc(i.source)}</span> <span class="meta">${esc(i.category)} · ${ago(i.published)}</span>
+ document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">${esc(LABEL[cur]||cur+" news")}</h2>`+items.map(i=>`<article><span class="src">${esc(i.source)}</span> <span class="meta">${esc(i.category)} · ${ago(i.published)}</span>
  <h2><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p>${esc(i.summary)}</p>`:''}
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">Read at ${esc(i.source)} →</a></article>`).join('');
 }
+const nf=n=>Math.round(n).toLocaleString('en-US');
+function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
+ const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
+ const cards=[["World population (live estimate)","pop"],["Births this year (estimate)","b"],["Deaths this year (estimate)","d"],["Population growth this year (estimate)","n"]];
+ const src=`Source: <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
+ document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">World Population</h2><p class="meta">These are <strong>estimates</strong>, not exact counts. They start from the World Bank's ${w.pop.year} figure (${nf(b)}) and add the ${w.growth.year} growth rate (${w.growth.value.toFixed(2)}% a year), birth rate (${w.birth_rate.value.toFixed(1)} per 1,000) and death rate (${w.death_rate.value.toFixed(1)} per 1,000). ${src}</p>`+
+ cards.map(([t,k])=>`<article><span class="meta">${t}</span><h2 id="pc-${k}" style="font-size:1.8em;margin:4px 0">…</h2></article>`).join('')+
+ `<article><span class="meta">Maldives population (World Bank, ${pop.maldives.pop.year})</span><h2 style="font-size:1.6em;margin:4px 0">${nf(pop.maldives.pop.value)}</h2><p>Growth ${pop.maldives.growth.value.toFixed(2)}% a year (${pop.maldives.growth.year}). ${src}</p></article>`+
+ `<article><span class="meta">Other facts (World Bank, ${w.life_exp.year})</span><p>Life expectancy worldwide: <strong>${w.life_exp.value.toFixed(1)} years</strong><br>People living in cities: <strong>${w.urban_pct.value.toFixed(1)}%</strong></p><p class="meta">${src}</p></article>`+
+ `<article><span class="meta">Most populated countries (World Bank, ${pop.top[0].year})</span><ol>${pop.top.map(t=>`<li>${esc(t.name)}: <strong>${nf(t.pop)}</strong></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
+ const tick=()=>{const t=Date.now(),P=b*Math.exp(g*(t-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(t-ys)/yr;
+  const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
+  for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=document.getElementById('pc-'+k);if(e)e.textContent=nf(v)}};
+ tick();timer=setInterval(tick,1000);}
+fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=p;if(data)render()}).catch(()=>{});
 fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;document.getElementById('upd').textContent='Updated '+new Date(d.updated).toLocaleString()+'. Refreshes every hour.';render()})
 .catch(()=>document.getElementById('list').innerHTML='<p>Could not load news. Please try again.</p>');
 </script></body></html>

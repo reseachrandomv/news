@@ -1,0 +1,93 @@
+{
+ "source": "World Bank Open Data (World Development Indicators, based on UN World Population Prospects)",
+ "source_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+ "fetched": "2026-10-31T12:35:31.588393+00:00",
+ "world": {
+  "pop": {
+   "value": 8215424893,
+   "year": 2025
+  },
+  "growth": {
+   "value": 0.911303701154864,
+   "year": 2025
+  },
+  "birth_rate": {
+   "value": 16.2730070969907,
+   "year": 2024
+  },
+  "death_rate": {
+   "value": 7.55065418868631,
+   "year": 2024
+  },
+  "life_exp": {
+   "value": 73.4818184164654,
+   "year": 2024
+  },
+  "urban_pct": {
+   "value": 57.8251158115221,
+   "year": 2025
+  }
+ },
+ "maldives": {
+  "pop": {
+   "value": 529676,
+   "year": 2025
+  },
+  "growth": {
+   "value": 0.35499694483684,
+   "year": 2025
+  }
+ },
+ "top": [
+  {
+   "name": "India",
+   "pop": 1463865525,
+   "year": 2025
+  },
+  {
+   "name": "China",
+   "pop": 1406585000,
+   "year": 2025
+  },
+  {
+   "name": "United States",
+   "pop": 341784857,
+   "year": 2025
+  },
+  {
+   "name": "Indonesia",
+   "pop": 285721236,
+   "year": 2025
+  },
+  {
+   "name": "Pakistan",
+   "pop": 255219554,
+   "year": 2025
+  },
+  {
+   "name": "Nigeria",
+   "pop": 237527782,
+   "year": 2025
+  },
+  {
+   "name": "Brazil",
+   "pop": 212812405,
+   "year": 2025
+  },
+  {
+   "name": "Bangladesh",
+   "pop": 175686899,
+   "year": 2025
+  },
+  {
+   "name": "Russian Federation",
+   "pop": 143513328,
+   "year": 2025
+  },
+  {
+   "name": "Ethiopia",
+   "pop": 135472051,
+   "year": 2025
+  }
+ ]
+}
