@@ -26,6 +26,13 @@ FEEDS = [  # (source, country, category, url)
  ("Maldives National University","Courses","Announcements","https://mnu.edu.mv/feed/"),
  ("Google News","Courses","Courses & admissions","https://news.google.com/rss/search?q=Maldives+course+OR+admission+OR+scholarship+OR+school+announcement&hl=en-MV&gl=MV&ceid=MV:en"),
  ("Google News","Courses","Education","https://news.google.com/rss/search?q=Maldives+education+OR+university+OR+scholarship&hl=en&gl=US&ceid=US:en"),
+ ("BBC Science","Science","UK","https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"),
+ ("The Guardian Science","Science","UK","https://www.theguardian.com/science/rss"),
+ ("UKRI","Science","UK","https://www.ukri.org/news/feed/"),
+ ("University of Cambridge","Science","UK","https://www.cam.ac.uk/news/feed"),
+ ("ScienceDaily","Science","Discoveries","https://www.sciencedaily.com/rss/top/science.xml"),
+ ("Phys.org","Science","Discoveries","https://phys.org/rss-feed/breaking/"),
+ ("NASA","Science","Space","https://www.nasa.gov/news-release/feed/"),
  ("Atoll Times","Maldives","Top stories","https://atolltimes.mv/feed"),
  ("Corporate Maldives","Maldives","Business","https://corporatemaldives.com/feed/"),
  ("The Hindu","India","Top stories","https://www.thehindu.com/news/national/feeder/default.rss"),
@@ -36,7 +43,7 @@ FEEDS = [  # (source, country, category, url)
  ("ABC News AU","Australia","Top stories","https://www.abc.net.au/news/feed/51120/rss.xml"),
  ("Dawn","Pakistan","Top stories","https://www.dawn.com/feeds/home"),
 ]
-MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 330, 15, 25, 80
+MAX_ITEMS, PER_FEED, MV_PER_FEED, MV_QUOTA = 420, 15, 25, 80
 MEDIA = "{http://search.yahoo.com/mrss/}"
 
 def clean(t, n=220):
@@ -63,7 +70,7 @@ def image(it):
 
 def fetch(f):
     src, country, cat, url = f
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (News RSS reader)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) News RSS reader"})
     try: raw = urllib.request.urlopen(req, timeout=20).read()
     except Exception:
         import subprocess
@@ -108,7 +115,7 @@ def main():
     # keep balance: guarantee each country some slots, then fill by recency
     by = {}
     for i in uniq: by.setdefault(i["country"], []).append(i)
-    keep = [i for v in by.values() for i in v[:(MV_QUOTA if v[0]["country"] == "Maldives" else 40 if v[0]["country"] in ("Tech","Courses") else 10)]]
+    keep = [i for v in by.values() for i in v[:(MV_QUOTA if v[0]["country"] == "Maldives" else 40 if v[0]["country"] in ("Tech","Courses") else 60 if v[0]["country"] == "Science" else 10)]]
     rest = [i for i in uniq if i not in keep]
     keep = (keep + rest)[:MAX_ITEMS]
     keep.sort(key=lambda i: i["published"] or "", reverse=True)

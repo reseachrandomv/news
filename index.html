@@ -27,8 +27,8 @@ footer{text-align:center;padding:24px 16px;color:var(--muted);font-size:.9em}
 <script>
 const tm=document.getElementById('tm');function applyTheme(t){if(t=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=t=='light'?'Dark mode':'Light mode';tm.setAttribute('aria-label','Switch to '+(t=='light'?'dark':'light')+' mode')}
 let theme=localStorage.theme||'dark';applyTheme(theme);tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
-const ORDER=["Maldives","Courses","Tech","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
-const LABEL={Courses:"Courses & Announcements",Tech:"Tech & Gadgets",Population:"World Population"};let pop=null,timer=null;
+const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
+const LABEL={Courses:"Courses & Announcements",Tech:"Tech & Gadgets",Population:"World Population",Science:"Science & Discoveries"};let pop=null,timer=null;
 const sizes=[19,22,26],labels=["A","A+","A++"];let si=+(localStorage.ts||0);
 const ts=document.getElementById('ts');function applySize(){document.documentElement.style.setProperty('--fs',sizes[si]+'px');ts.textContent='Text size: '+labels[si]}
 ts.onclick=()=>{si=(si+1)%3;localStorage.ts=si;applySize()};applySize();
@@ -41,7 +41,7 @@ function render(){
  nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${LABEL[c]||c}</button>`).join('');
  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.c;localStorage.country=cur;render();scrollTo(0,0)});
  clearInterval(timer);if(cur=="Population")return renderPop();
- const items=data.items.filter(i=>i.country==cur);
+ let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
  document.getElementById('list').innerHTML=`<h2 style="margin:4px 0">${esc(LABEL[cur]||cur+" news")}</h2>`+items.map(i=>`<article><span class="src">${esc(i.source)}</span> <span class="meta">${esc(i.category)} · ${ago(i.published)}</span>
  <h2><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p>${esc(i.summary)}</p>`:''}
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">Read at ${esc(i.source)} →</a></article>`).join('');
