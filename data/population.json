@@ -1,7 +1,7 @@
 {
  "source": "World Bank Open Data (World Development Indicators, based on UN World Population Prospects)",
  "source_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
- "fetched": "2026-11-01T00:04:38.637499+00:00",
+ "fetched": "2026-11-01T05:57:12.276836+00:00",
  "world": {
   "pop": {
    "value": 8215424893,
@@ -38,56 +38,5 @@
    "year": 2025
   }
  },
- "top": [
-  {
-   "name": "India",
-   "pop": 1463865525,
-   "year": 2025
-  },
-  {
-   "name": "China",
-   "pop": 1406585000,
-   "year": 2025
-  },
-  {
-   "name": "United States",
-   "pop": 341784857,
-   "year": 2025
-  },
-  {
-   "name": "Indonesia",
-   "pop": 285721236,
-   "year": 2025
-  },
-  {
-   "name": "Pakistan",
-   "pop": 255219554,
-   "year": 2025
-  },
-  {
-   "name": "Nigeria",
-   "pop": 237527782,
-   "year": 2025
-  },
-  {
-   "name": "Brazil",
-   "pop": 212812405,
-   "year": 2025
-  },
-  {
-   "name": "Bangladesh",
-   "pop": 175686899,
-   "year": 2025
-  },
-  {
-   "name": "Russian Federation",
-   "pop": 143513328,
-   "year": 2025
-  },
-  {
-   "name": "Ethiopia",
-   "pop": 135472051,
-   "year": 2025
-  }
- ]
+ "top": []
 }
