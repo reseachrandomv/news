@@ -36,9 +36,10 @@ Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ",skip:"ޚަބަރަށް ދ
  why:"މި ސައިޓް ހެދީ ދިވެހިރާއްޖޭގެ ލޯކަލް ޚަބަރުތަކާއި ދުނިޔޭގެ ޚަބަރު، ޓެކް، ސައިންސް، ކޯސްތަކާއި އިޢުލާންތައް، ފަސޭހަ އަދި ހިލޭ އެއް ތަނަކުން ލިބޭނެ ގޮތަށް. ކޮންމެ 30 މިނިޓަކުން ޚަބަރުތައް އަމިއްލައަށް އާވޭ.",
  features:[["⏱️","30 މިނިޓުން އަޕްޑޭޓް","ކޮންމެ 30 މިނިޓަކުން އާ ސުރުޚީތައް އަމިއްލައަށް ލިބޭ."],["🏝️","120 އަށްވުރެ ގިނަ ދިވެހި ޚަބަރު","ގިނަ ދިވެހި ނޫސްތަކުގެ ޚަބަރު އެއް ޓެބަކުން."],["🌍","ދުނިޔޭގެ އާބާދީ","ދުނިޔޭގެ އާބާދީ، އުފަންވުމާއި މަރުވުމުގެ ލައިވް އަންދާޒާ."],["📱","ޓެކް އަދި ގެޖެޓްސް","ފޯނު، އިލެކްޓްރޯނިކްސް އަދި އާ ޓެކްނޮލޮޖީ."],["🎓","ކޯސްތަކާއި އިޢުލާންތައް","ކޯސް، އެޑްމިޝަން އަދި ކޮލެޖާއި ސްކޫލުތަކުގެ ޚަބަރު."],["🔬","ސައިންސާއި ހޯދުންތައް","އާ ހޯދުންތައް، ޔޫކޭގެ ކާމިޔާބީތައް ފުރަތަމަ."],["🌗","ޑާކް އަދި ލައިޓް މޯޑް","ލޮލަށް ފަސޭހަ ކުލަ ހޮވާ."],["🔠","އަކުރުގެ ސައިޒު","އަކުރު ކުޑަކޮށް ނުވަތަ ބޮޑުކޮށްލާ."],["🗣️","English އަދި ދިވެހި","ސައިޓް އިނގިރޭސިން ނުވަތަ ދިވެހިން ބޭނުންކުރޭ."]]});
 const $=id=>document.getElementById(id),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const TABLINK={"🏝️":"Maldives","🌍":"Population","📱":"Tech","🎓":"Courses","🔬":"Science"};
 function draw(){setLangAttrs();document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
  const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
- $('grid').innerHTML=(STR[LANG].features).map(([i,h,p])=>`<div class="card"><span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}</div>`).join('')}
+ $('grid').innerHTML=(STR[LANG].features).map(([i,h,p])=>{const tb=TABLINK[i];const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;return tb?`<a class="card" style="color:inherit;text-decoration:none;display:block" href="./?tab=${tb}" onclick="localStorage.introSeen='1';localStorage.country='${tb}'">${inner}</a>`:`<div class="card">${inner}</div>`}).join('')}
 $('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;draw()};
 const go=e=>{localStorage.introSeen="1";location.href="./"};$('go').onclick=e=>{e.preventDefault();go()};$('go2').onclick=go;draw();
 </script></body></html>

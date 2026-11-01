@@ -55,7 +55,7 @@ function render(){
  if(!cs.includes(cur))cur="Maldives";
  nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${esc(tab(c))}</button>`).join('');
  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.c;localStorage.country=cur;render();scrollTo(0,0)});
- clearInterval(timer);if(cur=="Population")return renderPop();
+ clearInterval(timer);if(cur=="Population"){try{return renderPop()}catch(e){console.error(e);pop=POP_FB;return renderPop()}}
  let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
  const hasDv=items.some(isDv);
  if(hasDv&&dvOnly)items=items.filter(isDv);else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
@@ -66,6 +66,12 @@ function render(){
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`).join(''):`<p>${esc(t('empty'))}</p>`);
  $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{dvOnly=b.dataset.f=="1";localStorage.dvOnly=dvOnly?"1":"0";render()});
 }
+const POP_FB={source:"World Bank Open Data (UN World Population Prospects) - built-in estimate",source_url:"https://data.worldbank.org/indicator/SP.POP.TOTL",world:{pop:{value:8215424893,year:2025},growth:{value:0.91,year:2025},birth_rate:{value:16.3,year:2024},death_rate:{value:7.6,year:2024},life_exp:{value:73.5,year:2024},urban_pct:{value:57.8,year:2024}},maldives:{pop:{value:529676,year:2025},growth:{value:0.35,year:2025}},top:[["India", 1463865525], ["China", 1406585000], ["United States", 341784857], ["Indonesia", 285721236], ["Pakistan", 255219554], ["Nigeria", 237527782], ["Brazil", 212812405], ["Bangladesh", 175686899], ["Russian Federation", 143513328], ["Ethiopia", 135472051]].map(([name,pop])=>({name,pop,year:2025}))};
+function fixPop(p){p=p||{};const w=Object.assign({},POP_FB.world,p.world||{}),r={...POP_FB,...p,world:w};
+ for(const k in POP_FB.world)if(!w[k]||typeof w[k].value!="number")w[k]=POP_FB.world[k];
+ if(!r.maldives||!r.maldives.pop||!r.maldives.growth)r.maldives=POP_FB.maldives;
+ if(!Array.isArray(r.top)||r.top.length<5)r.top=POP_FB.top;return r}
+pop=POP_FB;
 const nf=n=>Math.round(n).toLocaleString('en-US');
 function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
  const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
@@ -81,7 +87,7 @@ function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1)
   for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=$('pc-'+k);if(e)e.textContent=nf(v)}};
  tick();timer=setInterval(tick,1000);}
 applyAll();
-fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=p;if(data)render()}).catch(()=>{});
+fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
 fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;applyAll()})
 .catch(()=>$('list').innerHTML=`<p>${esc(t('loadFail'))}</p>`);
 </script></body></html>

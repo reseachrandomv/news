@@ -17,5 +17,13 @@ meta = json.load(urllib.request.urlopen("https://api.worldbank.org/v2/country?fo
 real = {m["id"] for m in meta if m["region"]["value"] != "Aggregates"}
 rows = sorted([r for r in rows if r["countryiso3code"] in real], key=lambda r: -r["value"])[:10]
 out["top"] = [{"name": r["country"]["value"], "pop": r["value"], "year": int(r["date"])} for r in rows]
+try:
+    old = json.load(open("data/population.json"))
+except Exception:
+    old = {}
+if len(out["top"]) < 5 and len(old.get("top") or []) >= 5:
+    out["top"] = old["top"]
+if len(out["top"]) < 5:
+    raise SystemExit("top countries list incomplete; keeping old file")
 json.dump(out, open("data/population.json", "w"), indent=1)
 print("population ok", out["world"]["pop"], [t["name"] for t in out["top"]])
