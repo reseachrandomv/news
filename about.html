@@ -1,23 +1,26 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>if(localStorage.theme=="light")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)</script><script src="i18n.js"></script>
+<script>if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)</script><script src="i18n.js"></script>
 <title>Malaak's News</title><link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <meta property="og:title" content="Malaak's News"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/news/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thaana:wght@400;600;700&display=swap" rel="stylesheet">
-<style>:root{--fs:19px;--scale:1;--bg:#0b1a33;--card:#132a4d;--ink:#eef4ff;--muted:#b7c8e3;--blue:#8cc4ff;--blue2:#1f3f6e;--head:#06122a;--btnbg:#132a4d;--on:#06122a;color-scheme:dark}
-:root[data-theme=light]{--bg:#eef4fb;--card:#fff;--ink:#0b2340;--muted:#3a5470;--blue:#0b4f9c;--blue2:#e1ecf8;--head:#0b4f9c;--btnbg:#fff;--on:#fff;color-scheme:light}
+<style>
+:root{--fs:19px;--scale:1;--bg:#1e2633;--card:#232c3b;--ink:#eef2f8;--muted:#b4bfd0;--blue:#9cc8ff;--blue2:#2a3446;--head:#1e2633;--btnbg:#232c3b;--on:#14202f;--hi:#2a3546;--lo:#131923;color-scheme:dark}
+:root[data-theme=light]{--bg:#e9eef5;--card:#eef2f8;--ink:#1d2b3e;--muted:#4a5b72;--blue:#2c5d9e;--blue2:#e2e9f3;--head:#e9eef5;--btnbg:#eef2f8;--on:#fff;--hi:#ffffff;--lo:#c5cfdd;color-scheme:light}
+:root{--up:6px 6px 14px var(--lo),-6px -6px 14px var(--hi);--upsm:3px 3px 7px var(--lo),-3px -3px 7px var(--hi);--in:inset 3px 3px 7px var(--lo),inset -3px -3px 7px var(--hi)}
 *{box-sizing:border-box}html{font-size:calc(var(--fs) * var(--scale))}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,var(--blue2),var(--bg) 60%);color:var(--ink);font:400 1rem/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button,.cta{font:inherit;cursor:pointer;border-radius:999px;border:0;min-height:44px;padding:6px 18px;background:var(--btnbg);color:var(--blue);font-weight:600;box-shadow:var(--upsm);transition:box-shadow .2s,transform .1s,color .2s;text-decoration:none}
+button:hover{box-shadow:var(--up)}button:active,button[aria-pressed=true]{box-shadow:var(--in);transform:translateY(1px)}
+button:disabled{opacity:.45;cursor:default;box-shadow:none}button:focus-visible,a:focus-visible{outline:3px solid #f5b400;outline-offset:3px}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:400 1rem/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 html[lang=dv] body{font-family:"Noto Sans Thaana",system-ui,sans-serif;line-height:1.95}
-.top{max-width:1000px;margin:auto;padding:14px 16px;display:flex;justify-content:flex-end;gap:8px}
-button,.cta{font:inherit;cursor:pointer;border-radius:999px;border:2px solid var(--blue);min-height:44px;padding:6px 16px;background:var(--btnbg);color:var(--blue);font-weight:600;text-decoration:none;display:inline-flex;align-items:center}
-.cta{background:var(--blue);color:var(--on);font-size:1.15em;padding:10px 28px;border:0}
-button:focus-visible,a:focus-visible{outline:3px solid #f5b400;outline-offset:2px}
+.top{max-width:1000px;margin:auto;padding:14px 16px;display:flex;justify-content:flex-end;gap:10px}
+.cta{display:inline-flex;align-items:center;background:var(--blue);color:var(--on);font-size:1.15em;padding:12px 30px;box-shadow:var(--up)}
 main{max-width:1000px;margin:auto;padding:10px 16px 40px;text-align:center}
-.logo{width:96px;height:96px;filter:drop-shadow(0 6px 18px #0008)}h1{font-size:2.3em;margin:.3em 0 .1em;line-height:1.3}.made{color:var(--blue);font-weight:700;margin:0 0 1em}
-.intro{max-width:44em;margin:0 auto 1.5em;font-size:1.08em}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:14px;margin:2em 0;text-align:start}
-.card{background:var(--card);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px #0006}.card b{display:block;color:var(--blue);margin-bottom:4px}.card .ic{font-size:1.5em}
-.contact{background:var(--card);border-radius:14px;padding:16px;display:inline-block}.contact a{color:var(--blue);font-weight:700}
+.logo{width:96px;height:96px;border-radius:28px;padding:10px;box-shadow:var(--up)}h1{font-size:2.2em;margin:.4em 0 .1em;line-height:1.3}.made{color:var(--blue);font-weight:700;margin:0 0 1em}
+.intro{max-width:44em;margin:0 auto 1.5em;font-size:1.08em;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14em,1fr));gap:18px;margin:2em 0;text-align:start}
+.card{background:var(--card);border-radius:22px;padding:18px 20px;box-shadow:var(--up);color:inherit;text-decoration:none;display:block;transition:box-shadow .2s}a.card:active{box-shadow:var(--in)}.card b{display:block;color:var(--blue);margin-bottom:4px}.card .ic{font-size:1.5em}
+.contact{background:var(--card);border-radius:22px;padding:16px 20px;display:inline-block;box-shadow:var(--in)}.contact a{color:var(--blue);font-weight:700}
 </style></head><body>
 <div class="top"><button id="lg"></button><button id="go2" data-t="skip"></button></div>
 <main><img class="logo" src="logo-mark.svg" alt="Malaak's News logo"><h1 data-t="site"></h1><p class="made" data-t="madeBy"></p>
