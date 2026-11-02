@@ -1,7 +1,7 @@
 {
  "source": "World Bank Open Data (World Development Indicators, based on UN World Population Prospects)",
  "source_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
- "fetched": "2026-11-02T10:56:53.050442+00:00",
+ "fetched": "2026-11-02T19:50:49.943570+00:00",
  "world": {
   "pop": {
    "value": 8215424893,
