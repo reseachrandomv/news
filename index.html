@@ -3,16 +3,16 @@
 <script>if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")</script><script src="i18n.js"></script>
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/news/og.png"><meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" href="fonts/NotoSansThaana.woff2" as="font" type="font/woff2" crossorigin><style>
-@font-face{font-family:"Noto Sans Thaana";src:url(fonts/NotoSansThaana.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0780-07BF,U+060C,U+061B,U+061F,U+200C-200F,U+FDF2,U+FDFD}
+<link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin><style>
+@font-face{font-family:"Faruma";src:url(fonts/Faruma.woff2) format("woff2");font-display:swap;unicode-range:U+0780-07BF,U+060C,U+061B,U+061F}@font-face{font-family:"Noto Sans Thaana";src:url(fonts/NotoSansThaana.woff2) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0780-07BF,U+060C,U+061B,U+061F,U+200C-200F,U+FDF2,U+FDFD}
 :root{--fs:19px;--scale:1;--bg:#1b2230;--card:#202938;--card2:#253041;--ink:#e9eef5;--muted:#a9b6c8;--blue:#6fd3c9;--acc:#6fd3c9;--blue2:#233a44;--head:#1b2230;--btnbg:#202938;--on:#0f2a2c;--hi:#273245;--lo:#11161f;--line:#ffffff0d;color-scheme:dark}
 :root[data-theme=light]{--bg:#eaeff4;--card:#eef3f7;--card2:#f4f7fa;--ink:#17283a;--muted:#55677c;--blue:#0f7c86;--acc:#13919b;--blue2:#dcecee;--head:#eaeff4;--btnbg:#eef3f7;--on:#fff;--hi:#ffffff;--lo:#c3cedb;--line:#0000000a;color-scheme:light}
 :root{--up:8px 8px 18px var(--lo),-8px -8px 18px var(--hi);--upsm:4px 4px 10px var(--lo),-4px -4px 10px var(--hi);--in:inset 3px 3px 8px var(--lo),inset -3px -3px 8px var(--hi);--r:24px;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box}html{font-size:calc(var(--fs) * var(--scale));-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Noto Sans Thaana",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
-html[lang=dv] body{font-family:"Noto Sans Thaana",system-ui,sans-serif;font-size:1.1em;line-height:1.9}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Faruma","Noto Sans Thaana",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+html[lang=dv] body{font-family:"Faruma","Noto Sans Thaana",system-ui,sans-serif;font-size:1.1em;line-height:1.9}
 html[lang=dv] h1,html[lang=dv] h2,html[lang=dv] h3{line-height:1.7;font-weight:700;letter-spacing:0}
-:lang(en),[dir=ltr]{font-family:"Noto Sans Thaana",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+:lang(en),[dir=ltr]{font-family:"Faruma","Noto Sans Thaana",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 button,.cta{font:inherit;font-size:.88em;cursor:pointer;border-radius:999px;border:0;min-height:44px;padding:8px 18px;background:var(--btnbg);color:var(--ink);font-weight:600;box-shadow:var(--upsm);transition:box-shadow .25s var(--ease),transform .15s var(--ease),color .2s,background .2s;text-decoration:none;-webkit-tap-highlight-color:transparent}
 button:hover{color:var(--blue)}button:active{box-shadow:var(--in);transform:scale(.98)}
 button[aria-pressed=true]{box-shadow:var(--in);color:var(--blue)}
@@ -79,7 +79,7 @@ nav button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255
  :root{--glass:rgba(32,41,56,.96)}:root[data-theme=light]{--glass:rgba(246,249,252,.97)}
 }
 @media(max-width:520px){article{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:color-mix(in srgb,var(--card) 88%,transparent)}}
-</style></head><body>
+.trp{align-self:flex-start;min-height:30px;padding:2px 12px;font-size:.7em;border:1px solid var(--gbr);background:var(--blue2);color:var(--blue);box-shadow:none}</style></head><body>
 <header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
 <nav id="countries"></nav>
@@ -97,7 +97,7 @@ const STEPS=[.85,1,1.15,1.3,1.4];let si=STEPS.indexOf(+localStorage.fontScale);i
 const fsm=$('fsm'),fsr=$('fsr'),fsp=$('fsp');
 function applySize(){const v=STEPS[si];document.documentElement.style.setProperty('--scale',v);localStorage.fontScale=v;fsm.disabled=si==0;fsp.disabled=si==STEPS.length-1;fsr.setAttribute('aria-pressed',si==1);fsr.setAttribute('aria-label',t('reset',{p:Math.round(v*100)}))}
 fsm.onclick=()=>{if(si>0)si--;applySize()};fsp.onclick=()=>{if(si<STEPS.length-1)si++;applySize()};fsr.onclick=()=>{si=1;applySize()};
-let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives",dvOnly=localStorage.dvOnly=="1";
+let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives",mvF=localStorage.mvF||(localStorage.dvOnly=="1"?"dv":"all");
 const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
 const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
@@ -113,13 +113,14 @@ function render(){
  clearInterval(timer);if(cur=="Population"){try{return renderPop()}catch(e){console.error(e);pop=POP_FB;return renderPop()}}
  let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
  const hasDv=items.some(isDv);
- if(hasDv&&dvOnly)items=items.filter(isDv);else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
- const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="0" aria-pressed="${!dvOnly}">${esc(t('fAll'))}</button><button data-f="1" aria-pressed="${dvOnly}">${esc(t('fDv'))}</button></div>`:'';
+ if(hasDv&&mvF=='dv')items=items.filter(isDv);else if(hasDv&&mvF=='en')items=items.filter(i=>!isDv(i));else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
+ const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
  const head=STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur);
  $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?items.map(i=>`<article>${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span></div>
- <h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a></h2>${i.summary?`<p dir="auto">${esc(i.summary)}</p>`:''}
+ ${(()=>{const tr=LANG=='dv'&&i.title_dv;const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;return `${tr?`<button class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}`})()}
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`).join(''):`<p>${esc(t('empty'))}</p>`);
- $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{dvOnly=b.dataset.f=="1";localStorage.dvOnly=dvOnly?"1":"0";render()});
+ $('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{const a=b.closest('article'),h=a.querySelector('h2 a'),p=a.querySelector('p');if(!b.dataset.d){b.dataset.d=h.textContent;b.dataset.ds=p?p.textContent:'';h.textContent=b.dataset.o;h.parentNode.dir='ltr';if(p){p.textContent=b.dataset.os;p.dir='ltr'}b.textContent=t('showDv')}else{h.textContent=b.dataset.d;h.parentNode.dir='auto';if(p){p.textContent=b.dataset.ds;p.dir='auto'}delete b.dataset.d;b.textContent=t('translated')+' · '+t('showOrig')}});
+ $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;localStorage.mvF=mvF;render()});
 }
 const POP_FB={source:"World Bank Open Data (UN World Population Prospects) - built-in estimate",source_url:"https://data.worldbank.org/indicator/SP.POP.TOTL",world:{pop:{value:8215424893,year:2025},growth:{value:0.91,year:2025},birth_rate:{value:16.3,year:2024},death_rate:{value:7.6,year:2024},life_exp:{value:73.5,year:2024},urban_pct:{value:57.8,year:2024}},maldives:{pop:{value:529676,year:2025},growth:{value:0.35,year:2025}},top:[["India", 1463865525], ["China", 1406585000], ["United States", 341784857], ["Indonesia", 285721236], ["Pakistan", 255219554], ["Nigeria", 237527782], ["Brazil", 212812405], ["Bangladesh", 175686899], ["Russian Federation", 143513328], ["Ethiopia", 135472051]].map(([name,pop])=>({name,pop,year:2025}))};
 function fixPop(p){p=p||{};const w=Object.assign({},POP_FB.world,p.world||{}),r={...POP_FB,...p,world:w};
