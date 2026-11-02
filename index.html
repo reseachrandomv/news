@@ -55,6 +55,30 @@ html[lang=dv] article h2{font-size:1.1em}html[lang=dv] article p{font-size:.92em
 @media(max-width:520px){.tools{width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:6px 4px 10px;margin:-6px -4px -10px}.tools>*{flex:none}.tools button,header a.ab{padding:6px 12px}.fsz button{min-width:34px}}
 footer{max-width:1040px;margin:16px auto 0;text-align:center;padding:24px 16px 40px;color:var(--muted);font-size:.78em;line-height:1.9}
 footer a{color:var(--blue);font-weight:600;text-decoration:none}
+/* liquid glass */
+:root{--glass:rgba(30,40,56,.55);--gbr:rgba(255,255,255,.10);--ghi:rgba(255,255,255,.08);--b1:#1f6f78;--b2:#3b3f8f;--b3:#0e4d6b}
+:root[data-theme=light]{--glass:rgba(255,255,255,.55);--gbr:rgba(255,255,255,.75);--ghi:rgba(255,255,255,.9);--b1:#9fe3dc;--b2:#c9d6ff;--b3:#ffd9c7}
+body{background:var(--bg);position:relative;isolation:isolate}
+body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(40% 35% at 15% 10%,var(--b1),transparent 70%),radial-gradient(35% 30% at 90% 25%,var(--b2),transparent 70%),radial-gradient(45% 40% at 60% 95%,var(--b3),transparent 70%);opacity:.55;filter:blur(30px);transform:translateZ(0)}
+header .w,nav,article,.card,.contact{background:var(--glass);border:1px solid var(--gbr);box-shadow:inset 0 1px 0 var(--ghi),0 8px 24px -12px rgba(15,30,50,.35)}
+header{position:relative}header .w{border-radius:28px;padding:12px 16px}
+nav{border-radius:999px;margin:12px 16px 0;max-width:1008px;padding:8px;top:8px;background:var(--glass)}
+@media(min-width:1040px){nav{margin:12px auto 0}}
+article,.card{box-shadow:inset 0 1px 0 var(--ghi),0 10px 30px -14px rgba(15,30,50,.4)}
+nav button,.tools button,header a.ab,.filt button{background:transparent;box-shadow:none}
+nav button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0)) ,var(--acc);color:var(--on);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px -6px var(--acc)}
+.tools button,header a.ab,.filt button{border:1px solid var(--gbr);background:rgba(255,255,255,.08)}
+:root[data-theme=light] .tools button,:root[data-theme=light] header a.ab,:root[data-theme=light] .filt button{background:rgba(255,255,255,.5)}
+.fsz{box-shadow:inset 0 1px 3px rgba(0,0,0,.15)}
+.filt button[aria-pressed=true]{background:var(--blue2);color:var(--blue)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ header .w,nav{-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6)}
+ article,.card{-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3)}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ :root{--glass:rgba(32,41,56,.96)}:root[data-theme=light]{--glass:rgba(246,249,252,.97)}
+}
+@media(max-width:520px){article{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:color-mix(in srgb,var(--card) 88%,transparent)}}
 </style></head><body>
 <header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
