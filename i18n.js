@@ -1,7 +1,7 @@
 /* Interface strings. To add a language: add a block with the same keys, and its code to LANGS. */
 const LANGS={en:{label:"English",dir:"ltr"},dv:{label:"ދިވެހި",dir:"rtl"}};
 const STR={
-en:{site:"Malaak's News",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light mode",dark:"Dark mode",toLight:"Switch to light mode",toDark:"Switch to dark mode",
+en:{site:"Raajjé Digest",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light mode",dark:"Dark mode",toLight:"Switch to light mode",toDark:"Switch to dark mode",
  textSize:"Text size",smaller:"Make text smaller",larger:"Make text larger",reset:"Reset text size (now {p}%)",langBtn:"ދިވެހި",langAria:"Switch language to Dhivehi",about:"About",
  chooseTab:"Choose a section",loading:"Loading headlines…",loadFail:"Could not load news. Please try again.",empty:"No stories here right now.",
  tabNews:"{c} news",readAt:"Read at {s} →",minAgo:"{n} min ago",hAgo:"{n} h ago",
@@ -13,7 +13,7 @@ en:{site:"Malaak's News",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light m
  source:"Source:",mvPop:"Maldives population (World Bank, {y})",mvGrowth:"Growth {g}% a year ({y}).",other:"Other facts (World Bank, {y})",life:"Life expectancy worldwide:",years:"years",urban:"People living in cities:",top:"Most populated countries (World Bank, {y})",
  tabs:{Maldives:"Maldives",Courses:"Courses & Announcements",Tech:"Tech & Gadgets",Science:"Science & Discoveries",Population:"World Population",World:"World",UK:"UK",USA:"USA",India:"India","Sri Lanka":"Sri Lanka",Pakistan:"Pakistan",UAE:"UAE",Australia:"Australia"},
  cats:{}},
-dv:{site:"މަލާކްގެ ޚަބަރު",madeBy:"ހެދީ: ފާތިމަތު މަލާކް ޖައުފަރު",light:"ލައިޓް މޯޑް",dark:"ޑާކް މޯޑް",toLight:"ލައިޓް މޯޑަށް ބަދަލުކުރޭ",toDark:"ޑާކް މޯޑަށް ބަދަލުކުރޭ",
+dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު މަލާކް ޖައުފަރު",light:"ލައިޓް މޯޑް",dark:"ޑާކް މޯޑް",toLight:"ލައިޓް މޯޑަށް ބަދަލުކުރޭ",toDark:"ޑާކް މޯޑަށް ބަދަލުކުރޭ",
  textSize:"އަކުރުގެ ސައިޒު",smaller:"އަކުރު ކުޑަކުރޭ",larger:"އަކުރު ބޮޑުކުރޭ",reset:"އަކުރުގެ ސައިޒު އަސްލަށް ގެނޭ (މިހާރު {p}%)",langBtn:"English",langAria:"Switch language to English",about:"ތަޢާރަފު",
  chooseTab:"ބައެއް ހޮވާ",loading:"ސުރުޚީތައް ލޯޑުވަނީ…",loadFail:"ޚަބަރުތައް ލޯޑެއް ނުވި. އަލުން މަސައްކަތްކޮށްލައްވާ.",empty:"މިވަގުތު މިބައިގައި ޚަބަރެއް ނެތް.",
  tabNews:"{c} ޚަބަރު",readAt:"{s} ގައި ކިޔާލާ ←",minAgo:"{n} މިނިޓު ކުރިން",hAgo:"{n} ގަޑިއިރު ކުރިން",
