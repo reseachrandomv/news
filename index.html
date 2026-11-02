@@ -19,7 +19,7 @@ button[aria-pressed=true]{box-shadow:var(--in);color:var(--blue)}
 button:disabled{opacity:.45;cursor:default;box-shadow:none}button:focus-visible,a:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 header{padding:16px 16px 0}
-header .w{max-width:1040px;margin:auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+header .w{max-width:1240px;margin:auto;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .brand{display:flex;gap:12px;align-items:center}.brand img{width:48px;height:48px;border-radius:16px;box-shadow:var(--upsm)}
 h1{margin:0;font-size:1.45em;font-weight:800;letter-spacing:-.02em;line-height:1.15}.sub{font-size:.72em;color:var(--muted);letter-spacing:.01em;margin-top:2px}
 .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -27,10 +27,10 @@ h1{margin:0;font-size:1.45em;font-weight:800;letter-spacing:-.02em;line-height:1
 header a.ab{color:var(--ink);font-weight:600;border-radius:999px;box-shadow:var(--upsm);text-decoration:none;display:inline-flex;align-items:center;transition:color .2s}header a.ab:hover{color:var(--blue)}
 .fsz{display:flex;gap:2px;padding:4px;border-radius:999px;box-shadow:var(--in)}.fsz button{min-width:40px;min-height:34px;padding:2px 8px;box-shadow:none;background:transparent}
 .fsz button[aria-pressed=true]{background:var(--card2);color:var(--blue);box-shadow:var(--upsm);transform:none}
-nav{position:sticky;top:0;z-index:5;max-width:1040px;margin:16px auto 0;padding:12px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;background:linear-gradient(var(--bg) 75%,transparent);scroll-snap-type:x proximity}
+nav{position:sticky;top:0;z-index:5;max-width:1240px;margin:16px auto 0;padding:12px 16px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;background:linear-gradient(var(--bg) 75%,transparent);scroll-snap-type:x proximity}
 nav::-webkit-scrollbar{display:none}nav button{white-space:nowrap;scroll-snap-align:start;flex:none}
 nav button[aria-pressed=true]{background:var(--acc);color:var(--on);box-shadow:var(--upsm),0 6px 16px -6px var(--acc)}
-main{max-width:1040px;margin:auto;padding:8px 16px 32px;display:grid;gap:16px}
+main{max-width:1240px;margin:auto;padding:8px 16px 32px;display:grid;gap:16px}
 @media(min-width:760px){main{grid-template-columns:repeat(2,1fr);gap:24px}main>:not(article){grid-column:1/-1}}
 @media(min-width:1100px){main{grid-template-columns:repeat(3,1fr)}}
 main>h2{font-size:1.5em;font-weight:800;letter-spacing:-.02em;margin:8px 0 0;line-height:1.25}
@@ -53,7 +53,7 @@ html[lang=dv] article h2{font-size:1.1em}html[lang=dv] article p{font-size:.92em
 @keyframes sh{to{background-position:-200% 0}}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media(max-width:520px){.tools{width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:6px 4px 10px;margin:-6px -4px -10px}.tools>*{flex:none}.tools button,header a.ab{padding:6px 12px}.fsz button{min-width:34px}}
-footer{max-width:1040px;margin:16px auto 0;text-align:center;padding:24px 16px 40px;color:var(--muted);font-size:.78em;line-height:1.9}
+footer{max-width:1240px;margin:16px auto 0;text-align:center;padding:24px 16px 40px;color:var(--muted);font-size:.78em;line-height:1.9}
 footer a{color:var(--blue);font-weight:600;text-decoration:none}
 /* liquid glass */
 :root{--glass:rgba(30,40,56,.55);--gbr:rgba(255,255,255,.10);--ghi:rgba(255,255,255,.08);--b1:#1f6f78;--b2:#3b3f8f;--b3:#0e4d6b}
@@ -62,8 +62,8 @@ body{background:var(--bg);position:relative;isolation:isolate}
 body::before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(40% 35% at 15% 10%,var(--b1),transparent 70%),radial-gradient(35% 30% at 90% 25%,var(--b2),transparent 70%),radial-gradient(45% 40% at 60% 95%,var(--b3),transparent 70%);opacity:.55;filter:blur(30px);transform:translateZ(0)}
 header .w,nav,article,.card,.contact{background:var(--glass);border:1px solid var(--gbr);box-shadow:inset 0 1px 0 var(--ghi),0 8px 24px -12px rgba(15,30,50,.35)}
 header{position:relative}header .w{border-radius:28px;padding:12px 16px}
-nav{border-radius:999px;margin:12px 16px 0;max-width:1008px;padding:8px;top:8px;background:var(--glass)}
-@media(min-width:1040px){nav{margin:12px auto 0}}
+nav{border-radius:999px;margin:12px 16px 0;max-width:1208px;padding:8px;top:8px;background:var(--glass)}
+@media(min-width:1240px){nav{margin:12px auto 0}}
 article,.card{box-shadow:inset 0 1px 0 var(--ghi),0 10px 30px -14px rgba(15,30,50,.4)}
 nav button,.tools button,header a.ab,.filt button{background:transparent;box-shadow:none}
 nav button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0)) ,var(--acc);color:var(--on);border:1px solid rgba(255,255,255,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 16px -6px var(--acc)}
@@ -79,7 +79,12 @@ nav button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255
  :root{--glass:rgba(32,41,56,.96)}:root[data-theme=light]{--glass:rgba(246,249,252,.97)}
 }
 @media(max-width:520px){article{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:color-mix(in srgb,var(--card) 88%,transparent)}}
-.trp{align-self:flex-start;min-height:30px;padding:2px 12px;font-size:.7em;border:1px solid var(--gbr);background:var(--blue2);color:var(--blue);box-shadow:none}</style></head><body>
+.trp{align-self:flex-start;min-height:30px;padding:2px 12px;font-size:.7em;border:1px solid var(--gbr);background:var(--blue2);color:var(--blue);box-shadow:none}@media(min-width:1100px){main{gap:28px}header{padding:24px 24px 0}nav{padding:8px 12px}article h2{font-size:1.1em}}
+@media(min-width:600px) and (max-width:759px){main{grid-template-columns:1fr}}
+html,body{overflow-x:hidden;max-width:100%}img{max-width:100%}
+#list article p a,#list .meta a{word-break:break-word}
+#list a{color:var(--blue)}#list article h2 a{color:var(--ink)}@media(min-width:760px){#list article:has(ol){grid-column:span 2}#list article:has(ol) ol{columns:2}}
+</style></head><body>
 <header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
 <nav id="countries"></nav>
