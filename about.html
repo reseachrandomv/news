@@ -57,6 +57,30 @@ nav button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255
  :root{--glass:rgba(32,41,56,.96)}:root[data-theme=light]{--glass:rgba(246,249,252,.97)}
 }
 @media(max-width:520px){article{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:color-mix(in srgb,var(--card) 88%,transparent)}}
+/* liquid glass v2 */
+:root{--glass:rgba(28,40,58,.42);--glass2:rgba(40,56,80,.32);--gbr:rgba(255,255,255,.16);--ghi:rgba(255,255,255,.22);--gsh:0 1px 1px rgba(0,0,0,.08),0 8px 20px -8px rgba(5,15,35,.45),0 24px 48px -24px rgba(5,15,35,.55);--b1:#1f8fa0;--b2:#4b4fc0;--b3:#0f6f9b;--b4:#2aa38f}
+:root[data-theme=light]{--glass:rgba(255,255,255,.48);--glass2:rgba(255,255,255,.36);--gbr:rgba(255,255,255,.85);--ghi:rgba(255,255,255,.95);--gsh:0 1px 1px rgba(20,40,70,.05),0 8px 20px -10px rgba(20,50,90,.25),0 24px 48px -24px rgba(20,50,90,.3);--b1:#8fdcf0;--b2:#b9c4ff;--b3:#9fd8ff;--b4:#a6efdc}
+body::before{opacity:.8;filter:blur(40px);background:radial-gradient(38% 32% at 12% 8%,var(--b1),transparent 70%),radial-gradient(34% 30% at 92% 22%,var(--b2),transparent 70%),radial-gradient(42% 38% at 62% 96%,var(--b3),transparent 70%),radial-gradient(30% 28% at 30% 60%,var(--b4),transparent 70%);animation:blob 28s ease-in-out infinite alternate}
+@keyframes blob{to{transform:translate3d(2%,-3%,0) scale(1.06)}}
+header .w,nav,article,.card,.contact{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,0) 45%),var(--glass);border:1px solid var(--gbr);box-shadow:inset 0 1px 0 var(--ghi),inset 0 -1px 0 rgba(255,255,255,.05),inset 0 0 24px rgba(255,255,255,.05),var(--gsh)}
+article:not(.sk)::after,header .w::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(160deg,rgba(255,255,255,.35),rgba(255,255,255,0) 30%,rgba(255,255,255,0) 70%,rgba(255,255,255,.12));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;padding:1px}
+article{border-radius:28px}article:hover{transform:translateY(-4px);box-shadow:inset 0 1px 0 var(--ghi),inset 0 0 30px rgba(255,255,255,.08),0 14px 34px -12px rgba(5,25,55,.45)}
+.tools button,header a.ab,.filt button,nav button,.trp{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.04)),var(--glass2);border:1px solid var(--gbr);box-shadow:inset 0 1px 0 var(--ghi),0 4px 12px -6px rgba(5,20,45,.35);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,color .2s}
+.tools button:hover,header a.ab:hover,.filt button:hover,nav button:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 var(--ghi),0 8px 18px -8px rgba(5,20,45,.45)}
+.tools button:active,.filt button:active,nav button:active{transform:scale(.96)}
+nav button[aria-pressed=true],.filt button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),var(--acc);color:var(--on);border-color:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 8px 20px -8px var(--acc)}
+.fsz{background:var(--glass2);border:1px solid var(--gbr)}.fsz button{border:0;background:transparent;box-shadow:none}
+.trp{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(255,255,255,0)),var(--blue2);color:var(--blue)}
+.thumb{box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ header .w,nav{-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8)}
+ article,.card{-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6)}
+ .tools button,header a.ab,.filt button,.fsz{-webkit-backdrop-filter:blur(12px) saturate(1.5);backdrop-filter:blur(12px) saturate(1.5)}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){header .w,nav,article,.card,.contact{background:var(--card)}}
+@media(max-width:520px){article{-webkit-backdrop-filter:blur(12px) saturate(1.4)!important;backdrop-filter:blur(12px) saturate(1.4)!important;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,0) 45%),var(--glass)}}
+@media(prefers-reduced-transparency:reduce){header .w,nav,article,.card,.contact,.tools button,header a.ab,.filt button,.fsz{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:var(--card)!important}body::before{opacity:.25}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}article:hover{transform:none}}
 </style></head><body>
 <div class="top"><button id="lg"></button><button id="go2" data-t="skip"></button></div>
 <main><img class="logo" src="logo-mark.svg" alt="Raajjé Digest logo"><h1 data-t="site"></h1><p class="made" data-t="madeBy"></p>
