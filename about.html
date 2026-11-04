@@ -81,6 +81,8 @@ nav button[aria-pressed=true],.filt button[aria-pressed=true]{background:linear-
 @media(max-width:520px){article{-webkit-backdrop-filter:blur(12px) saturate(1.4)!important;backdrop-filter:blur(12px) saturate(1.4)!important;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,0) 45%),var(--glass)}}
 @media(prefers-reduced-transparency:reduce){header .w,nav,article,.card,.contact,.tools button,header a.ab,.filt button,.fsz{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:var(--card)!important}body::before{opacity:.25}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none}article:hover{transform:none}}
+main{grid-template-columns:minmax(0,1fr)}main>*{min-width:0}@media(min-width:760px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:1100px){main{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(min-width:600px) and (max-width:759px){main{grid-template-columns:minmax(0,1fr)}}
+:root .filt button[aria-pressed=true],:root[data-theme=light] .filt button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),var(--acc);color:var(--on);border-color:rgba(255,255,255,.55)}
 </style></head><body>
 <div class="top"><button id="lg"></button><button id="go2" data-t="skip"></button></div>
 <main><img class="logo" src="logo-mark.svg" alt="Raajjé Digest logo"><h1 data-t="site"></h1><p class="made" data-t="madeBy"></p>
