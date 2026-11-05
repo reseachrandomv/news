@@ -110,8 +110,33 @@ nav button[aria-pressed=true],.filt button[aria-pressed=true]{background:linear-
 @media(prefers-reduced-motion:reduce){body::before{animation:none}article:hover{transform:none}}
 main{grid-template-columns:minmax(0,1fr)}main>*{min-width:0}@media(min-width:760px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:1100px){main{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(min-width:600px) and (max-width:759px){main{grid-template-columns:minmax(0,1fr)}}
 :root .filt button[aria-pressed=true],:root[data-theme=light] .filt button[aria-pressed=true]{background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),var(--acc);color:var(--on);border-color:rgba(255,255,255,.55)}
+
+/* soft UI v1.3 (app parity) */
+:root{--bg:#1c222c;--card:#232a36;--card2:#29313f;--hi:#2b3442;--lo:#12161d;--ink:#eef2f7;--muted:#b4c0cf;--r:26px}
+:root[data-theme=light]{--bg:#eef1f6;--card:#f2f5f9;--card2:#f7f9fc;--hi:#ffffff;--lo:#cbd3df;--ink:#142334;--muted:#4c5d72}
+body::before{opacity:.18}
+header .w,nav,article,.card{background:var(--card);border:1px solid var(--gbr);box-shadow:9px 9px 20px var(--lo),-9px -9px 20px var(--hi),inset 0 1px 0 var(--ghi)}
+:root:not([data-theme=light]) header .w,:root:not([data-theme=light]) nav,:root:not([data-theme=light]) article{box-shadow:8px 8px 18px var(--lo),-6px -6px 16px var(--hi),inset 0 1px 0 var(--ghi)}
+header .w{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+nav button[aria-pressed=true],.filt button[aria-pressed=true],:root .filt button[aria-pressed=true],:root[data-theme=light] .filt button[aria-pressed=true]{background:var(--bg);color:var(--blue);border:1px solid transparent;box-shadow:inset 3px 3px 7px var(--lo),inset -3px -3px 7px var(--hi)}
+button.pop{animation:spr .35s cubic-bezier(.3,1.6,.5,1)}@keyframes spr{40%{transform:scale(.94)}}
+article{border-radius:var(--r);padding:18px;animation:none}
+article h2{font-weight:800;font-size:1.12em}article p{font-size:.95em;color:var(--muted);max-width:68ch}
+html[lang=dv] article h2{font-size:calc(1.12em + 3px);line-height:1.75}html[lang=dv] article p{font-size:calc(.95em + 3px);line-height:2}
+article.hero{grid-column:1/-1;padding:20px;animation:flt 3s ease-in-out infinite alternate}
+@keyframes flt{to{transform:translateY(-4px)}}
+article.hero h2{font-size:1.7em;line-height:1.25}html[lang=dv] article.hero h2{font-size:calc(1.6em + 3px);line-height:1.6}
+article.hero p{-webkit-line-clamp:5;font-size:1em}
+@media(min-width:900px){article.hero{display:grid;grid-template-columns:1.3fr 1fr;column-gap:24px;align-items:start}article.hero .thumb{grid-row:1/span 6;margin:0}}
+.tops{min-width:0}.tops h3,h3.more{margin:8px 0 0;font-size:1.2em;font-weight:800}
+.trow{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 6px 22px;margin:0 -6px;scrollbar-width:none}.trow::-webkit-scrollbar{display:none}
+.trow article.mini{flex:0 0 min(78vw,290px);scroll-snap-align:start}
+.trow article.mini p{-webkit-line-clamp:2}.trow article.mini h2{font-size:1em}
+article.rv{opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease)}article.rv.in{opacity:1;transform:none}
+@media(max-width:759px){main{grid-template-columns:minmax(0,1fr)}html,body{overflow-x:hidden}}
+@media(prefers-reduced-motion:reduce){article.hero{animation:none}article.rv{opacity:1;transform:none}}
 </style></head><body>
-<header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div></div></div>
+<header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div><div class="sub" id="today"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
 <nav id="countries"></nav>
 <main id="list" aria-live="polite"><p class="vh" data-t="loading"></p><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article></main>
@@ -134,7 +159,7 @@ const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
 const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
 const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?t('minAgo',{n:Math.max(1,m|0)}):m<1440?t('hAgo',{n:m/60|0}):new Date(d).toLocaleDateString(loc())};
 const tab=c=>STR[LANG].tabs[c]||STR.en.tabs[c]||c,cat=c=>STR[LANG].cats[c]||c;
-function applyAll(){setLangAttrs();staticText();applyTheme(theme);applySize();if(data){$('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});render()}}
+function applyAll(){$('today').textContent=new Date().toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});setLangAttrs();staticText();applyTheme(theme);applySize();if(data){$('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});render()}}
 $('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;applyAll()};
 function render(){
  const nav=$('countries');const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
@@ -147,12 +172,19 @@ function render(){
  if(hasDv&&mvF=='dv')items=items.filter(isDv);else if(hasDv&&mvF=='en')items=items.filter(i=>!isDv(i));else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
  const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
  const head=STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur);
- $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?items.map(i=>`<article>${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span></div>
+ $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?layout(items,(i,k)=>`<article class="${k||''}">${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span></div>
  ${(()=>{const tr=LANG=='dv'&&i.title_dv;const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;return `${tr?`<button class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}`})()}
- <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`).join(''):`<p>${esc(t('empty'))}</p>`);
+ <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`):`<p>${esc(t('empty'))}</p>`);reveal();
  $('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{const a=b.closest('article'),h=a.querySelector('h2 a'),p=a.querySelector('p');if(!b.dataset.d){b.dataset.d=h.textContent;b.dataset.ds=p?p.textContent:'';h.textContent=b.dataset.o;h.parentNode.dir='ltr';if(p){p.textContent=b.dataset.os;p.dir='ltr'}b.textContent=t('showDv')}else{h.textContent=b.dataset.d;h.parentNode.dir='auto';if(p){p.textContent=b.dataset.ds;p.dir='auto'}delete b.dataset.d;b.textContent=t('translated')+' · '+t('showOrig')}});
  $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;localStorage.mvF=mvF;render()});
 }
+function layout(it,f){if(it.length<4)return it.map(i=>f(i)).join('');const dv=LANG=='dv';
+ const top=it.slice(1,9),rest=it.slice(9);
+ return f(it[0],'hero')+`<section class="tops"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="trow">${top.map(i=>f(i,'mini')).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map(i=>f(i)).join(''):'')}
+function reveal(){const els=[...document.querySelectorAll('#list article:not(.hero)')];if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const io=new IntersectionObserver(es=>{let n=0;es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(n++%6)*60+'ms';e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -5% 0px'});
+ els.forEach(e=>{e.classList.add('rv');io.observe(e)})}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&!matchMedia('(prefers-reduced-motion: reduce)').matches){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});
 const POP_FB={source:"World Bank Open Data (UN World Population Prospects) - built-in estimate",source_url:"https://data.worldbank.org/indicator/SP.POP.TOTL",world:{pop:{value:8215424893,year:2025},growth:{value:0.91,year:2025},birth_rate:{value:16.3,year:2024},death_rate:{value:7.6,year:2024},life_exp:{value:73.5,year:2024},urban_pct:{value:57.8,year:2024}},maldives:{pop:{value:529676,year:2025},growth:{value:0.35,year:2025}},top:[["India", 1463865525], ["China", 1406585000], ["United States", 341784857], ["Indonesia", 285721236], ["Pakistan", 255219554], ["Nigeria", 237527782], ["Brazil", 212812405], ["Bangladesh", 175686899], ["Russian Federation", 143513328], ["Ethiopia", 135472051]].map(([name,pop])=>({name,pop,year:2025}))};
 function fixPop(p){p=p||{};const w=Object.assign({},POP_FB.world,p.world||{}),r={...POP_FB,...p,world:w};
  for(const k in POP_FB.world)if(!w[k]||typeof w[k].value!="number")w[k]=POP_FB.world[k];
