@@ -7,18 +7,20 @@
   color-scheme:dark;
   --fs:19px;
   --scale:1;
-  --bg:#1c2430;
-  --surface:#232c3a;
-  --well:#1a222e;
-  --ink:#eef3f8;
-  --muted:#c5d0de;
-  --blue:#8ec8e6;
-  --acc:#0e6f96;
+  --bg:#1b1613;
+  --surface:#2b221c;
+  --well:#140f0c;
+  --ink:#fbf4ec;
+  --muted:#d9c5b4;
+  --teal:#4ecfb8;
+  --blue:var(--teal);
+  --acc:#0e7568;
   --on:#ffffff;
-  --accent-soft:#1a3848;
-  --edge:#3c4a5c;
-  --hi:#313b4c;
-  --lo:#10161e;
+  --accent-soft:#3f2b22;
+  --warm:#e8b48f;
+  --edge:#4d3e34;
+  --hi:#3e332b;
+  --lo:#090706;
   --page:1840px;
   --r:22px;
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -29,18 +31,20 @@
 }
 :root[data-theme=light]{
   color-scheme:light;
-  --bg:#e7eef6;
-  --surface:#eef3f9;
-  --well:#dde6f0;
-  --ink:#152536;
-  --muted:#3e5166;
-  --blue:#0d5f86;
-  --acc:#0e6f96;
+  --bg:#f6ebde;
+  --surface:#fff6ef;
+  --well:#f3dccb;
+  --ink:#261f1a;
+  --muted:#5a483c;
+  --teal:#0a675c;
+  --blue:var(--teal);
+  --acc:#0d7064;
   --on:#ffffff;
-  --accent-soft:#d7ebf4;
-  --edge:#c9d5e3;
-  --hi:#ffffff;
-  --lo:#c0cbd8;
+  --accent-soft:#f7dcc8;
+  --warm:#c4563c;
+  --edge:#e6d0bc;
+  --hi:#fffaf6;
+  --lo:#dcc3ae;
 }
 
 *{box-sizing:border-box}
@@ -134,7 +138,7 @@ header .w{
   margin-top:8px;
   margin-inline:auto;
   border-radius:999px;
-  background:var(--blue);
+  background:var(--warm);
   transform-origin:center;
   animation:draw .7s var(--ease) .12s both;
 }
@@ -180,8 +184,8 @@ button.pop{animation:press .22s var(--ease)}
 }
 .fsz button:disabled{background:transparent;box-shadow:none}
 
-/* Section tabs */
-nav{
+/* Section tabs. The bottom dock is also a nav, so these rules stay on #countries. */
+nav#countries{
   position:sticky;top:0;z-index:5;
   width:100%;max-width:100%;
   display:flex;gap:8px;align-items:center;
@@ -193,16 +197,16 @@ nav{
   padding-block:14px 16px;
   padding-inline:max(16px,calc((100% - var(--page)) / 2));
 }
-nav::-webkit-scrollbar{height:8px}
-nav::-webkit-scrollbar-thumb{background:var(--edge);border-radius:999px}
-nav button{
+nav#countries::-webkit-scrollbar{height:8px}
+nav#countries::-webkit-scrollbar-thumb{background:var(--edge);border-radius:999px}
+nav#countries button{
   white-space:nowrap;scroll-snap-align:start;flex:none;
   background:var(--surface);
 }
-nav button[aria-pressed=true],.filt button[aria-pressed=true]{
+nav#countries button[aria-pressed=true],.filt button[aria-pressed=true]{
   background:var(--accent-soft);color:var(--blue);border-color:var(--blue);box-shadow:var(--in);
 }
-nav button[aria-pressed=true]:hover,.filt button[aria-pressed=true]:hover{
+nav#countries button[aria-pressed=true]:hover,.filt button[aria-pressed=true]:hover{
   color:var(--blue);transform:none;box-shadow:var(--in);
 }
 
@@ -444,14 +448,61 @@ a.cta:active{box-shadow:var(--in);transform:translateY(1px)}
 }
 
 @media (prefers-contrast:more){
-  :root{--edge:#8ea0b8;--muted:#d5e0ec}
-  :root[data-theme=light]{--edge:#4e6278;--muted:#1e3044;--ink:#0c1824}
-  article,button,header .w,.card,.contact,footer,nav,.fsz,.filt,.src,.trp,header a.ab,a.cta{border-width:2px}
+  :root{--edge:#cbb5a2;--muted:#f3e6d8}
+  :root[data-theme=light]{--edge:#6e5848;--muted:#3f322a;--ink:#16110e}
+  article,button,header .w,.card,.contact,footer,nav,.fsz,.filt,.src,.trp,header a.ab,a.cta,.dock{border-width:2px}
 }
 @media (forced-colors:active){
-  article,button,header .w,.card,.contact,footer,.fsz,.filt,.src,.trp,header a.ab,a.cta,nav{border:1px solid CanvasText}
-  button[aria-pressed=true],nav button[aria-pressed=true]{border-color:Highlight;color:Highlight}
+  article,button,header .w,.card,.contact,footer,.fsz,.filt,.src,.trp,header a.ab,a.cta,nav,.dock{border:1px solid CanvasText}
+  button[aria-pressed=true],nav button[aria-pressed=true],.dock a[aria-current=page]{border-color:Highlight;color:Highlight}
   :focus-visible{outline:3px solid Highlight}
+}
+
+body{padding-bottom:calc(128px + env(safe-area-inset-bottom))}
+.dock{
+  position:fixed;z-index:30;left:50%;top:auto;height:auto;
+  bottom:max(10px,env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:min(440px,calc(100% - 16px));
+  display:flex;align-items:stretch;justify-content:center;gap:4px;
+  overflow:visible;
+  padding:8px;margin:0;
+  background:var(--surface);color:var(--ink);
+  border:1px solid var(--edge);border-radius:28px;box-shadow:var(--up);
+}
+.dock a,.dock button{
+  display:inline-flex;flex:1 1 0;min-width:0;max-width:108px;min-height:56px;
+  flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  padding:7px 4px 8px;text-decoration:none;white-space:normal;
+  border-radius:18px;border-color:transparent;
+  background:var(--surface);color:var(--ink);
+  box-shadow:none;font-size:.8rem;font-weight:700;line-height:1.15;letter-spacing:0;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),background .18s var(--ease),color .18s var(--ease);
+}
+.dock svg{width:26px;height:26px;display:block;flex:none}
+.dock-lb{
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;max-width:100%;overflow-wrap:anywhere;text-align:center;
+}
+html[lang=dv] .dock-lb{line-height:1.45}
+.dock a[aria-current=page]{
+  background:var(--accent-soft);color:var(--teal);
+  border-color:var(--teal);box-shadow:var(--in);
+}
+@media (hover:hover) and (pointer:fine){
+  .dock a:hover,.dock button:hover{
+    transform:translateY(-6px) scale(1.08);
+    color:var(--teal);background:var(--surface);box-shadow:var(--upsm);
+  }
+  .dock a[aria-current=page]:hover{transform:translateY(-3px) scale(1.04);background:var(--accent-soft);box-shadow:var(--in)}
+}
+.dock a:active,.dock button:active{box-shadow:var(--in);transform:translateY(1px) scale(.98)}
+@media (prefers-contrast:more){
+  .dock{border-width:2px}
+}
+@media (forced-colors:active){
+  .dock{border:1px solid CanvasText}
+  .dock a[aria-current=page]{border-color:Highlight;color:Highlight}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -461,7 +512,8 @@ a.cta:active{box-shadow:var(--in);transform:translateY(1px)}
     scroll-behavior:auto !important;
   }
   article.rv,article.rv.in{opacity:1 !important;transform:none !important}
-  article:hover,button:hover,button:active,button.pop,a.card:hover,a.cta:active,header a.ab:active{transform:none !important}
+  article:hover,button:hover,button:active,button.pop,a.card:hover,a.cta:active,header a.ab:active,
+  .dock a:hover,.dock button:hover,.dock a:active,.dock button:active{transform:none !important}
   .brand h1::after,h1.about-title::after{transform:none !important}
   .sk i::after{display:none}
 }
