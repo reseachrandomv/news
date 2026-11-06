@@ -4,7 +4,7 @@
 <meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/news/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#1c2430}html[data-theme=light]{background:#e7eef6}</style>
+<style>html{background:#141817}html[data-theme=light]{background:#f3eee6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="about">
 <div class="top"><button id="lg"></button><button id="go2" data-t="skip"></button></div>
 <main><img class="logo" src="logo-mark.svg" alt="Raajjé Digest logo"><h1 class="about-title" data-t="site"></h1><p class="made" data-t="madeBy"></p>
@@ -26,7 +26,7 @@ const $=id=>document.getElementById(id),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp
 const TABLINK={"🏝️":"Maldives","🌍":"Population","📱":"Tech","🎓":"Courses","🔬":"Science"};
 function draw(){setLangAttrs();document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
  const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
- $('grid').innerHTML=(STR[LANG].features).map(([i,h,p])=>{const tb=TABLINK[i];const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;return tb?`<a class="card" style="color:inherit;text-decoration:none;display:block" href="./?tab=${tb}" onclick="localStorage.introSeen='1';localStorage.country='${tb}'">${inner}</a>`:`<div class="card">${inner}</div>`}).join('')}
+ $('grid').innerHTML=(STR[LANG].features).map(([i,h,p])=>{const tb=TABLINK[i];const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;return tb?`<a class="card" style="color:inherit;text-decoration:none;display:block" href="./?tab=${tb}" onclick="localStorage.introSeen='1';localStorage.country='${tb}'">${inner}</a>`:`<div class="card">${inner}</div>`}).join('');if(window.renderDock)renderDock()}
 $('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;draw()};
 const go=e=>{localStorage.introSeen="1";location.href="./"};$('go').onclick=e=>{e.preventDefault();go()};$('go2').onclick=go;draw();
-</script></body></html>
+</script><script src="dock.js"></script></body></html>

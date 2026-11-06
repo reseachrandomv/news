@@ -4,7 +4,7 @@
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/news/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#1c2430}html[data-theme=light]{background:#e7eef6}</style>
+<style>html{background:#141817}html[data-theme=light]{background:#f3eee6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
 <header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div><div class="sub" id="today"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg" dir="ltr"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
@@ -16,7 +16,7 @@ const $=id=>document.getElementById(id);
 function staticText(){document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
  $('countries').setAttribute('aria-label',t('chooseTab'));$('fsg').setAttribute('aria-label',t('textSize'));$('fsm').setAttribute('aria-label',t('smaller'));$('fsp').setAttribute('aria-label',t('larger'));
  const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'))}
-const tm=$('tm');function applyTheme(x){if(x=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=x=='light'?t('dark'):t('light');tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'))}
+const tm=$('tm');function applyTheme(x){if(x=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=x=='light'?t('dark'):t('light');tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));if(window.renderDock)renderDock()}
 let theme=localStorage.theme||'light';tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
 const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];let pop=null,timer=null;
 const STEPS=[.85,1,1.15,1.3,1.4];let si=STEPS.indexOf(+localStorage.fontScale);if(si<0)si=1;
@@ -48,6 +48,7 @@ function render(){
  function pulse(el){if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}
 $('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{const a=b.closest('article'),h=a.querySelector('h2 a'),p=a.querySelector('p');pulse(a);if(!b.dataset.d){b.dataset.d=h.textContent;b.dataset.ds=p?p.textContent:'';h.textContent=b.dataset.o;h.parentNode.dir='ltr';if(p){p.textContent=b.dataset.os;p.dir='ltr'}b.textContent=t('showDv')}else{h.textContent=b.dataset.d;h.parentNode.dir='auto';if(p){p.textContent=b.dataset.ds;p.dir='auto'}delete b.dataset.d;b.textContent=t('translated')+' · '+t('showOrig')}});
  $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;localStorage.mvF=mvF;render()});
+ if(window.renderDock)renderDock();
 }
 function layout(it,f){if(it.length<4)return it.map(i=>f(i)).join('');const dv=LANG=='dv';
  const top=it.slice(1,9),rest=it.slice(9);
@@ -75,9 +76,9 @@ function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1)
  const tick=()=>{const T=Date.now(),P=b*Math.exp(g*(T-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(T-ys)/yr;
   const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
   for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=$('pc-'+k);if(e)e.textContent=nf(v)}};
- tick();timer=setInterval(tick,1000);}
+ tick();timer=setInterval(tick,1000);if(window.renderDock)renderDock()}
 applyAll();
 fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
 fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;applyAll()})
 .catch(()=>$('list').innerHTML=`<p>${esc(t('loadFail'))}</p>`);
-</script></body></html>
+</script><script src="dock.js"></script></body></html>
