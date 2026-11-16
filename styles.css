@@ -9,23 +9,23 @@
   color-scheme:dark;
   --fs:18.5px;
   --scale:1;
-  --bg:#09111f;
-  --bg-grad:radial-gradient(1200px 600px at 12% -10%,rgba(45,212,191,.13),transparent 65%),radial-gradient(1000px 550px at 90% 5%,rgba(56,189,248,.12),transparent 60%);
-  --surface:#121e33;
-  --surface-hi:#182742;
-  --well:#070d18;
-  --ink:#f4f7fb;
-  --muted:#a6b8d0;
-  --teal:#5eead4;
-  --blue:#60a5fa;
-  --acc:#0ea5e9;
-  --acc-grad:linear-gradient(135deg,#0ea5e9 0%,#14b8a6 100%);
+  --bg:#050a12;
+  --bg-grad:radial-gradient(1200px 600px at 12% -10%,rgba(15,118,110,.18),transparent 65%),radial-gradient(1000px 550px at 90% 5%,rgba(7,89,133,.16),transparent 60%);
+  --surface:#0c1624;
+  --surface-hi:#122033;
+  --well:#04080f;
+  --ink:#f6f8fc;
+  --muted:#b7c6d8;
+  --teal:#2dd4bf;
+  --blue:#38bdf8;
+  --acc:#075985;
+  --acc-grad:linear-gradient(135deg,#075985 0%,#0f766e 100%);
   --on:#ffffff;
-  --accent-soft:rgba(56,189,248,.14);
+  --accent-soft:rgba(45,212,191,.16);
   --warm:#fbbf24;
   --coral:#fb7185;
-  --edge:rgba(148,163,184,.18);
-  --edge-hi:rgba(94,234,212,.42);
+  --edge:rgba(148,163,184,.22);
+  --edge-hi:rgba(45,212,191,.42);
   --hi:rgba(255,255,255,.06);
   --lo:rgba(2,6,23,.68);
   --page:1480px;
@@ -38,35 +38,35 @@
   --spring:cubic-bezier(.34,1.56,.64,1);
   --up:0 16px 36px -8px var(--lo),0 4px 12px -2px rgba(2,6,23,.45),inset 0 1px 0 var(--hi);
   --upsm:0 8px 20px -4px var(--lo),inset 0 1px 0 var(--hi);
-  --up-hover:0 24px 48px -10px rgba(2,6,23,.8),0 0 28px -6px rgba(56,189,248,.22),inset 0 1px 0 rgba(255,255,255,.14);
+  --up-hover:0 24px 48px -10px rgba(2,6,23,.8),0 0 28px -6px rgba(15,118,110,.28),inset 0 1px 0 rgba(255,255,255,.14);
   --in:inset 3px 3px 8px rgba(2,6,23,.75),inset -2px -2px 6px rgba(255,255,255,.04);
   --insm:inset 2px 2px 5px rgba(2,6,23,.6);
 }
 
 :root[data-theme=light]{
   color-scheme:light;
-  --bg:#f3efe6;
-  --bg-grad:radial-gradient(1200px 600px at 10% -10%,rgba(14,165,233,.10),transparent 65%),radial-gradient(1000px 550px at 90% 5%,rgba(20,184,166,.10),transparent 60%);
-  --surface:#fbf9f4;
-  --surface-hi:#ffffff;
-  --well:#e5ecf4;
-  --ink:#132032;
-  --muted:#4b5c73;
-  --teal:#0d7490;
-  --blue:#0284c7;
-  --acc:#0284c7;
-  --acc-grad:linear-gradient(135deg,#0284c7 0%,#0d9488 100%);
+  --bg:#c5c1b4;
+  --bg-grad:radial-gradient(1200px 600px at 10% -10%,rgba(7,89,133,.16),transparent 65%),radial-gradient(1000px 550px at 90% 5%,rgba(15,118,110,.14),transparent 60%);
+  --surface:#d9d5c8;
+  --surface-hi:#e6e1d4;
+  --well:#b4b9c4;
+  --ink:#0b1626;
+  --muted:#243246;
+  --teal:#084c5a;
+  --blue:#075985;
+  --acc:#075985;
+  --acc-grad:linear-gradient(135deg,#075985 0%,#0f766e 100%);
   --on:#ffffff;
-  --accent-soft:rgba(2,132,199,.11);
-  --warm:#d97706;
-  --coral:#e11d48;
-  --edge:rgba(15,23,42,.10);
-  --edge-hi:rgba(2,132,199,.38);
-  --hi:rgba(255,255,255,.9);
-  --lo:rgba(15,23,42,.08);
-  --up:0 14px 32px -8px rgba(15,23,42,.10),0 4px 10px -2px rgba(15,23,42,.05),inset 0 1px 0 #ffffff;
-  --upsm:0 6px 16px -4px rgba(15,23,42,.08),inset 0 1px 0 #ffffff;
-  --up-hover:0 22px 44px -10px rgba(2,132,199,.18),0 6px 16px -4px rgba(15,23,42,.08),inset 0 1px 0 #ffffff;
+  --accent-soft:rgba(8,76,90,.16);
+  --warm:#7c2d12;
+  --coral:#be123c;
+  --edge:rgba(11,22,38,.16);
+  --edge-hi:rgba(8,76,90,.48);
+  --hi:rgba(255,255,255,.55);
+  --lo:rgba(11,22,38,.16);
+  --up:0 14px 32px -8px rgba(11,22,38,.16),0 4px 10px -2px rgba(11,22,38,.08),inset 0 1px 0 rgba(255,255,255,.45);
+  --upsm:0 6px 16px -4px rgba(11,22,38,.12),inset 0 1px 0 rgba(255,255,255,.4);
+  --up-hover:0 22px 44px -10px rgba(7,89,133,.28),0 6px 16px -4px rgba(11,22,38,.12),inset 0 1px 0 rgba(255,255,255,.45);
   --in:inset 2px 2px 6px rgba(15,23,42,.09),inset -2px -2px 6px rgba(255,255,255,.85);
   --insm:inset 1px 1px 4px rgba(15,23,42,.08);
 }
@@ -117,17 +117,17 @@ button{user-select:none}
 :root[data-theme=light] .orb{opacity:.18}
 .orb-1{
   width:420px;height:420px;top:-120px;left:-80px;
-  background:radial-gradient(circle,#2dd4bf,transparent 70%);
+  background:radial-gradient(circle,#0f766e,transparent 70%);
   animation:floatOrb1 18s ease-in-out infinite alternate;
 }
 .orb-2{
   width:480px;height:480px;top:25%;right:-140px;
-  background:radial-gradient(circle,#38bdf8,transparent 70%);
+  background:radial-gradient(circle,#075985,transparent 70%);
   animation:floatOrb2 22s ease-in-out infinite alternate;
 }
 .orb-3{
   width:360px;height:360px;bottom:8%;left:18%;
-  background:radial-gradient(circle,#f59e0b,transparent 70%);
+  background:radial-gradient(circle,#b45309,transparent 70%);
   animation:floatOrb3 20s ease-in-out infinite alternate;
 }
 
@@ -254,8 +254,8 @@ h1.about-title::after{margin-inline:auto;transform-origin:center}
 }
 .live-dot{
   width:7px;height:7px;border-radius:50%;
-  background:#10b981;
-  box-shadow:0 0 8px #10b981;
+  background:#047857;
+  box-shadow:0 0 8px #047857;
   animation:pulseDot 2s ease-in-out infinite;
 }
 .sub{font-size:.9rem;color:var(--muted);line-height:1.45;margin-top:3px}
@@ -373,7 +373,7 @@ nav#countries button{
 nav#countries button[aria-pressed=true],.filt button[aria-pressed=true]{
   background:var(--acc-grad);color:#ffffff;
   border-color:transparent;
-  box-shadow:0 6px 18px -4px rgba(14,165,233,.45);
+  box-shadow:0 6px 18px -4px rgba(7,89,133,.5);
 }
 nav#countries button[aria-pressed=true]:hover,.filt button[aria-pressed=true]:hover{
   color:#ffffff;transform:translateY(-1px);
@@ -567,7 +567,7 @@ article.rv.in{
 .thumb-fallback{
   width:100%;height:100%;
   display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(20,184,166,.12));
+  background:linear-gradient(135deg,rgba(7,89,133,.24),rgba(15,118,110,.18));
   color:var(--teal);font-size:2rem;
 }
 .rank-badge{
@@ -850,7 +850,7 @@ a.cta,button.cta{
   background:var(--acc-grad);color:#ffffff;border-color:transparent;
   font-size:1.04rem;font-weight:800;padding:13px 30px;margin:10px 0 6px;
   border-radius:999px;
-  box-shadow:0 10px 26px -6px rgba(14,165,233,.55);
+  box-shadow:0 10px 26px -6px rgba(7,89,133,.55);
   animation:rise .45s var(--ease);
 }
 a.cta:hover,button.cta:hover{color:#ffffff;transform:translateY(-2px) scale(1.02)}
@@ -903,7 +903,7 @@ a.cta:hover,button.cta:hover{color:#ffffff;transform:translateY(-2px) scale(1.02
 html[lang=dv] .dock-lb{line-height:1.45}
 .dock a[aria-current=page],.dock button[aria-current=page]{
   background:var(--acc-grad);color:#ffffff;
-  box-shadow:0 6px 16px -4px rgba(14,165,233,.5);
+  box-shadow:0 6px 16px -4px rgba(7,89,133,.55);
 }
 @media (hover:hover) and (pointer:fine){
   .dock a:hover,.dock button:hover{
