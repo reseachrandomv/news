@@ -91,12 +91,13 @@ body{
   color:var(--ink);
   font:400 1rem/1.65 "Faruma","Noto Sans Thaana","Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
   text-rendering:optimizeLegibility;
   transition:background-color .35s var(--ease),color .35s var(--ease);
   position:relative;
   padding-bottom:calc(132px + env(safe-area-inset-bottom));
+  padding-inline:env(safe-area-inset-left) env(safe-area-inset-right);
 }
-:root[data-theme=light] body{-webkit-font-smoothing:subpixel-antialiased}
 html[lang=dv] body{font-size:1.12em;line-height:1.95}
 html[lang=dv] h1,html[lang=dv] h2,html[lang=dv] h3{line-height:1.68;font-weight:700;letter-spacing:0}
 img{max-width:100%;height:auto}
@@ -170,8 +171,8 @@ button{user-select:none}
   50%{transform:scale(1.55);opacity:.45}
 }
 @keyframes waveBob{
-  0%,100%{transform:translateY(0) rotate(0deg)}
-  50%{transform:translateY(-2.5px) rotate(-2deg)}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-2px)}
 }
 @keyframes tickerScroll{
   0%{transform:translateX(0)}
@@ -205,22 +206,15 @@ header .w{
 }
 .brand{display:flex;gap:15px;align-items:center;min-width:0}
 .brand-logo{
-  width:58px;height:58px;flex:none;border-radius:22px;
-  background:var(--acc-grad);
-  border:1px solid var(--edge-hi);
-  box-shadow:var(--upsm);
-  display:grid;place-items:center;
-  color:#fff;
-  position:relative;
-  overflow:hidden;
-  transition:transform .35s var(--spring),box-shadow .35s var(--ease);
+  width:58px;height:58px;flex:none;
+  display:block;
+  background:transparent;border:0;box-shadow:none;
+  border-radius:16px;
 }
-.brand-logo:hover{transform:rotate(-5deg) scale(1.06)}
-.brand-logo svg,.brand img{
-  width:36px;height:36px;display:block;
-  animation:waveBob 4s ease-in-out infinite;
+.brand-logo img,.brand img{
+  width:58px;height:58px;aspect-ratio:1/1;display:block;
+  border-radius:16px;
 }
-.brand img{width:56px;height:56px;border-radius:22px}
 .brand-meta{min-width:0}
 .title-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .brand h1,.about-title{
@@ -356,19 +350,23 @@ nav#countries{
   overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;
   scroll-snap-type:x proximity;
   scrollbar-width:none;
-  background:color-mix(in srgb,var(--bg) 86%,transparent);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  isolation:isolate;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
   border-bottom:1px solid var(--edge);
   padding-block:12px 12px;
   padding-inline:max(14px,calc((100% - var(--page)) / 2));
 }
+nav#countries::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
 nav#countries::-webkit-scrollbar{display:none}
 nav#countries button{
+  position:relative;z-index:1;
   white-space:nowrap;scroll-snap-align:start;flex:none;
   background:var(--surface);
   border-radius:20px;
   padding:8px 16px;
-  position:relative;
 }
 nav#countries button[aria-pressed=true],.filt button[aria-pressed=true]{
   background:var(--acc-grad);color:#ffffff;
@@ -401,8 +399,8 @@ nav#countries button[aria-pressed=true]:hover,.filt button[aria-pressed=true]:ho
 }
 .ticker-track{
   flex:1;overflow:hidden;white-space:nowrap;
-  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent);
 }
 .ticker-inner{
   display:inline-flex;gap:28px;align-items:center;
@@ -558,11 +556,8 @@ article.rv.in{
   background:var(--well);border:1px solid var(--edge);box-shadow:var(--in);
 }
 .thumb img{
-  width:100%;height:100%;max-width:none;object-fit:cover;display:block;
-  transition:transform .55s var(--ease);
-}
-@media (hover:hover) and (pointer:fine){
-  article:hover .thumb img{transform:scale(1.055)}
+  width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;display:block;
+  image-rendering:auto;
 }
 .thumb-fallback{
   width:100%;height:100%;
@@ -572,7 +567,7 @@ article.rv.in{
 }
 .rank-badge{
   position:absolute;top:10px;inset-inline-start:10px;
-  background:rgba(9,17,31,.78);backdrop-filter:blur(8px);
+  background:#0c1624;
   color:#fff;font-size:.74rem;font-weight:800;
   padding:3px 9px;border-radius:999px;
   border:1px solid rgba(255,255,255,.18);
@@ -720,6 +715,8 @@ footer{
 }
 footer a{color:var(--teal);font-weight:750;text-decoration:none}
 footer a:hover{text-decoration:underline;text-underline-offset:3px}
+.load-fail{align-items:flex-start;text-align:start}
+.load-fail button{margin-top:8px}
 
 /* Responsive Bento Layout & Stream Mode */
 @media (min-width:760px){
@@ -733,10 +730,17 @@ footer a:hover{text-decoration:underline;text-underline-offset:3px}
     display:grid;
     grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
     column-gap:28px;
-    align-items:center;
+    align-items:start;
   }
   article.hero:has(.thumb) .thumb{
-    grid-row:1 / span 8;grid-column:1;margin:0;height:100%;min-height:280px;
+    grid-row:1 / span 8;grid-column:1;margin:0;height:auto;min-height:0;aspect-ratio:16/9.5;
+  }
+  article.hero.no-sum{
+    grid-template-columns:minmax(180px,320px) minmax(0,1fr);
+    align-items:center;
+  }
+  article.hero.no-sum .thumb{
+    grid-row:1 / span 8;grid-column:1;width:100%;height:auto;min-height:0;aspect-ratio:4/3;
   }
 }
 @media (min-width:1120px){
@@ -813,11 +817,10 @@ body.about main,.about-view main{
   animation:rise .55s var(--ease);
 }
 body.about .logo,.about-view .logo{
-  display:grid;place-items:center;margin:0 auto 14px;
-  width:92px;height:92px;border-radius:30px;
-  background:var(--acc-grad);color:#fff;
-  border:1px solid var(--edge-hi);box-shadow:var(--up);
-  animation:rise .5s var(--spring);
+  display:block;margin:0 auto 14px;
+  width:96px;height:96px;aspect-ratio:1/1;border-radius:24px;
+  background:transparent;border:0;box-shadow:none;
+  animation:rise .5s var(--ease);
 }
 body.about h1,.about-view h1{font-size:2.1rem;margin:14px 0 8px}
 body.about h2,.about-view h2{font-size:1.45rem;font-weight:850;letter-spacing:-.02em;margin:32px 0 18px}
@@ -879,17 +882,22 @@ a.cta:hover,button.cta:hover{color:#ffffff;transform:translateY(-2px) scale(1.02
   display:flex;align-items:stretch;justify-content:center;gap:6px;
   overflow:visible;
   padding:8px;margin:0;
-  background:color-mix(in srgb,var(--surface) 88%,transparent);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  isolation:isolate;
+  background:color-mix(in srgb,var(--surface) 92%,transparent);
   color:var(--ink);
   border:1px solid var(--edge-hi);
   border-radius:30px;
   box-shadow:var(--up);
 }
+.dock::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
 .dock a,.dock button{
   display:inline-flex;flex:1 1 0;min-width:0;max-width:112px;min-height:56px;
   flex-direction:column;align-items:center;justify-content:center;gap:3px;
   padding:6px 3px 7px;text-decoration:none;white-space:normal;
+  position:relative;z-index:1;
   border-radius:22px;border-color:transparent;
   background:transparent;color:var(--muted);
   box-shadow:none;font-size:.68rem;font-weight:700;line-height:1.15;
@@ -907,14 +915,14 @@ html[lang=dv] .dock-lb{line-height:1.45}
 }
 @media (hover:hover) and (pointer:fine){
   .dock a:hover,.dock button:hover{
-    transform:translateY(-6px) scale(1.06);
+    transform:translateY(-4px);
     color:var(--teal);background:var(--surface-hi);box-shadow:var(--upsm);
   }
   .dock a[aria-current=page]:hover,.dock button[aria-current=page]:hover{
-    transform:translateY(-4px) scale(1.04);color:#ffffff;background:var(--acc-grad);
+    transform:translateY(-2px);color:#ffffff;background:var(--acc-grad);
   }
 }
-.dock a:active,.dock button:active{transform:translateY(1px) scale(.95)}
+.dock a:active,.dock button:active{transform:translateY(1px)}
 @media (max-width:720px){
   .dock{width:calc(100% - 10px);gap:2px;padding:5px}
   .dock a,.dock button{font-size:10px;padding:5px 1px 6px;max-width:none;letter-spacing:-.01em}
@@ -927,4 +935,5 @@ html[lang=dv] .dock-lb{line-height:1.45}
     scroll-behavior:auto !important;
   }
   article.rv,article.rv.in{opacity:1 !important;transform:none !important}
+  .dock a:hover,.dock button:hover,.dock a:active,.dock button:active{transform:none !important}
 }
