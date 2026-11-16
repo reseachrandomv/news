@@ -4,7 +4,7 @@
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#0f1726}html[data-theme=light]{background:#f6f1e6}</style>
+<style>html{background:#080c14}html[data-theme=light]{background:#f3ece1}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
 <header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div><div class="sub" id="today"></div></div></div>
 <div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg" dir="ltr"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
@@ -29,6 +29,9 @@ const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
 const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
 const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?t('minAgo',{n:Math.max(1,m|0)}):m<1440?t('hAgo',{n:m/60|0}):new Date(d).toLocaleDateString(loc())};
 const tab=c=>STR[LANG].tabs[c]||STR.en.tabs[c]||c,cat=c=>STR[LANG].cats[c]||c;
+const CATKEY={"Top stories":"top","World":"world","Science & Tech":"sci","Gadgets":"tech","Phones":"tech","Tech":"tech","Announcements":"announce","Courses & admissions":"course","Education":"course","UK":"uk","Discoveries":"sci","Space":"space","Business":"biz"};
+const catKey=c=>CATKEY[c]||"gen";
+
 function applyAll(){$('today').textContent=new Date().toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});setLangAttrs();staticText();applyTheme(theme);applySize();if(data){$('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});render()}}
 $('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;applyAll()};
 function render(){
@@ -42,7 +45,7 @@ function render(){
  if(hasDv&&mvF=='dv')items=items.filter(isDv);else if(hasDv&&mvF=='en')items=items.filter(i=>!isDv(i));else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
  const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
  const head=STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur);
- $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?layout(items,(i,k)=>`<article class="${k||''}">${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span></div>
+ $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?layout(items,(i,k)=>`<article class="${k||''}" data-cat="${esc(catKey(i.category))}">${k==='hero'?`<span class="kicker">${esc(t('topStory'))}</span>`:''}${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="cat cat-${esc(catKey(i.category))}">${esc(cat(i.category))}</span><span class="meta">${esc(ago(i.published))}</span></div>
  ${(()=>{const tr=LANG=='dv'&&i.title_dv;const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;return `${tr?`<button class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}`})()}
  <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`):`<p>${esc(t('empty'))}</p>`);reveal();
  function pulse(el){if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}
@@ -50,9 +53,9 @@ $('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{const a=b.closest('
  $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;localStorage.mvF=mvF;render()});
  if(window.renderDock)renderDock();
 }
-function layout(it,f){if(it.length<4)return it.map(i=>f(i)).join('');const dv=LANG=='dv';
+function layout(it,f){if(it.length<4)return it.map(i=>f(i)).join('');
  const top=it.slice(1,9),rest=it.slice(9);
- return f(it[0],'hero')+`<section class="tops"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="trow">${top.map(i=>f(i,'mini')).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map(i=>f(i)).join(''):'')}
+ return f(it[0],'hero')+`<section class="tops"><h3>${esc(t('topStories'))}</h3><div class="trow">${top.map(i=>f(i,'mini')).join('')}</div></section>`+(rest.length?`<h3 class="more">${esc(t('moreStories'))}</h3>`+rest.map(i=>f(i)).join(''):'')}
 function reveal(){const els=[...document.querySelectorAll('#list article:not(.hero)')];if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const io=new IntersectionObserver(es=>{let n=0;es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(n++%6)*60+'ms';e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -5% 0px'});
  els.forEach(e=>{e.classList.add('rv');io.observe(e)})}
