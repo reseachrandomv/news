@@ -26,7 +26,21 @@
 
   function reserve() {
     const bottom = parseFloat(getComputedStyle(dock).bottom) || 12;
-    document.body.style.paddingBottom = (dock.offsetHeight + bottom + 18) + "px";
+    const space = Math.ceil(dock.offsetHeight + bottom + 28);
+    document.body.style.paddingBottom = space + "px";
+    document.documentElement.style.setProperty("--dock-space", space + "px");
+    const mobile = window.matchMedia("(max-width: 1099px)").matches;
+    document.querySelectorAll(".hud-left").forEach((el) => {
+      if (!mobile) {
+        el.style.maxHeight = "";
+        el.style.overflowY = "";
+        return;
+      }
+      const topAt0 = el.getBoundingClientRect().top + window.scrollY;
+      const limit = window.innerHeight - space;
+      el.style.maxHeight = Math.max(140, Math.floor(limit - Math.max(topAt0, 0))) + "px";
+      el.style.overflowY = "auto";
+    });
   }
   function currentTab() {
     const pressed = document.querySelector("#countries button[aria-pressed='true']");
@@ -83,4 +97,6 @@
   renderDock();
   if (window.ResizeObserver) new ResizeObserver(reserve).observe(dock);
   window.addEventListener("resize", reserve);
+  window.addEventListener("load", reserve);
+  requestAnimationFrame(reserve);
 })();
