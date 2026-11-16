@@ -3,7 +3,7 @@ const LANGS={en:{label:"English",dir:"ltr"},dv:{label:"ދިވެހި",dir:"rtl"}}
 const STR={
 en:{site:"Raajjé Digest",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light mode",dark:"Dark mode",toLight:"Switch to light mode",toDark:"Switch to dark mode",
  textSize:"Text size",smaller:"Make text smaller",larger:"Make text larger",reset:"Reset text size (now {p}%)",langBtn:"ދިވެހި",langAria:"Switch language to Dhivehi",about:"About",
- chooseTab:"Choose a section",loading:"Loading headlines…",loadFail:"Could not load news. Please try again.",empty:"No stories here right now.",
+ chooseTab:"Choose a section",loading:"Loading headlines…",loadFail:"Could not load news. Please try again.",retry:"Try again",empty:"No stories here right now.",
  tabNews:"{c} news",readAt:"Read at {s} →",minAgo:"{n} min ago",hAgo:"{n} h ago",
  filter:"Show",fAll:"All",fDv:"Dhivehi news only",fEn:"English only",translated:"Translated",showOrig:"Show original",showDv:"Show Dhivehi",
  searchPh:"Search headlines or sources…",clearSearch:"Clear search",bentoView:"Bento view",listView:"Compact stream",saved:"Saved",saveStory:"Save story",savedEmpty:"No saved stories yet. Tap the bookmark icon on any card to save it for later.",
@@ -17,7 +17,7 @@ en:{site:"Raajjé Digest",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light 
  cats:{}},
 dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު މަލާކް ޖައުފަރު",light:"ލައިޓް މޯޑް",dark:"ޑާކް މޯޑް",toLight:"ލައިޓް މޯޑަށް ބަދަލުކުރޭ",toDark:"ޑާކް މޯޑަށް ބަދަލުކުރޭ",
  textSize:"އަކުރުގެ ސައިޒު",smaller:"އަކުރު ކުޑަކުރޭ",larger:"އަކުރު ބޮޑުކުރޭ",reset:"އަކުރުގެ ސައިޒު އަސްލަށް ގެނޭ (މިހާރު {p}%)",langBtn:"English",langAria:"Switch language to English",about:"ތަޢާރަފު",
- chooseTab:"ބައެއް ހޮވާ",loading:"ސުރުޚީތައް ލޯޑުވަނީ…",loadFail:"ޚަބަރުތައް ލޯޑެއް ނުވި. އަލުން މަސައްކަތްކޮށްލައްވާ.",empty:"މިވަގުތު މިބައިގައި ޚަބަރެއް ނެތް.",
+ chooseTab:"ބައެއް ހޮވާ",loading:"ސުރުޚީތައް ލޯޑުވަނީ…",loadFail:"ޚަބަރުތައް ލޯޑެއް ނުވި. އަލުން މަސައްކަތްކޮށްލައްވާ.",retry:"އަލުން މަސައްކަތްކޮށްލައްވާ",empty:"މިވަގުތު މިބައިގައި ޚަބަރެއް ނެތް.",
  tabNews:"{c} ޚަބަރު",readAt:"{s} ގައި ކިޔާލާ ←",minAgo:"{n} މިނިޓު ކުރިން",hAgo:"{n} ގަޑިއިރު ކުރިން",
  filter:"ދައްކާ",fAll:"ހުރިހާ ޚަބަރެއް",fDv:"ދިވެހި ޚަބަރު އެކަނި",fEn:"އިނގިރޭސި އެކަނި",translated:"ތަރުޖަމާ",showOrig:"އަސްލު ބަލާ",showDv:"ދިވެހިން ބަލާ",
  searchPh:"ސުރުޚީ ނުވަތަ ނޫސް ހޯދާ…",clearSearch:"ފޮހެލާ",bentoView:"ބެންޓޯ ގްރިޑް",listView:"ލިސްޓް ގޮތަށް",saved:"ރައްކާކުރި",saveStory:"ޚަބަރު ރައްކާކުރޭ",savedEmpty:"ރައްކާކޮށްފައިވާ ޚަބަރެއް ނެތް.",

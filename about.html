@@ -4,19 +4,66 @@
 <meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#09111f}html[data-theme=light]{background:#f3efe6}</style>
+<link rel="preload" href="fonts/plus-jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#07080D}html[data-theme=light]{background:#EEF0F6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="about">
-<div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="ambient-bg" aria-hidden="true">
+  <div class="jelly jelly-1"></div>
+  <div class="jelly jelly-2"></div>
+  <div class="jelly jelly-3"></div>
+  <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+  <span class="bubble b4"></span><span class="bubble b5"></span><span class="bubble b6"></span>
+  <span class="bubble b7"></span><span class="bubble b8"></span>
+  <div class="hero-orb ambient-orb" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#9FC3FF"/>
+          <stop offset="45%" stop-color="#EEF0F6"/>
+          <stop offset="100%" stop-color="#6B8CFF"/>
+        </linearGradient>
+        <filter id="orbGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="12" filter="url(#orbGlow)" opacity=".85" transform="rotate(-28 100 100)"/>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="6" opacity=".45" transform="rotate(18 100 100)"/>
+      <circle cx="148" cy="78" r="16" fill="#9FC3FF" opacity=".35" filter="url(#orbGlow)"/>
+      <circle cx="58" cy="128" r="9" fill="#EEF0F6" opacity=".28"/>
+    </svg>
+  </div>
+</div>
 <div class="top"><button type="button" id="lg"></button><button type="button" id="go2" data-t="skip"></button></div>
 <main>
   <div class="about-hero-card">
+    <div class="about-hero-stage">
     <div class="logo" aria-hidden="true">
       <svg viewBox="0 0 36 36" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
         <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
         <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
       </svg>
+    </div>
+    <div class="hero-orb about-orb" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none">
+        <defs>
+          <linearGradient id="aboutRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9FC3FF"/>
+            <stop offset="45%" stop-color="#EEF0F6"/>
+            <stop offset="100%" stop-color="#6B8CFF"/>
+          </linearGradient>
+          <filter id="aboutGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#aboutRing)" stroke-width="12" filter="url(#aboutGlow)" opacity=".9" transform="rotate(-28 100 100)"/>
+        <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#aboutRing)" stroke-width="6" opacity=".4" transform="rotate(18 100 100)"/>
+        <circle cx="148" cy="78" r="16" fill="#9FC3FF" opacity=".4" filter="url(#aboutGlow)"/>
+        <circle cx="58" cy="128" r="9" fill="#EEF0F6" opacity=".3"/>
+      </svg>
+    </div>
     </div>
     <h1 class="about-title" data-t="site"></h1>
     <p class="made" data-t="madeBy"></p>
@@ -26,7 +73,7 @@
   </div>
   <h2 data-t="feat"></h2>
   <div class="grid" id="grid"></div>
-  <div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
+  <div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
 </main>
 <script>
 Object.assign(STR.en,{read:"Explore the news →",skip:"Go to the news",feat:"What you'll find inside",contactH:"Say hello",
@@ -57,4 +104,4 @@ const go=e=>{safeSet('introSeen','1');location.href='index.html'};
 $('go').onclick=e=>{e.preventDefault();go()};
 $('go2').onclick=go;
 draw();
-</script><script src="dock.js"></script></body></html>
+</script><script src="dock.js"></script><script src="glass.js"></script></body></html>

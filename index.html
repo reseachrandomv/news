@@ -4,10 +4,36 @@
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#09111f}html[data-theme=light]{background:#f3efe6}</style>
+<link rel="preload" href="fonts/plus-jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#07080D}html[data-theme=light]{background:#EEF0F6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
-<div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="ambient-bg" aria-hidden="true">
+  <div class="jelly jelly-1"></div>
+  <div class="jelly jelly-2"></div>
+  <div class="jelly jelly-3"></div>
+  <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+  <span class="bubble b4"></span><span class="bubble b5"></span><span class="bubble b6"></span>
+  <span class="bubble b7"></span><span class="bubble b8"></span>
+  <div class="hero-orb ambient-orb" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#9FC3FF"/>
+          <stop offset="45%" stop-color="#EEF0F6"/>
+          <stop offset="100%" stop-color="#6B8CFF"/>
+        </linearGradient>
+        <filter id="orbGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="12" filter="url(#orbGlow)" opacity=".85" transform="rotate(-28 100 100)"/>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="6" opacity=".45" transform="rotate(18 100 100)"/>
+      <circle cx="148" cy="78" r="16" fill="#9FC3FF" opacity=".35" filter="url(#orbGlow)"/>
+      <circle cx="58" cy="128" r="9" fill="#EEF0F6" opacity=".28"/>
+    </svg>
+  </div>
+</div>
 <header><div class="w">
   <div class="brand">
     <div class="brand-logo" aria-hidden="true">
@@ -20,7 +46,7 @@
     <div class="brand-meta">
       <div class="title-row">
         <h1 data-t="site">Raajjé Digest</h1>
-        <span class="live-pill"><span class="live-dot"></span><span data-t="livePulse">Auto-updates every 30m</span></span>
+        <span class="live-pill system-badge"><span class="live-dot"></span><span data-t="livePulse">Auto-updates every 30m</span></span>
       </div>
       <div class="sub-row">
         <span class="sub" data-t="madeBy"></span>
@@ -48,6 +74,7 @@
   <span class="ticker-badge"><span class="live-dot"></span><span data-t="breaking">Latest Pulse</span></span>
   <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
 </div>
+<div id="feedStatus" class="feed-status" hidden></div>
 <main id="list" aria-live="polite"><p class="vh" data-t="loading"></p><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article></main>
 <footer><strong data-t="madeBy"></strong><br><span data-t="contact"></span> WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br><span data-t="srcNote"></span> <span id="upd"></span></footer>
 <script>
@@ -147,6 +174,7 @@ $('qClear').onclick=()=>{
 
 let data,cur=new URLSearchParams(location.search).get("tab")||safeGet("country","Maldives"),mvF=safeGet("mvF",safeGet("dvOnly","")=="1"?"dv":"all");
 const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const safeHref=s=>{try{const u=new URL(String(s||""),location.href);if(u.protocol==="http:"||u.protocol==="https:")return u.href}catch(e){}return""};
 const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
 const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
 const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?t('minAgo',{n:Math.max(1,m|0)}):m<1440?t('hAgo',{n:m/60|0}):new Date(d).toLocaleDateString(loc())};
@@ -160,7 +188,7 @@ function renderTicker(){
   const html=topItems.map(i=>{
     const tr=LANG=='dv'&&i.title_dv;
     const T=tr?i.title_dv:i.title;
-    return `<a class="ticker-item" href="${esc(i.link)}" target="_blank" rel="noopener"><b>${esc(i.source)}</b> ${esc(T)}</a>`;
+    return `<a class="ticker-item" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener"><b>${esc(i.source)}</b> ${esc(T)}</a>`;
   }).join('<span>•</span>');
   inner.innerHTML=html+'<span>•</span>'+html;
 }
@@ -201,8 +229,19 @@ function render(){
   const nav=$('countries');
   const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
   if(!cs.includes(cur))cur="Maldives";
-  nav.innerHTML=cs.map(c=>`<button type="button" aria-pressed="${c==cur&&!onlySaved}" data-c="${c}">${esc(tab(c))}</button>`).join('');
-  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{onlySaved=false;$('savedBtn').setAttribute('aria-pressed','false');cur=b.dataset.c;safeSet('country',cur);render();scrollTo({top:0,behavior:'smooth'})});
+  const keys=cs.join('|');
+  if(nav.dataset.keys!==keys){
+    nav.dataset.keys=keys;
+    const keep=nav.querySelector('.tab-pill');
+    nav.innerHTML=(keep?keep.outerHTML:'')+cs.map(c=>`<button type="button" aria-pressed="${c==cur&&!onlySaved}" data-c="${c}">${esc(tab(c))}</button>`).join('');
+    nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{onlySaved=false;$('savedBtn').setAttribute('aria-pressed','false');cur=b.dataset.c;safeSet('country',cur);render();scrollTo({top:0,behavior:'smooth'})});
+  }else{
+    nav.querySelectorAll('button').forEach(b=>{
+      b.setAttribute('aria-pressed',String(b.dataset.c==cur&&!onlySaved));
+      b.textContent=tab(b.dataset.c);
+    });
+  }
+  if(window.syncGlassPills)requestAnimationFrame(syncGlassPills);
   clearInterval(timer);
   if(cur=="Population"&&!onlySaved&&!searchQuery){
     try{return renderPop()}catch(e){console.error(e);pop=POP_FB;return renderPop()}
@@ -227,7 +266,7 @@ function render(){
     const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;
     const hasImg=/^https:/.test(i.image||"");
     const extraCls=(k===''&&idx%5===0)?'bento-wide':(k||'');
-    return `<article class="${extraCls}">${hasImg?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${k==='mini'?`<span class="rank-badge">0${idx+1}</span>`:''}<img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row">${k==='hero'?`<span class="hero-tag">✦ ${esc(t('featuredStory'))}</span>`:''}<span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span><div class="row-end"><button type="button" class="save-btn" data-save="${esc(i.link)}" aria-pressed="${isSaved}" aria-label="${esc(t('saveStory'))}">★</button></div></div>${tr?`<button type="button" class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}<div class="card-foot"><a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></div></article>`;
+    return `<article class="${extraCls}">${hasImg?`<a class="thumb" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${k==='mini'?`<span class="rank-badge">0${idx+1}</span>`:''}<img src="${esc(safeHref(i.image))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row">${k==='hero'?`<span class="hero-tag">✦ ${esc(t('featuredStory'))}</span>`:''}<span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span><div class="row-end"><button type="button" class="save-btn" data-save="${esc(safeHref(i.link))}" aria-pressed="${isSaved}" aria-label="${esc(t('saveStory'))}">★</button></div></div>${tr?`<button type="button" class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}<div class="card-foot"><a class="read" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></div></article>`;
   };
   $('list').innerHTML=`<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(head)}</h2><span class="count-pill">${esc(t('storiesCount',{n:items.length}))}</span></div>${filt}</div>`+(items.length?layout(items,cardTpl):`<article class="wide-card"><p>${esc(onlySaved?t('savedEmpty'):t('empty'))}</p></article>`);
   reveal();
@@ -293,7 +332,7 @@ function renderPop(){
   const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
   const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
   const cards=[["popLive","pop","🌍"],["popBirths","b","🌱"],["popDeaths","d","🕯️"],["popGrowth","n","📈"]];
-  const src=`${esc(t('source'))} <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
+  const src=`${esc(t('source'))} <a href="${esc(safeHref(pop.source_url))||"#"}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
   const maxTop=Math.max(...pop.top.map(x=>x.pop));
   $('list').innerHTML=
     `<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(t('popTitle'))}</h2><span class="live-pill"><span class="live-dot"></span>Live Counter</span></div></div>`+
@@ -311,8 +350,35 @@ function renderPop(){
   if(window.renderDock)renderDock();
 }
 
+function setFeedError(on){
+  const el=$('feedStatus');
+  if(!el)return;
+  if(!on){el.hidden=true;el.replaceChildren();return}
+  el.hidden=false;
+  el.replaceChildren();
+  const p=document.createElement('p');
+  p.textContent=t('loadFail');
+  const btn=document.createElement('button');
+  btn.type='button';
+  btn.id='retryFeed';
+  btn.textContent=t('retry');
+  btn.onclick=()=>loadNews();
+  el.append(p,btn);
+}
+function loadNews(){
+  return fetch('data/news.json?'+Date.now())
+    .then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.json()})
+    .then(d=>{
+      if(d&&Array.isArray(d.items)&&d.items.length){data=d;applyAll();setFeedError(false);return}
+      throw new Error('empty');
+    })
+    .catch(()=>{
+      if(!data||!Array.isArray(data.items)||!data.items.length){data=FALLBACK_NEWS;applyAll()}
+      setFeedError(true);
+    });
+}
 data=FALLBACK_NEWS;
 applyAll();
-fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
-fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{if(d&&Array.isArray(d.items)&&d.items.length){data=d;applyAll()}}).catch(()=>{});
-</script><script src="dock.js"></script></body></html>
+fetch('data/population.json?'+Date.now()).then(r=>{if(!r.ok)throw new Error('http');return r.json()}).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
+loadNews();
+</script><script src="dock.js"></script><script src="glass.js"></script></body></html>
