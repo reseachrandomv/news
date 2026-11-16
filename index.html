@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme!="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Raajjé Digest – Made by Fathimath Malaak Jaufar</title>
-<script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="i18n.js"></script>
+<script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="brand.js"></script><script src="i18n.js"></script>
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
@@ -37,11 +37,7 @@
 <header><div class="w">
   <div class="brand">
     <div class="brand-logo" aria-hidden="true">
-      <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
-        <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
-        <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
-      </svg>
+      <img data-brand-logo src="logo-mark.svg" alt="" width="36" height="36">
     </div>
     <div class="brand-meta">
       <div class="title-row">
@@ -258,7 +254,7 @@ function render(){
       return blob.includes(searchQuery);
     });
   }
-  const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button type="button" data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button type="button" data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button type="button" data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
+  const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><button type="button" data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button type="button" data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button type="button" data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
   const head=onlySaved?t('saved'):(STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur));
   const cardTpl=(i,k,idx)=>{
     const isSaved=savedLinks.has(i.link);

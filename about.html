@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>try{if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="i18n.js"></script>
+<script>try{if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="brand.js"></script><script src="i18n.js"></script>
 <title>Raajjé Digest – About</title><link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
@@ -39,11 +39,7 @@
   <div class="about-hero-card">
     <div class="about-hero-stage">
     <div class="logo" aria-hidden="true">
-      <svg viewBox="0 0 36 36" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
-        <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
-        <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
-      </svg>
+      <img data-brand-logo src="logo-mark.svg" alt="" width="52" height="52">
     </div>
     <div class="hero-orb about-orb" aria-hidden="true">
       <svg viewBox="0 0 200 200" fill="none">
@@ -78,7 +74,7 @@
 <script>
 Object.assign(STR.en,{read:"Explore the news →",skip:"Go to the news",feat:"What you'll find inside",contactH:"Say hello",
  intro:"Hi! I'm Fathimath Malaak Jaufar from the Maldives, and this is my news & live-data digest.",
- why:"I built Raajjé Digest to bring Maldives local headlines together with world news, tech, science, courses and live population estimates in one calm, soft-cornered space that updates automatically every 30 minutes.",
+ why:"I built "+((window.BRAND&&BRAND.name)||"Raajjé Digest")+" to bring Maldives local headlines together with world news, tech, science, courses and live population estimates in one calm, soft-cornered space that updates automatically every 30 minutes.",
  features:[["⏱️","30-minute updates","New headlines are fetched automatically every 30 minutes."],["🏝️","120+ Maldives stories","Local news from many Maldivian outlets in one tab."],["🌍","World Population","A live estimate of the world's population, births and deaths."],["📱","Tech & Gadgets","Phones, electronics and the latest tech."],["🎓","Courses & Announcements","Courses, admissions and news from colleges and schools."],["🔬","Science & Discoveries","New discoveries, with UK breakthroughs first."],["🌗","Dark & light mode","Pick the look that's easiest on your eyes."],["🔠","Text size","Make the text smaller or larger."],["🗣️","English & ދިވެހި","Use the site in English or Dhivehi."]]});
 Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ ←",skip:"ޚަބަރަށް ދާ",feat:"މިތަނުން ލިބޭ ތަކެތި",contactH:"ގުޅުއްވާ",
  intro:"އައްސަލާމު ޢަލައިކުމް! އަހަރެންނަކީ ދިވެހިރާއްޖެއިން ފާތިމަތު މަލާކް ޖައުފަރު. މިއީ އަހަރެންގެ ޚަބަރު ސައިޓް.",

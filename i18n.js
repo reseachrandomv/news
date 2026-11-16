@@ -5,7 +5,7 @@ en:{site:"Raajjé Digest",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light 
  textSize:"Text size",smaller:"Make text smaller",larger:"Make text larger",reset:"Reset text size (now {p}%)",langBtn:"ދިވެހި",langAria:"Switch language to Dhivehi",about:"About",
  chooseTab:"Choose a section",loading:"Loading headlines…",loadFail:"Could not load news. Please try again.",retry:"Try again",empty:"No stories here right now.",
  tabNews:"{c} news",readAt:"Read at {s} →",minAgo:"{n} min ago",hAgo:"{n} h ago",
- filter:"Show",fAll:"All",fDv:"Dhivehi news only",fEn:"English only",translated:"Translated",showOrig:"Show original",showDv:"Show Dhivehi",
+ filter:"Show",fAll:"All",fDv:"Dhivehi",fEn:"English",translated:"Translated",showOrig:"Show original",showDv:"Show Dhivehi",
  searchPh:"Search headlines or sources…",clearSearch:"Clear search",bentoView:"Bento view",listView:"Compact stream",saved:"Saved",saveStory:"Save story",savedEmpty:"No saved stories yet. Tap the bookmark icon on any card to save it for later.",
  livePulse:"Auto-updates every 30m",breaking:"Latest Pulse",storiesCount:"{n} stories",featuredStory:"Featured Lead",
  contact:"Contact:",email:"Email",srcNote:"Headlines and links come from each outlet's public RSS feed or headline page (Sun, Mihaaru, Avas, Edition, Raajje); full stories belong to the named source.",
@@ -19,7 +19,7 @@ dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު 
  textSize:"އަކުރުގެ ސައިޒު",smaller:"އަކުރު ކުޑަކުރޭ",larger:"އަކުރު ބޮޑުކުރޭ",reset:"އަކުރުގެ ސައިޒު އަސްލަށް ގެނޭ (މިހާރު {p}%)",langBtn:"English",langAria:"Switch language to English",about:"ތަޢާރަފު",
  chooseTab:"ބައެއް ހޮވާ",loading:"ސުރުޚީތައް ލޯޑުވަނީ…",loadFail:"ޚަބަރުތައް ލޯޑެއް ނުވި. އަލުން މަސައްކަތްކޮށްލައްވާ.",retry:"އަލުން މަސައްކަތްކޮށްލައްވާ",empty:"މިވަގުތު މިބައިގައި ޚަބަރެއް ނެތް.",
  tabNews:"{c} ޚަބަރު",readAt:"{s} ގައި ކިޔާލާ ←",minAgo:"{n} މިނިޓު ކުރިން",hAgo:"{n} ގަޑިއިރު ކުރިން",
- filter:"ދައްކާ",fAll:"ހުރިހާ ޚަބަރެއް",fDv:"ދިވެހި ޚަބަރު އެކަނި",fEn:"އިނގިރޭސި އެކަނި",translated:"ތަރުޖަމާ",showOrig:"އަސްލު ބަލާ",showDv:"ދިވެހިން ބަލާ",
+ filter:"ދައްކާ",fAll:"ހުރިހާ",fDv:"ދިވެހި",fEn:"އިނގިރޭސި",translated:"ތަރުޖަމާ",showOrig:"އަސްލު ބަލާ",showDv:"ދިވެހިން ބަލާ",
  searchPh:"ސުރުޚީ ނުވަތަ ނޫސް ހޯދާ…",clearSearch:"ފޮހެލާ",bentoView:"ބެންޓޯ ގްރިޑް",listView:"ލިސްޓް ގޮތަށް",saved:"ރައްކާކުރި",saveStory:"ޚަބަރު ރައްކާކުރޭ",savedEmpty:"ރައްކާކޮށްފައިވާ ޚަބަރެއް ނެތް.",
  livePulse:"ކޮންމެ 30 މިނިޓަކުން އާވޭ",breaking:"އެންމެ ފަހުގެ",storiesCount:"{n} ޚަބަރު",featuredStory:"ޚާއްޞަ ޚަބަރު",
  contact:"ގުޅުއްވުމަށް:",email:"އީމެއިލް",srcNote:"ސުރުޚީތަކާއި ލިންކުތައް ނަގަނީ ކޮންމެ ނޫހެއްގެ ޢާއްމު RSS ފީޑު ނުވަތަ ސުރުޚީގެ ޞަފްޙާއިން (ސަން، މިހާރު، އަވަސް، އެޑިޝަން، ރާއްޖެ). ފުރިހަމަ ޚަބަރުތައް ނިސްބަތްވަނީ އެ ނޫސްތަކަށް.",
@@ -33,6 +33,8 @@ dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު 
 let safeGet=(k,fb)=>{try{return localStorage.getItem(k)||fb}catch(e){return fb}};
 let safeSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
 let LANG=LANGS[safeGet("lang","en")]?safeGet("lang","en"):"en";
+if(window.BRAND){if(BRAND.name)STR.en.site=BRAND.name;if(BRAND.nameDv)STR.dv.site=BRAND.nameDv;}
+
 function t(k,v){let s=(STR[LANG][k]??STR.en[k]??k);for(const x in v||{})s=s.split("{"+x+"}").join(v[x]);return s}
 function setLangAttrs(){const h=document.documentElement;h.lang=LANG;h.dir=LANGS[LANG].dir}
 setLangAttrs();
