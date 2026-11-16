@@ -1,84 +1,318 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><script>if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);{const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q}if(localStorage.theme!="dark")document.documentElement.dataset.theme="light"</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme!="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Raajjé Digest – Made by Fathimath Malaak Jaufar</title>
-<script>if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")</script><script src="i18n.js"></script>
+<script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="i18n.js"></script>
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#0f1726}html[data-theme=light]{background:#f6f1e6}</style>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#09111f}html[data-theme=light]{background:#f3efe6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
-<header><div class="w"><div class="brand"><img src="logo-mark.svg" alt=""><div><h1 data-t="site">Raajjé Digest</h1><div class="sub" data-t="madeBy"></div><div class="sub" id="today"></div></div></div>
-<div class="tools"><a class="ab" href="about.html" data-t="about"></a><button id="lg" lang="en"></button><div class="fsz" role="group" id="fsg" dir="ltr"><button id="fsm">A−</button><button id="fsr">A</button><button id="fsp">A+</button></div><button id="tm"></button></div></div></header>
+<div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<header><div class="w">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true">
+      <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
+        <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
+        <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
+      </svg>
+    </div>
+    <div class="brand-meta">
+      <div class="title-row">
+        <h1 data-t="site">Raajjé Digest</h1>
+        <span class="live-pill"><span class="live-dot"></span><span data-t="livePulse">Auto-updates every 30m</span></span>
+      </div>
+      <div class="sub-row">
+        <span class="sub" data-t="madeBy"></span>
+        <span class="sub sub-sep">·</span>
+        <span class="sub" id="today"></span>
+      </div>
+    </div>
+  </div>
+  <div class="tools">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" id="qSearch" autocomplete="off">
+      <button type="button" id="qClear" class="search-clear" aria-label="Clear search">✕</button>
+    </div>
+    <button type="button" id="viewMode" aria-pressed="false"></button>
+    <button type="button" id="savedBtn" aria-pressed="false"><span id="savedLb"></span><span class="badge-cnt" id="savedCnt">0</span></button>
+    <a class="ab" href="about.html" data-t="about"></a>
+    <button type="button" id="lg" lang="en"></button>
+    <div class="fsz" role="group" id="fsg" dir="ltr"><button type="button" id="fsm">A−</button><button type="button" id="fsr">A</button><button type="button" id="fsp">A+</button></div>
+    <button type="button" id="tm"></button>
+  </div>
+</div></header>
 <nav id="countries"></nav>
+<div class="ticker-wrap" id="tickerBar" aria-label="Latest headlines">
+  <span class="ticker-badge"><span class="live-dot"></span><span data-t="breaking">Latest Pulse</span></span>
+  <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
+</div>
 <main id="list" aria-live="polite"><p class="vh" data-t="loading"></p><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article></main>
 <footer><strong data-t="madeBy"></strong><br><span data-t="contact"></span> WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br><span data-t="srcNote"></span> <span id="upd"></span></footer>
 <script>
+const FALLBACK_NEWS={
+  updated:new Date().toISOString(),
+  items:[
+    {country:"Maldives",category:"Top stories",source:"Mihaaru",published:new Date(Date.now()-18*6e4).toISOString(),link:"https://mihaaru.com",image:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=900&q=80",title:"މާލެ ސަރަހައްދުގެ ޑިޖިޓަލް ޚިދުމަތްތައް އާ ހަރުފަތަކަށް ގެންދިއުމުގެ މަޝްރޫޢު ފަށައިފި",title_dv:"މާލެ ސަރަހައްދުގެ ޑިޖިޓަލް ޚިދުމަތްތައް އާ ހަރުފަތަކަށް ގެންދިއުމުގެ މަޝްރޫޢު ފަށައިފި",summary:"Public digital infrastructure across the Greater Malé region receives a major speed and accessibility upgrade this quarter.",summary_dv:"މާލެ ސަރަހައްދުގެ އާންމު ޑިޖިޓަލް ޚިދުމަތްތައް އިތުރަށް ހަލުވިކޮށް ފަސޭހަކުރުމުގެ މަސައްކަތް ފަށައިފިއެވެ."},
+    {country:"Maldives",category:"Top stories",source:"Edition.mv",published:new Date(Date.now()-34*6e4).toISOString(),link:"https://edition.mv",image:"https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=800&q=80",title:"Raajje Transport Link expands high-speed ferry connectivity across southern atolls",title_dv:"އާރްޓީއެލް ފެރީގެ ޚިދުމަތް ދެކުނުގެ އަތޮޅުތަކަށް އިތުރަށް ފުޅާކޮށްފި",summary:"Commuters across the southern zone can now book inter-island routes with real-time schedule tracking.",summary_dv:"ދެކުނުގެ އަތޮޅުތަކުގެ ދަތުރުފަތުރު ފަސޭހަކުރުމަށް އާރްޓީއެލްގެ އާ ރޫޓުތައް ތަޢާރަފުކޮށްފިއެވެ."},
+    {country:"Maldives",category:"Top stories",source:"Sun Online",published:new Date(Date.now()-52*6e4).toISOString(),link:"https://sun.mv",image:"https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",title:"ފަތުރުވެރިކަމުގެ އާ ރެކޯޑެއް: މިއަހަރު ޒިޔާރަތްކުރި ފަތުރުވެރިންގެ އަދަދު އިތުރުވެއްޖެ",title_dv:"ފަތުރުވެރިކަމުގެ އާ ރެކޯޑެއް: މިއަހަރު ޒިޔާރަތްކުރި ފަތުރުވެރިންގެ އަދަދު އިތުރުވެއްޖެ",summary:"Tourism arrivals continue strong momentum heading into the peak winter season across Maldives resorts and guesthouses.",summary_dv:"ރާއްޖެއަށް ޒިޔާރަތްކުރާ ފަތުރުވެރިންގެ އަދަދު ކުރީ އަހަރަށްވުރެ ބޮޑުތަނުން އިތުރުވެއްޖެއެވެ."},
+    {country:"Maldives",category:"Business",source:"Avas",published:new Date(Date.now()-75*6e4).toISOString(),link:"https://avas.mv",image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",title:"Instant digital payments and QR merchant checkouts surge across local islands",title_dv:"ރަށްރަށުގެ ފިހާރަތަކުގައި ޑިޖިޓަލް ފައިސާ ދެއްކުން އިތުރުވެއްޖެ",summary:"Small businesses and island retailers report rapid adoption of contactless and mobile banking solutions.",summary_dv:"ކުދި ވިޔަފާރިތަކުން އޮންލައިންކޮށް ފައިސާ ބަލައިގަތުން ވަނީ ވަރަށް ބޮޑަށް އިތުރުވެފައެވެ."},
+    {country:"Maldives",category:"Education",source:"Raajje.mv",published:new Date(Date.now()-95*6e4).toISOString(),link:"https://raajje.mv",image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",title:"މަތީ ތަޢުލީމާއި އޮންލައިން ޑިޕްލޮމާ ކޯސްތަކަށް ކުރިމަތިލުމުގެ ފުރުޞަތު ހުޅުވާލައިފި",title_dv:"މަތީ ތަޢުލީމާއި އޮންލައިން ޑިޕްލޮމާ ކޯސްތަކަށް ކުރިމަތިލުމުގެ ފުރުޞަތު ހުޅުވާލައިފި",summary:"Flexible evening and online study tracks allow working professionals across the Maldives to earn accredited diplomas.",summary_dv:"ވަޒީފާގައި އުޅޭ ފަރާތްތަކަށް ފަސޭހައިން ކިޔެވޭނެ އޮންލައިން ކޯސްތަކަށް ވަނީ ހުޅުވާލާފައެވެ."},
+    {country:"Maldives",category:"Science & Tech",source:"Edition.mv",published:new Date(Date.now()-115*6e4).toISOString(),link:"https://edition.mv",title:"Solar micro-grids cut diesel consumption across 18 outer atoll islands",title_dv:"18 ރަށެއްގައި ސޯލާ ހަކަތައިގެ ނިޒާމު ޤާއިމުކޮށް ތެލަށް ކުރާ ޚަރަދު ކުޑަކޮށްފި",summary:"Hybrid battery storage systems paired with floating and rooftop solar arrays are powering island utilities.",summary_dv:"އިޔާދަކުރަނިވި ހަކަތައިގެ މަޝްރޫޢުތަކުން ރަށްރަށުގެ ކަރަންޓު ޚަރަދު ވަނީ ކުޑަވެފައެވެ."},
+    {country:"Maldives",category:"Top stories",source:"Mihaaru",published:new Date(Date.now()-140*6e4).toISOString(),link:"https://mihaaru.com",title:" Coral reef restoration teams plant 15,000 heat-resilient coral fragments in Kaafu Atoll",title_dv:"ކ. އަތޮޅުގައި 15،000 އަށްވުރެ ގިނަ مرޖާން އިންދައިފި",summary:"Marine biologists and local dive centers collaborate to strengthen reef ecosystems against warming waters.",summary_dv:"ފަރުތައް އާލާކުރުމުގެ ޕްރޮގްރާމުގެ ދަށުން ގިނަ އަދަދެއްގެ މުރަކަ ވަނީ އިންދާފައެވެ."},
+    {country:"Maldives",category:"Top stories",source:"Sun Online",published:new Date(Date.now()-165*6e4).toISOString(),link:"https://sun.mv",title:"Youth esports and content creation tournament announced in Malé",title_dv:"ޒުވާނުންނަށް ޚާއްޞަ އީ-ސްޕޯޓްސް މުބާރާތެއް މާލޭގައި ބާއްވަނީ",summary:"Mobile gaming teams and live streamers will compete in regional qualifiers next month.",summary_dv:"މޮބައިލް ގޭމިންގ ޓީމްތަކަށް ޚާއްޞަކޮށްގެން ބޮޑު މުބާރާތެއް އިއުލާންކޮށްފިއެވެ."},
+    {country:"Maldives",category:"Business",source:"Avas",published:new Date(Date.now()-190*6e4).toISOString(),link:"https://avas.mv",title:"Velana International Airport new terminal readies automated e-gates for faster arrivals",title_dv:"ވެލާނާ އެއާޕޯޓުގެ އާ ޓާމިނަލްގައި އޮޓޮމޭޓެޑް އީ-ގޭޓްތައް ބަހައްޓަނީ",summary:"Next-generation passenger processing lanes aim to cut terminal wait times by half.",summary_dv:"ފަތުރުވެރިންނާއި ދަތުރުވެރިންނަށް އަވަސް ޚިދުމަތް ދިނުމަށް އާ އީ-ގޭޓްތައް ތައްޔާރުކޮށްފިއެވެ."},
+    {country:"Maldives",category:"Top stories",source:"Raajje.mv",published:new Date(Date.now()-220*6e4).toISOString(),link:"https://raajje.mv",title:"Community tree-planting drive adds 4,000 shade trees across Hulhumalé Phase 2",title_dv:"ހުޅުމާލެ ދެވަނަ ފިޔަވަހީގައި 4،000 ގަސް އިންދުމުގެ ހަރަކާތެއް",summary:"Residents and volunteers joined forces over the weekend to create cooler pedestrian walkways.",summary_dv:"ހުޅުމާލޭގެ މަގުތަކުގައި ހިޔާ ލިބޭ ގަސް އިންދުމުގެ ޕްރޮގްރާމެއް ކުރިއަށް ގެންގޮސްފިއެވެ."},
+    {country:"Courses",category:"Courses & admissions",source:"MAPS College",published:new Date(Date.now()-45*6e4).toISOString(),link:"https://maps.edu.mv",title:"Online Diploma in Marketing Management & University Preparation intake open",title_dv:"މާކެޓިންގ މެނޭޖްމަންޓް އޮންލައިން ޑިޕްލޮމާ ކޯސްތަކަށް ހުޅުވާލައިފި",summary:"Study from anywhere with flexible online modules tailored for shift workers and aspiring entrepreneurs."},
+    {country:"Courses",category:"Announcements",source:"MNU",published:new Date(Date.now()-110*6e4).toISOString(),link:"https://mnu.edu.mv",title:"Short courses in Digital Media, Graphic Design & Cybersecurity Fundamentals",title_dv:"ޑިޖިޓަލް މީޑިއާ އަދި ސައިބަރ ސެކިއުރިޓީ ކުރު ކޯސްތައް",summary:"Applications are now open for certificate programs starting next semester."},
+    {country:"Tech",category:"Gadgets",source:"The Verge",published:new Date(Date.now()-28*6e4).toISOString(),link:"https://www.theverge.com",image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",title:"Next-gen ultra-thin laptops bring 22-hour battery life and brighter OLED displays",summary:"New ARM and silicon architectures push portable creator workflows further without fan noise."},
+    {country:"Tech",category:"Tech",source:"Ars Technica",published:new Date(Date.now()-64*6e4).toISOString(),link:"https://arstechnica.com",title:"Browser-based privacy tools and zero-server web apps gain traction on GitHub",summary:"Developers are building client-side encryption, metadata scrubbers, and local-first utilities that run entirely in the browser."},
+    {country:"Science",category:"UK",source:"BBC Science",published:new Date(Date.now()-40*6e4).toISOString(),link:"https://www.bbc.com/news/science_and_environment",image:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",title:"UK researchers unveil high-efficiency perovskite solar cells for marine environments",summary:"Oxford and Cambridge laboratories demonstrate durable tandem solar coatings resistant to salt spray."},
+    {country:"World",category:"World",source:"Reuters",published:new Date(Date.now()-22*6e4).toISOString(),link:"https://www.reuters.com",image:"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80",title:"Global clean energy investment reaches new milestone across Asia-Pacific nations",summary:"Grid modernization and coastal resilience initiatives lead infrastructure spending this year."},
+    {country:"India",category:"World",source:"The Hindu",published:new Date(Date.now()-50*6e4).toISOString(),link:"https://www.thehindu.com",title:"Bengaluru tech corridor expands metro connectivity and startup incubator hubs",summary:"New express transit lines connect major electronics and software campuses."},
+    {country:"Sri Lanka",category:"World",source:"Daily Mirror",published:new Date(Date.now()-80*6e4).toISOString(),link:"https://www.dailymirror.lk",title:"Regional maritime and aviation links boost Indian Ocean travel corridor",summary:"Short-haul flights between Colombo, Malé, and southern Indian cities see higher frequency."}
+  ]
+};
 const $=id=>document.getElementById(id);
-function staticText(){document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
- $('countries').setAttribute('aria-label',t('chooseTab'));$('fsg').setAttribute('aria-label',t('textSize'));$('fsm').setAttribute('aria-label',t('smaller'));$('fsp').setAttribute('aria-label',t('larger'));
- const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'))}
-const tm=$('tm');function applyTheme(x){if(x=='light')document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;tm.textContent=x=='light'?t('dark'):t('light');tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));if(window.renderDock)renderDock()}
-let theme=localStorage.theme||'light';tm.onclick=()=>{theme=theme=='light'?'dark':'light';localStorage.theme=theme;applyTheme(theme)};
-const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];let pop=null,timer=null;
-const STEPS=[.85,1,1.15,1.3,1.4];let si=STEPS.indexOf(+localStorage.fontScale);if(si<0)si=1;
+let searchQuery="",streamMode=safeGet("streamMode","0")==="1",onlySaved=false;
+let savedLinks=new Set();
+try{savedLinks=new Set(JSON.parse(safeGet("savedLinks","[]")))}catch(e){}
+function persistSaved(){try{safeSet("savedLinks",JSON.stringify([...savedLinks]))}catch(e){}updateSavedBadge()}
+function updateSavedBadge(){const c=$('savedCnt');if(c)c.textContent=savedLinks.size}
+
+function staticText(){
+  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+  document.title=t('site');
+  $('countries').setAttribute('aria-label',t('chooseTab'));
+  $('fsg').setAttribute('aria-label',t('textSize'));
+  $('fsm').setAttribute('aria-label',t('smaller'));
+  $('fsp').setAttribute('aria-label',t('larger'));
+  $('qSearch').setAttribute('placeholder',t('searchPh'));
+  $('qSearch').setAttribute('aria-label',t('searchPh'));
+  $('qClear').setAttribute('aria-label',t('clearSearch'));
+  $('viewMode').textContent=streamMode?t('bentoView'):t('listView');
+  $('viewMode').setAttribute('aria-pressed',streamMode);
+  $('savedLb').textContent=t('saved');
+  updateSavedBadge();
+  const o=Object.keys(LANGS).find(l=>l!=LANG);
+  $('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
+}
+const tm=$('tm');
+function applyTheme(x){
+  if(x=='light')document.documentElement.dataset.theme='light';
+  else delete document.documentElement.dataset.theme;
+  tm.textContent=x=='light'?t('dark'):t('light');
+  tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));
+  if(window.renderDock)renderDock();
+}
+let theme=safeGet('theme','light');
+tm.onclick=()=>{theme=theme=='light'?'dark':'light';safeSet('theme',theme);applyTheme(theme)};
+const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
+let pop=null,timer=null;
+const STEPS=[.85,1,1.15,1.3,1.4];
+let si=STEPS.indexOf(+safeGet('fontScale',1));if(si<0)si=1;
 const fsm=$('fsm'),fsr=$('fsr'),fsp=$('fsp');
-function applySize(){const v=STEPS[si];document.documentElement.style.setProperty('--scale',v);localStorage.fontScale=v;fsm.disabled=si==0;fsp.disabled=si==STEPS.length-1;fsr.setAttribute('aria-pressed',si==1);fsr.setAttribute('aria-label',t('reset',{p:Math.round(v*100)}))}
-fsm.onclick=()=>{if(si>0)si--;applySize()};fsp.onclick=()=>{if(si<STEPS.length-1)si++;applySize()};fsr.onclick=()=>{si=1;applySize()};
-let data,cur=new URLSearchParams(location.search).get("tab")||localStorage.country||"Maldives",mvF=localStorage.mvF||(localStorage.dvOnly=="1"?"dv":"all");
+function applySize(){
+  const v=STEPS[si];document.documentElement.style.setProperty('--scale',v);safeSet('fontScale',v);
+  fsm.disabled=si==0;fsp.disabled=si==STEPS.length-1;
+  fsr.setAttribute('aria-pressed',si==1);fsr.setAttribute('aria-label',t('reset',{p:Math.round(v*100)}));
+}
+fsm.onclick=()=>{if(si>0)si--;applySize()};
+fsp.onclick=()=>{if(si<STEPS.length-1)si++;applySize()};
+fsr.onclick=()=>{si=1;applySize()};
+
+$('viewMode').onclick=()=>{
+  streamMode=!streamMode;
+  safeSet('streamMode',streamMode?'1':'0');
+  $('list').classList.toggle('stream-mode',streamMode);
+  $('viewMode').textContent=streamMode?t('bentoView'):t('listView');
+  $('viewMode').setAttribute('aria-pressed',streamMode);
+};
+$('savedBtn').onclick=()=>{
+  onlySaved=!onlySaved;
+  $('savedBtn').setAttribute('aria-pressed',onlySaved);
+  render();
+};
+$('qSearch').addEventListener('input',e=>{
+  searchQuery=e.target.value.trim().toLowerCase();
+  $('qClear').classList.toggle('show',searchQuery.length>0);
+  render();
+});
+$('qClear').onclick=()=>{
+  $('qSearch').value='';searchQuery='';
+  $('qClear').classList.remove('show');
+  render();
+};
+
+let data,cur=new URLSearchParams(location.search).get("tab")||safeGet("country","Maldives"),mvF=safeGet("mvF",safeGet("dvOnly","")=="1"?"dv":"all");
 const esc=s=>(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const THAANA=/[\u0780-\u07BF]/,isDv=i=>THAANA.test(i.title);
 const loc=()=>LANG=='dv'?'dv-MV':'en-GB';
 const ago=d=>{if(!d)return"";const m=(Date.now()-new Date(d))/6e4;return m<60?t('minAgo',{n:Math.max(1,m|0)}):m<1440?t('hAgo',{n:m/60|0}):new Date(d).toLocaleDateString(loc())};
 const tab=c=>STR[LANG].tabs[c]||STR.en.tabs[c]||c,cat=c=>STR[LANG].cats[c]||c;
-function applyAll(){$('today').textContent=new Date().toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});setLangAttrs();staticText();applyTheme(theme);applySize();if(data){$('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});render()}}
-$('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;applyAll()};
-function render(){
- const nav=$('countries');const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
- if(!cs.includes(cur))cur="Maldives";
- nav.innerHTML=cs.map(c=>`<button aria-pressed="${c==cur}" data-c="${c}">${esc(tab(c))}</button>`).join('');
- nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=b.dataset.c;localStorage.country=cur;render();scrollTo(0,0)});
- clearInterval(timer);if(cur=="Population"){try{return renderPop()}catch(e){console.error(e);pop=POP_FB;return renderPop()}}
- let items=data.items.filter(i=>i.country==cur);if(cur=="Science")items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
- const hasDv=items.some(isDv);
- if(hasDv&&mvF=='dv')items=items.filter(isDv);else if(hasDv&&mvF=='en')items=items.filter(i=>!isDv(i));else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
- const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
- const head=STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur);
- $('list').innerHTML=`<h2>${esc(head)}</h2>${filt}`+(items.length?layout(items,(i,k)=>`<article class="${k||''}">${/^https:/.test(i.image||"")?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row"><span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span></div>
- ${(()=>{const tr=LANG=='dv'&&i.title_dv;const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;return `${tr?`<button class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}`})()}
- <a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></article>`):`<p>${esc(t('empty'))}</p>`);reveal();
- function pulse(el){if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}
-$('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{const a=b.closest('article'),h=a.querySelector('h2 a'),p=a.querySelector('p');pulse(a);if(!b.dataset.d){b.dataset.d=h.textContent;b.dataset.ds=p?p.textContent:'';h.textContent=b.dataset.o;h.parentNode.dir='ltr';if(p){p.textContent=b.dataset.os;p.dir='ltr'}b.textContent=t('showDv')}else{h.textContent=b.dataset.d;h.parentNode.dir='auto';if(p){p.textContent=b.dataset.ds;p.dir='auto'}delete b.dataset.d;b.textContent=t('translated')+' · '+t('showOrig')}});
- $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;localStorage.mvF=mvF;render()});
- if(window.renderDock)renderDock();
+
+function renderTicker(){
+  const bar=$('tickerBar'),inner=$('tickerInner');
+  if(!data||!data.items||!data.items.length){bar.style.display='none';return}
+  bar.style.display='flex';
+  const topItems=data.items.slice(0,10);
+  const html=topItems.map(i=>{
+    const tr=LANG=='dv'&&i.title_dv;
+    const T=tr?i.title_dv:i.title;
+    return `<a class="ticker-item" href="${esc(i.link)}" target="_blank" rel="noopener"><b>${esc(i.source)}</b> ${esc(T)}</a>`;
+  }).join('<span>•</span>');
+  inner.innerHTML=html+'<span>•</span>'+html;
 }
-function layout(it,f){if(it.length<4)return it.map(i=>f(i)).join('');const dv=LANG=='dv';
- const top=it.slice(1,9),rest=it.slice(9);
- return f(it[0],'hero')+`<section class="tops"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="trow">${top.map(i=>f(i,'mini')).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map(i=>f(i)).join(''):'')}
-function reveal(){const els=[...document.querySelectorAll('#list article:not(.hero)')];if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const io=new IntersectionObserver(es=>{let n=0;es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(n++%6)*60+'ms';e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -5% 0px'});
- els.forEach(e=>{e.classList.add('rv');io.observe(e)})}
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&!matchMedia('(prefers-reduced-motion: reduce)').matches){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});
+
+function applyAll(){
+  $('today').textContent=new Date().toLocaleDateString(loc(),{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  setLangAttrs();staticText();applyTheme(theme);applySize();
+  $('list').classList.toggle('stream-mode',streamMode);
+  if(data){
+    $('upd').textContent=t('updated',{t:new Date(data.updated).toLocaleString(loc())});
+    renderTicker();
+    render();
+  }
+}
+$('lg').onclick=()=>{LANG=$('lg').lang;safeSet('lang',LANG);applyAll()};
+
+function attachCardInteractions(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  document.querySelectorAll('#list article').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=e.clientX-r.left,y=e.clientY-r.top;
+      card.style.setProperty('--mx',x+'px');
+      card.style.setProperty('--my',y+'px');
+      const rx=((y/r.height)-0.5)*-4.5;
+      const ry=((x/r.width)-0.5)*4.5;
+      card.style.setProperty('--rx',rx.toFixed(2)+'deg');
+      card.style.setProperty('--ry',ry.toFixed(2)+'deg');
+    });
+    card.addEventListener('pointerleave',()=>{
+      card.style.setProperty('--rx','0deg');
+      card.style.setProperty('--ry','0deg');
+    });
+  });
+}
+
+function render(){
+  const nav=$('countries');
+  const cs=ORDER.filter(c=>c=="Population"?pop:data.items.some(i=>i.country==c));
+  if(!cs.includes(cur))cur="Maldives";
+  nav.innerHTML=cs.map(c=>`<button type="button" aria-pressed="${c==cur&&!onlySaved}" data-c="${c}">${esc(tab(c))}</button>`).join('');
+  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>{onlySaved=false;$('savedBtn').setAttribute('aria-pressed','false');cur=b.dataset.c;safeSet('country',cur);render();scrollTo({top:0,behavior:'smooth'})});
+  clearInterval(timer);
+  if(cur=="Population"&&!onlySaved&&!searchQuery){
+    try{return renderPop()}catch(e){console.error(e);pop=POP_FB;return renderPop()}
+  }
+  let items=onlySaved?data.items.filter(i=>savedLinks.has(i.link)):data.items.filter(i=>i.country==cur);
+  if(cur=="Science"&&!onlySaved)items=[...items.filter(i=>i.category=="UK"),...items.filter(i=>i.category!="UK")];
+  const hasDv=items.some(isDv);
+  if(hasDv&&mvF=='dv')items=items.filter(isDv);
+  else if(hasDv&&mvF=='en')items=items.filter(i=>!isDv(i));
+  else if(LANG=='dv')items=[...items.filter(isDv),...items.filter(i=>!isDv(i))];
+  if(searchQuery){
+    items=items.filter(i=>{
+      const blob=`${i.title||''} ${i.title_dv||''} ${i.summary||''} ${i.summary_dv||''} ${i.source||''} ${i.category||''}`.toLowerCase();
+      return blob.includes(searchQuery);
+    });
+  }
+  const filt=hasDv?`<div class="filt" role="group" aria-label="${esc(t('filter'))}"><span class="meta">${esc(t('filter'))}:</span><button type="button" data-f="all" aria-pressed="${mvF=='all'}">${esc(t('fAll'))}</button><button type="button" data-f="dv" aria-pressed="${mvF=='dv'}">${esc(t('fDv'))}</button><button type="button" data-f="en" aria-pressed="${mvF=='en'}">${esc(t('fEn'))}</button></div>`:'';
+  const head=onlySaved?t('saved'):(STR[LANG].tabs[cur]&&["Maldives","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"].includes(cur)?t('tabNews',{c:tab(cur)}):tab(cur));
+  const cardTpl=(i,k,idx)=>{
+    const isSaved=savedLinks.has(i.link);
+    const tr=LANG=='dv'&&i.title_dv;
+    const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;
+    const hasImg=/^https:/.test(i.image||"");
+    const extraCls=(k===''&&idx%5===0)?'bento-wide':(k||'');
+    return `<article class="${extraCls}">${hasImg?`<a class="thumb" href="${esc(i.link)}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${k==='mini'?`<span class="rank-badge">0${idx+1}</span>`:''}<img src="${esc(i.image)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row">${k==='hero'?`<span class="hero-tag">✦ ${esc(t('featuredStory'))}</span>`:''}<span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span><div class="row-end"><button type="button" class="save-btn" data-save="${esc(i.link)}" aria-pressed="${isSaved}" aria-label="${esc(t('saveStory'))}">★</button></div></div>${tr?`<button type="button" class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}<div class="card-foot"><a class="read" href="${esc(i.link)}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></div></article>`;
+  };
+  $('list').innerHTML=`<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(head)}</h2><span class="count-pill">${esc(t('storiesCount',{n:items.length}))}</span></div>${filt}</div>`+(items.length?layout(items,cardTpl):`<article class="wide-card"><p>${esc(onlySaved?t('savedEmpty'):t('empty'))}</p></article>`);
+  reveal();
+  attachCardInteractions();
+  function pulse(el){if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;el.classList.remove('swap');void el.offsetWidth;el.classList.add('swap')}
+  $('list').querySelectorAll('.trp').forEach(b=>b.onclick=()=>{
+    const a=b.closest('article'),h=a.querySelector('h2 a'),p=a.querySelector('p');pulse(a);
+    if(!b.dataset.d){b.dataset.d=h.textContent;b.dataset.ds=p?p.textContent:'';h.textContent=b.dataset.o;h.parentNode.dir='ltr';if(p){p.textContent=b.dataset.os;p.dir='ltr'}b.textContent=t('showDv')}
+    else{h.textContent=b.dataset.d;h.parentNode.dir='auto';if(p){p.textContent=b.dataset.ds;p.dir='auto'}delete b.dataset.d;b.textContent=t('translated')+' · '+t('showOrig')}
+  });
+  $('list').querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>{
+    const url=b.dataset.save;
+    if(savedLinks.has(url))savedLinks.delete(url);else savedLinks.add(url);
+    persistSaved();
+    b.setAttribute('aria-pressed',savedLinks.has(url));
+    if(onlySaved)render();
+  });
+  $('list').querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{mvF=b.dataset.f;safeSet('mvF',mvF);render()});
+  const prevBtn=$('cPrev'),nextBtn=$('cNext'),trow=$('trowEl');
+  if(prevBtn&&nextBtn&&trow){
+    prevBtn.onclick=()=>trow.scrollBy({left:LANG=='dv'?320:-320,behavior:'smooth'});
+    nextBtn.onclick=()=>trow.scrollBy({left:LANG=='dv'?-320:320,behavior:'smooth'});
+  }
+  if(window.renderDock)renderDock();
+}
+
+function layout(it,f){
+  if(it.length<4||streamMode)return it.map((i,idx)=>f(i,'',idx)).join('');
+  const dv=LANG=='dv';
+  const top=it.slice(1,9),rest=it.slice(9);
+  return f(it[0],'hero',0)+`<section class="tops"><div class="tops-head"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="carousel-nav"><button type="button" id="cPrev" aria-label="Previous">‹</button><button type="button" id="cNext" aria-label="Next">›</button></div></div><div class="trow" id="trowEl">${top.map((i,idx)=>f(i,'mini',idx)).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map((i,idx)=>f(i,'',idx)).join(''):'');
+}
+
+function reveal(){
+  const els=[...document.querySelectorAll('#list article:not(.hero)')];
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const io=new IntersectionObserver(es=>{
+    let n=0;
+    es.forEach(e=>{if(e.isIntersecting){e.target.style.transitionDelay=(n++%6)*55+'ms';e.target.classList.add('in');io.unobserve(e.target)}});
+  },{rootMargin:'0px 0px -4% 0px'});
+  els.forEach(e=>{e.classList.add('rv');io.observe(e)});
+}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
+  }
+});
+
 const POP_FB={source:"World Bank Open Data (UN World Population Prospects) - built-in estimate",source_url:"https://data.worldbank.org/indicator/SP.POP.TOTL",world:{pop:{value:8215424893,year:2025},growth:{value:0.91,year:2025},birth_rate:{value:16.3,year:2024},death_rate:{value:7.6,year:2024},life_exp:{value:73.5,year:2024},urban_pct:{value:57.8,year:2024}},maldives:{pop:{value:529676,year:2025},growth:{value:0.35,year:2025}},top:[["India", 1463865525], ["China", 1406585000], ["United States", 341784857], ["Indonesia", 285721236], ["Pakistan", 255219554], ["Nigeria", 237527782], ["Brazil", 212812405], ["Bangladesh", 175686899], ["Russian Federation", 143513328], ["Ethiopia", 135472051]].map(([name,pop])=>({name,pop,year:2025}))};
-function fixPop(p){p=p||{};const w=Object.assign({},POP_FB.world,p.world||{}),r={...POP_FB,...p,world:w};
- for(const k in POP_FB.world)if(!w[k]||typeof w[k].value!="number")w[k]=POP_FB.world[k];
- if(!r.maldives||!r.maldives.pop||!r.maldives.growth)r.maldives=POP_FB.maldives;
- if(!Array.isArray(r.top)||r.top.length<5)r.top=POP_FB.top;return r}
+function fixPop(p){
+  p=p||{};const w=Object.assign({},POP_FB.world,p.world||{}),r={...POP_FB,...p,world:w};
+  for(const k in POP_FB.world)if(!w[k]||typeof w[k].value!="number")w[k]=POP_FB.world[k];
+  if(!r.maldives||!r.maldives.pop||!r.maldives.growth)r.maldives=POP_FB.maldives;
+  if(!Array.isArray(r.top)||r.top.length<5)r.top=POP_FB.top;
+  return r;
+}
 pop=POP_FB;
 const nf=n=>Math.round(n).toLocaleString('en-US');
-function renderPop(){const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
- const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
- const cards=[["popLive","pop"],["popBirths","b"],["popDeaths","d"],["popGrowth","n"]];
- const src=`${esc(t('source'))} <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
- $('list').innerHTML=`<h2 style="margin:4px 0">${esc(t('popTitle'))}</h2><p class="meta">${t('popNote',{y:w.pop.year,b:nf(b),gy:w.growth.year,g:w.growth.value.toFixed(2),br:w.birth_rate.value.toFixed(1),dr:w.death_rate.value.toFixed(1)})} ${src}</p>`+
- cards.map(([k1,k])=>`<article><span class="meta">${esc(t(k1))}</span><h2 id="pc-${k}" dir="ltr" style="font-size:1.8em;margin:4px 0;text-align:start">…</h2></article>`).join('')+
- `<article><span class="meta">${esc(t('mvPop',{y:pop.maldives.pop.year}))}</span><h2 style="font-size:1.6em;margin:4px 0">${nf(pop.maldives.pop.value)}</h2><p>${esc(t('mvGrowth',{g:pop.maldives.growth.value.toFixed(2),y:pop.maldives.growth.year}))} ${src}</p></article>`+
- `<article><span class="meta">${esc(t('other',{y:w.life_exp.year}))}</span><p>${esc(t('life'))} <strong>${w.life_exp.value.toFixed(1)} ${esc(t('years'))}</strong><br>${esc(t('urban'))} <strong>${w.urban_pct.value.toFixed(1)}%</strong></p><p class="meta">${src}</p></article>`+
- `<article><span class="meta">${esc(t('top',{y:pop.top[0].year}))}</span><ol>${pop.top.map(x=>`<li>${esc(x.name)}: <strong>${nf(x.pop)}</strong></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
- const tick=()=>{const T=Date.now(),P=b*Math.exp(g*(T-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(T-ys)/yr;
-  const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
-  for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=$('pc-'+k);if(e)e.textContent=nf(v)}};
- tick();timer=setInterval(tick,1000);if(window.renderDock)renderDock()}
+
+function renderPop(){
+  const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
+  const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
+  const cards=[["popLive","pop","🌍"],["popBirths","b","🌱"],["popDeaths","d","🕯️"],["popGrowth","n","📈"]];
+  const src=`${esc(t('source'))} <a href="${pop.source_url}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
+  const maxTop=Math.max(...pop.top.map(x=>x.pop));
+  $('list').innerHTML=
+    `<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(t('popTitle'))}</h2><span class="live-pill"><span class="live-dot"></span>Live Counter</span></div></div>`+
+    `<p class="meta">${t('popNote',{y:w.pop.year,b:nf(b),gy:w.growth.year,g:w.growth.value.toFixed(2),br:w.birth_rate.value.toFixed(1),dr:w.death_rate.value.toFixed(1)})} ${src}</p>`+
+    cards.map(([k1,k,ic])=>`<article class="pop-stat-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">${ic}</span><span class="meta">${esc(t(k1))}</span></div><h2 id="pc-${k}" dir="ltr" style="margin:6px 0;text-align:start">…</h2></article>`).join('')+
+    `<article class="side-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">🇲🇻</span><span class="meta">${esc(t('mvPop',{y:pop.maldives.pop.year}))}</span></div><h2 style="font-size:1.85em;margin:6px 0;color:var(--teal)">${nf(pop.maldives.pop.value)}</h2><p>${esc(t('mvGrowth',{g:pop.maldives.growth.value.toFixed(2),y:pop.maldives.growth.year}))} ${src}</p><div class="gauge-row"><div class="gauge-box"><span class="gauge-val">${w.life_exp.value.toFixed(1)}</span><span class="meta">${esc(t('life'))} (${esc(t('years'))})</span></div><div class="gauge-box"><span class="gauge-val">${w.urban_pct.value.toFixed(1)}%</span><span class="meta">${esc(t('urban'))}</span></div></div></article>`+
+    `<article class="wide-card"><span class="meta">${esc(t('top',{y:pop.top[0].year}))}</span><ol class="country-bar-list">${pop.top.map((x,idx)=>`<li class="country-bar-item"><div class="country-bar-top"><span><strong>#${idx+1} ${esc(x.name)}</strong></span><strong dir="ltr">${nf(x.pop)}</strong></div><div class="country-bar-track"><div class="country-bar-fill" style="--w:${Math.max(8,Math.round(x.pop/maxTop*100))}%"></div></div></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
+  const tick=()=>{
+    const T=Date.now(),P=b*Math.exp(g*(T-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(T-ys)/yr;
+    const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
+    for(const[k,v]of[["pop",P],["b",B],["d",D],["n",P-Ps]]){const e=$('pc-'+k);if(e)e.textContent=nf(v)}
+  };
+  tick();timer=setInterval(tick,1000);
+  attachCardInteractions();
+  if(window.renderDock)renderDock();
+}
+
+data=FALLBACK_NEWS;
 applyAll();
 fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
-fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{data=d;applyAll()})
-.catch(()=>$('list').innerHTML=`<p>${esc(t('loadFail'))}</p>`);
+fetch('data/news.json?'+Date.now()).then(r=>r.json()).then(d=>{if(d&&Array.isArray(d.items)&&d.items.length){data=d;applyAll()}}).catch(()=>{});
 </script><script src="dock.js"></script></body></html>
