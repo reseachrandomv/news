@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>try{if(localStorage.theme==="light")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="i18n.js"></script>
-<title>Raajjé Digest – About</title><meta name="theme-color" id="themeColor" content="#001018">
+<script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme==="light")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><script src="i18n.js"></script>
+<title>Raajjé Digest – About</title><meta name="theme-color" id="themeColor" content="#0d1b26">
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
@@ -10,13 +10,13 @@
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/orbitron-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#001018}html[data-theme=light]{background:#eaf8fb}</style>
+<style>html{background:#0d1b26}html[data-theme=light]{background:#e6edf2}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="about">
 <div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
 <div class="top"><button type="button" id="lg"></button><button type="button" id="go2" data-t="skip"></button></div>
 <main>
   <div class="about-hero-card">
-    <img class="logo" src="logo-mark.svg" width="96" height="96" alt="">
+    <div class="core about-core" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><img class="logo" src="logo-mark.svg" width="56" height="56" alt=""></div>
     <h1 class="about-title" data-t="site"></h1>
     <p class="made" data-t="madeBy"></p>
     <p class="intro" data-t="intro"></p>

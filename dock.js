@@ -47,7 +47,7 @@
     });
     const dark = document.documentElement.dataset.theme !== "light";
     const tc = document.getElementById("themeColor");
-    if (tc) tc.setAttribute("content", dark ? "#001018" : "#eaf8fb");
+    if (tc) tc.setAttribute("content", dark ? "#0d1b26" : "#e6edf2");
     themeBtn.querySelector(".dock-lb").textContent = dark ? t("light") : t("dark");
     themeBtn.setAttribute("aria-label", dark ? t("toLight") : t("toDark"));
     sun.style.display = dark ? "block" : "none";

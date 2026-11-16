@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme==="light")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Raajjé Digest – Made by Fathimath Malaak Jaufar</title>
 <script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="i18n.js"></script>
-<meta name="theme-color" id="themeColor" content="#001018">
+<meta name="theme-color" id="themeColor" content="#0d1b26">
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/orbitron-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#001018}html[data-theme=light]{background:#eaf8fb}</style>
+<style>html{background:#0d1b26}html[data-theme=light]{background:#e6edf2}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
 <div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
 <header><div class="w">
@@ -97,7 +97,7 @@ const tm=$('tm');
 function applyTheme(x){
   if(x=='light')document.documentElement.dataset.theme='light';
   else delete document.documentElement.dataset.theme;
-  const tc=document.getElementById('themeColor');if(tc)tc.setAttribute('content',x=='light'?'#eaf8fb':'#001018');
+  const tc=document.getElementById('themeColor');if(tc)tc.setAttribute('content',x=='light'?'#e6edf2':'#0d1b26');
   tm.textContent=x=='light'?t('dark'):t('light');
   tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));
   if(window.renderDock)renderDock();
