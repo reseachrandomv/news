@@ -1555,7 +1555,7 @@ html[data-intro=entering] .dawn-panel{
   transform:translateY(18px);
 }
 html[data-intro=entering] .dawn-panel-in{
-  animation:dawnPanelIn .62s var(--spring) both;
+  animation:dawnPanelIn .82s cubic-bezier(.22,1.12,.36,1) both;
   animation-delay:var(--dawn-delay,0ms);
 }
 @keyframes dawnPanelIn{

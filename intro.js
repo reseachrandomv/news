@@ -1,16 +1,16 @@
 /* Dawnline opening mark — CSS + WAAPI only. Off the critical path (deferred).
-   Timing (1.45s): bar 0–280ms, sun 80–720ms, word 400–960ms,
-   i-dot 820–1080ms, splash dissolve + panel stagger 1120–1500ms. */
+   Timing (2.50s): bar 0–360ms, sun+glow 80–1180ms, word 680–1560ms,
+   i-dot 1320–1620ms, 300ms hold, dissolve + 70ms panel stagger 1920–2500ms. */
 (function () {
   const KEY = "dawnlineIntro";
-  const TOTAL = 1500;
-  const DISSOLVE_AT = 1120;
-  const DISSOLVE = 380;
-  const STAGGER = 50;
+  const TOTAL = 2500;
+  const DISSOLVE_AT = 1920;
+  const DISSOLVE = 580;
+  const STAGGER = 70;
   const REDUCE = "(prefers-reduced-motion: reduce)";
   const EASE = "cubic-bezier(.22,.8,.28,1)";
-  const SPRING = "cubic-bezier(.22,1.45,.36,1)";
-  const SPRING_SOFT = "cubic-bezier(.34,1.28,.64,1)";
+  const SPRING = "cubic-bezier(.18,1.18,.32,1)";
+  const SPRING_SOFT = "cubic-bezier(.22,1.12,.36,1)";
   const PANEL_SEL = [
     "header",
     ".countries-shell",
@@ -58,30 +58,30 @@
   play(bar, [
     { transform: "scaleX(0)", opacity: 0.35 },
     { transform: "scaleX(1)", opacity: 1 }
-  ], { duration: 280, easing: EASE, fill: "forwards" });
+  ], { duration: 360, easing: EASE, fill: "forwards" });
 
   play(sun, [
     { transform: "translateY(22px) scale(.9)", opacity: 0.15 },
-    { transform: "translateY(-2px) scale(1.04)", opacity: 1, offset: 0.72 },
+    { transform: "translateY(-2px) scale(1.03)", opacity: 1, offset: 0.78 },
     { transform: "translateY(0) scale(1)", opacity: 1 }
-  ], { duration: 640, delay: 80, easing: SPRING, fill: "forwards" });
+  ], { duration: 1100, delay: 80, easing: SPRING, fill: "forwards" });
 
   play(glow, [
     { opacity: 0, transform: "scale(.55)" },
-    { opacity: 0.9, transform: "scale(1.45)", offset: 0.48 },
+    { opacity: 0.9, transform: "scale(1.4)", offset: 0.52 },
     { opacity: 0.55, transform: "scale(1)" }
-  ], { duration: 700, delay: 180, easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" });
+  ], { duration: 1100, delay: 160, easing: "cubic-bezier(.16,1.08,.3,1)", fill: "forwards" });
 
   play(word, [
     { opacity: 0, transform: "translateY(14px)", letterSpacing: "0.16em" },
     { opacity: 1, transform: "translateY(0)", letterSpacing: "0.015em" }
-  ], { duration: 560, delay: 400, easing: SPRING_SOFT, fill: "forwards" });
+  ], { duration: 880, delay: 680, easing: SPRING_SOFT, fill: "forwards" });
 
   play(dot, [
     { opacity: 0, transform: "translate(-50%,0) scale(0)" },
-    { opacity: 1, transform: "translate(-50%,0) scale(1.2)", offset: 0.6 },
+    { opacity: 1, transform: "translate(-50%,0) scale(1.18)", offset: 0.62 },
     { opacity: 1, transform: "translate(-50%,0) scale(1)" }
-  ], { duration: 260, delay: 820, easing: SPRING, fill: "forwards" });
+  ], { duration: 300, delay: 1320, easing: SPRING, fill: "forwards" });
 
   const dissolveTimer = setTimeout(dissolve, DISSOLVE_AT);
   const failsafe = setTimeout(function () { finish(true); }, TOTAL + 800);
@@ -112,11 +112,11 @@
     play(overlay, [
       { opacity: 1, filter: "blur(0px)" },
       { opacity: 0, filter: "blur(18px)" }
-    ], { duration: DISSOLVE, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" });
+    ], { duration: DISSOLVE, easing: "cubic-bezier(.45,.05,.2,1)", fill: "forwards" });
     play(lockup, [
       { opacity: 1, transform: "scale(1)" },
       { opacity: 0, transform: "scale(1.04)" }
-    ], { duration: DISSOLVE, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" });
+    ], { duration: DISSOLVE, easing: "cubic-bezier(.45,.05,.2,1)", fill: "forwards" });
     enterPanels(STAGGER);
     setTimeout(function () { finish(false); }, DISSOLVE + 20);
   }
