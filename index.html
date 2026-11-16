@@ -1,7 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme!="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme==="light")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Raajjé Digest – Made by Fathimath Malaak Jaufar</title>
 <script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="i18n.js"></script>
-<meta name="theme-color" id="themeColor" content="#c5c1b4">
+<meta name="theme-color" id="themeColor" content="#001018">
 <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png">
@@ -9,17 +9,19 @@
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#050a12}html[data-theme=light]{background:#c5c1b4}</style>
+<link rel="preload" href="fonts/orbitron-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#001018}html[data-theme=light]{background:#eaf8fb}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
 <div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
 <header><div class="w">
   <div class="brand">
-    <div class="brand-logo"><img src="logo-mark.svg" width="58" height="58" alt=""></div>
+    <div class="core" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><img src="logo-mark.svg" width="36" height="36" alt=""></div>
     <div class="brand-meta">
       <div class="title-row">
         <h1 data-t="site">Raajjé Digest</h1>
-        <span class="live-pill"><span class="live-dot"></span><span data-t="livePulse">Auto-updates every 30m</span></span>
+        <span class="live-pill"><span class="live-dot"></span><span data-t="statusOnline">ALL SYSTEMS ONLINE</span></span>
       </div>
+      <div class="status-line"><span data-t="livePulse">Auto-updates every 30m</span></div>
       <div class="sub-row">
         <span class="sub" data-t="madeBy"></span>
         <span class="sub sub-sep">·</span>
@@ -41,12 +43,30 @@
     <button type="button" id="tm"></button>
   </div>
 </div></header>
-<nav id="countries"></nav>
+<div class="hud-shell">
+<aside class="hud-col hud-left">
+  <div class="hud-kicker" data-t="chooseTab"></div>
+  <nav id="countries"></nav>
+  <div id="hud-filters"></div>
+</aside>
+<div class="hud-main">
+<main id="list" aria-live="polite"><p class="vh" data-t="loading"></p><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article></main>
+</div>
+<aside class="hud-col hud-right">
 <div class="ticker-wrap" id="tickerBar" aria-label="Latest headlines">
   <span class="ticker-badge"><span class="live-dot"></span><span data-t="breaking">Latest Pulse</span></span>
   <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
 </div>
-<main id="list" aria-live="polite"><p class="vh" data-t="loading"></p><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article><article class="sk" aria-hidden="true"><i class="im"></i><i class="s"></i><i class="l"></i><i class="m"></i></article></main>
+<section class="hud-readout" id="hudReadout">
+  <div class="hud-kicker" data-t="popLive"></div>
+  <div class="hud-num" id="hudPop" dir="ltr">…</div>
+  <div class="hud-split">
+    <div><span class="hud-kicker" data-t="popBirths"></span><b id="hudBirth" dir="ltr">…</b></div>
+    <div><span class="hud-kicker" data-t="popDeaths"></span><b id="hudDeath" dir="ltr">…</b></div>
+  </div>
+</section>
+</aside>
+</div>
 <footer><strong data-t="madeBy"></strong><br><span data-t="contact"></span> WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a><br><span data-t="srcNote"></span> <span id="upd"></span></footer>
 <script>
 const $=id=>document.getElementById(id);
@@ -77,12 +97,12 @@ const tm=$('tm');
 function applyTheme(x){
   if(x=='light')document.documentElement.dataset.theme='light';
   else delete document.documentElement.dataset.theme;
-  const tc=document.getElementById('themeColor');if(tc)tc.setAttribute('content',x=='light'?'#c5c1b4':'#050a12');
+  const tc=document.getElementById('themeColor');if(tc)tc.setAttribute('content',x=='light'?'#eaf8fb':'#001018');
   tm.textContent=x=='light'?t('dark'):t('light');
   tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));
   if(window.renderDock)renderDock();
 }
-let theme=safeGet('theme','light');
+let theme=safeGet('theme','dark');
 tm.onclick=()=>{theme=theme=='light'?'dark':'light';safeSet('theme',theme);applyTheme(theme)};
 const ORDER=["Maldives","Courses","Tech","Science","Population","World","UK","USA","India","Sri Lanka","Pakistan","UAE","Australia"];
 let pop=null,timer=null;
@@ -275,6 +295,8 @@ function render(){
     prevBtn.onclick=()=>trow.scrollBy({left:LANG=='dv'?320:-320,behavior:'smooth'});
     nextBtn.onclick=()=>trow.scrollBy({left:LANG=='dv'?-320:320,behavior:'smooth'});
   }
+  const slot=$('hud-filters');
+  if(slot){slot.replaceChildren();const f=$('list').querySelector('.filt');if(f)slot.appendChild(f)}
   if(window.renderDock)renderDock();
 }
 
@@ -332,6 +354,7 @@ function renderPop(){
   };
   tick();timer=setInterval(tick,1000);
   attachCardInteractions();
+  const slot=$('hud-filters'); if(slot) slot.replaceChildren();
   if(window.renderDock)renderDock();
 }
 
@@ -347,6 +370,16 @@ function loadNews(){
     data=d; applyAll();
   }).catch(()=>{data=null; showLoadFail()});
 }
-fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);if(data)render()}).catch(()=>{});
+function hudReadout(){
+  if(!pop||!pop.world||!pop.world.pop) return;
+  const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
+  const T=Date.now(),ys=Date.UTC(new Date().getUTCFullYear(),0,1),P=b*Math.exp(g*(T-y0)/yr),f=(T-ys)/yr;
+  const B=P*w.birth_rate.value/1000*f,D=P*w.death_rate.value/1000*f;
+  const set=(id,v)=>{const e=$(id);if(e)e.textContent=nf(v)};
+  set('hudPop',P);set('hudBirth',B);set('hudDeath',D);
+}
+hudReadout();
+setInterval(hudReadout,1000);
+fetch('data/population.json?'+Date.now()).then(r=>r.json()).then(p=>{pop=fixPop(p);hudReadout();if(data)render()}).catch(()=>{});
 loadNews();
 </script><script src="dock.js"></script></body></html>
