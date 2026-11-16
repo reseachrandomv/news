@@ -1,53 +1,128 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>try{if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="i18n.js"></script>
-<title>Raajjé Digest – About</title><link rel="icon" href="logo-mark.svg" type="image/svg+xml">
-<meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
+<script>try{if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="brand.js"></script><script src="i18n.js"></script>
+<title>Dawnline – About</title><link rel="icon" href="dawnline-favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Dawnline"><meta property="og:description" content="Dawnline — Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#09111f}html[data-theme=light]{background:#f3efe6}</style>
+<link rel="preload" href="fonts/plus-jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#07080D}html[data-theme=light]{background:#DDE4F2}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="about">
-<div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="ambient-bg" aria-hidden="true">
+  <div class="jelly jelly-1"></div>
+  <div class="jelly jelly-2"></div>
+  <div class="jelly jelly-3"></div>
+  <span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+  <span class="bubble b4"></span><span class="bubble b5"></span><span class="bubble b6"></span>
+  <span class="bubble b7"></span><span class="bubble b8"></span>
+  <div class="hero-orb ambient-orb" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="none">
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#9FC3FF"/>
+          <stop offset="45%" stop-color="#EEF0F6"/>
+          <stop offset="100%" stop-color="#6B8CFF"/>
+        </linearGradient>
+        <filter id="orbGlow" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="4" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="12" filter="url(#orbGlow)" opacity=".85" transform="rotate(-28 100 100)"/>
+      <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#ringGrad)" stroke-width="6" opacity=".45" transform="rotate(18 100 100)"/>
+      <circle cx="148" cy="78" r="16" fill="#9FC3FF" opacity=".35" filter="url(#orbGlow)"/>
+      <circle cx="58" cy="128" r="9" fill="#EEF0F6" opacity=".28"/>
+    </svg>
+  </div>
+</div>
 <div class="top"><button type="button" id="lg"></button><button type="button" id="go2" data-t="skip"></button></div>
 <main>
   <div class="about-hero-card">
-    <div class="logo" aria-hidden="true">
-      <svg viewBox="0 0 36 36" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
-        <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
-        <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
+    <div class="about-hero-stage">
+    <div class="logo">
+      <svg class="brand-mark" data-brand-logo viewBox="0 0 64 64" role="img" aria-label="Dawnline" fill="none" width="52" height="52">
+        <defs>
+          <linearGradient id="logo-rim" x1="12%" y1="0%" x2="88%" y2="100%">
+            <stop offset="0%" stop-color="var(--logo-rim-0)" stop-opacity=".95"/>
+            <stop offset="38%" stop-color="var(--logo-rim-1)" stop-opacity=".8"/>
+            <stop offset="100%" stop-color="var(--logo-rim-2)" stop-opacity=".35"/>
+          </linearGradient>
+          <linearGradient id="logo-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="var(--logo-bar-0)" stop-opacity=".95"/>
+            <stop offset="35%" stop-color="var(--logo-bar-1)" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="var(--logo-bar-2)" stop-opacity=".8"/>
+          </linearGradient>
+          <radialGradient id="logo-sun" cx="36%" cy="32%" r="70%">
+            <stop offset="0%" stop-color="var(--logo-sun-0)"/>
+            <stop offset="28%" stop-color="var(--logo-sun-1)"/>
+            <stop offset="62%" stop-color="var(--logo-sun-2)"/>
+            <stop offset="100%" stop-color="var(--logo-sun-3)"/>
+          </radialGradient>
+          <filter id="logo-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="32" cy="28.2" r="13.4" fill="var(--logo-glow)" opacity=".55" filter="url(#logo-glow)"/>
+        <circle cx="32" cy="28.2" r="12" fill="url(#logo-sun)"/>
+        <circle cx="32" cy="28.2" r="12" fill="none" stroke="url(#logo-rim)" stroke-width="1.2"/>
+        <ellipse cx="27.4" cy="23.4" rx="3.8" ry="2.3" fill="var(--logo-sheen)" opacity=".78"/>
+        <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="url(#logo-bar)"/>
+        <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="none" stroke="url(#logo-rim)" stroke-width=".9"/>
+        <rect x="13" y="43.9" width="16" height=".85" rx=".4" fill="var(--logo-sheen)" opacity=".55"/>
       </svg>
+    </div>
+    <div class="hero-orb about-orb" aria-hidden="true">
+      <svg viewBox="0 0 200 200" fill="none">
+        <defs>
+          <linearGradient id="aboutRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9FC3FF"/>
+            <stop offset="45%" stop-color="#EEF0F6"/>
+            <stop offset="100%" stop-color="#6B8CFF"/>
+          </linearGradient>
+          <filter id="aboutGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#aboutRing)" stroke-width="12" filter="url(#aboutGlow)" opacity=".9" transform="rotate(-28 100 100)"/>
+        <ellipse cx="100" cy="100" rx="72" ry="26" stroke="url(#aboutRing)" stroke-width="6" opacity=".4" transform="rotate(18 100 100)"/>
+        <circle cx="148" cy="78" r="16" fill="#9FC3FF" opacity=".4" filter="url(#aboutGlow)"/>
+        <circle cx="58" cy="128" r="9" fill="#EEF0F6" opacity=".3"/>
+      </svg>
+    </div>
     </div>
     <h1 class="about-title" data-t="site"></h1>
     <p class="made" data-t="madeBy"></p>
     <p class="intro" data-t="intro"></p>
     <p class="intro" data-t="why"></p>
-    <a class="cta" href="./" id="go" data-t="read"></a>
+    <a class="cta" href="./" id="go"><span data-t="read"></span></a>
   </div>
   <h2 data-t="feat"></h2>
   <div class="grid" id="grid"></div>
-  <div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
+  <div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" rel="noopener" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
 </main>
 <script>
-Object.assign(STR.en,{read:"Explore the news →",skip:"Go to the news",feat:"What you'll find inside",contactH:"Say hello",
+Object.assign(STR.en,{read:"Explore the news",skip:"Go to the news",feat:"What you'll find inside",contactH:"Say hello",
  intro:"Hi! I'm Fathimath Malaak Jaufar from the Maldives, and this is my news & live-data digest.",
- why:"I built Raajjé Digest to bring Maldives local headlines together with world news, tech, science, courses and live population estimates in one calm, soft-cornered space that updates automatically every 30 minutes.",
- features:[["⏱️","30-minute updates","New headlines are fetched automatically every 30 minutes."],["🏝️","120+ Maldives stories","Local news from many Maldivian outlets in one tab."],["🌍","World Population","A live estimate of the world's population, births and deaths."],["📱","Tech & Gadgets","Phones, electronics and the latest tech."],["🎓","Courses & Announcements","Courses, admissions and news from colleges and schools."],["🔬","Science & Discoveries","New discoveries, with UK breakthroughs first."],["🌗","Dark & light mode","Pick the look that's easiest on your eyes."],["🔠","Text size","Make the text smaller or larger."],["🗣️","English & ދިވެހި","Use the site in English or Dhivehi."]]});
-Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ ←",skip:"ޚަބަރަށް ދާ",feat:"މިތަނުން ލިބޭ ތަކެތި",contactH:"ގުޅުއްވާ",
+ why:"I built "+((window.BRAND&&BRAND.name)||"Dawnline")+" to bring Maldives local headlines together with world news, tech, science, courses and live population estimates in one calm, soft-cornered space that updates automatically every 30 minutes.",
+ features:[["clock","30-minute updates","New headlines are fetched automatically every 30 minutes."],["maldives","120+ Maldives stories","Local news from many Maldivian outlets in one tab."],["globe","World Population","A live estimate of the world's population, births and deaths."],["phone","Tech & Gadgets","Phones, electronics and the latest tech."],["cap","Courses & Announcements","Courses, admissions and news from colleges and schools."],["flask","Science & Discoveries","New discoveries, with UK breakthroughs first."],["contrast","Dark & light mode","Pick the look that's easiest on your eyes."],["type","Text size","Make the text smaller or larger."],["lang","English & ދިވެހި","Use the site in English or Dhivehi."]]});
+Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ",skip:"ޚަބަރަށް ދާ",feat:"މިތަނުން ލިބޭ ތަކެތި",contactH:"ގުޅުއްވާ",
  intro:"އައްސަލާމު ޢަލައިކުމް! އަހަރެންނަކީ ދިވެހިރާއްޖެއިން ފާތިމަތު މަލާކް ޖައުފަރު. މިއީ އަހަރެންގެ ޚަބަރު ސައިޓް.",
- why:"މި ސައިޓް ހެދީ ދިވެހިރާއްޖޭގެ ލޯކަލް ޚަބަރުތަކާއި ދުނިޔޭގެ ޚަބަރު، ޓެކް، ސައިންސް، ކޯސްތަކާއި އިޢުލާންތައް، ފަސޭހަ އަދި ހިލޭ އެއް ތަނަކުން ލިބޭނެ ގޮތަށް. ކޮންމެ 30 މިނިޓަކުން ޚަބަރުތައް އަމިއްލައަށް އާވޭ.",
- features:[["⏱️","30 މިނިޓުން އަޕްޑޭޓް","ކޮންމެ 30 މިނިޓަކުން އާ ސުރުޚީތައް އަމިއްލައަށް ލިބޭ."],["🏝️","120 އަށްވުރެ ގިނަ ދިވެހި ޚަބަރު","ގިނަ ދިވެހި ނޫސްތަކުގެ ޚަބަރު އެއް ޓެބަކުން."],["🌍","ދުނިޔޭގެ އާބާދީ","ދުނިޔޭގެ އާބާދީ، އުފަންވުމާއި މަރުވުމުގެ ލައިވް އަންދާޒާ."],["📱","ޓެކް އަދި ގެޖެޓްސް","ފޯނު، އިލެކްޓްރޯނިކްސް އަދި އާ ޓެކްނޮލޮޖީ."],["🎓","ކޯސްތަކާއި އިޢުލާންތައް","ކޯސް، އެޑްމިޝަން އަދި ކޮލެޖާއި ސްކޫލުތަކުގެ ޚަބަރު."],["🔬","ސައިންސާއި ހޯދުންތައް","އާ ހޯދުންތައް، ޔޫކޭގެ ކާމިޔާބީތައް ފުރަތަމަ."],["🌗","ޑާކް އަދި ލައިޓް މޯޑް","ލޮލަށް ފަސޭހަ ކުލަ ހޮވާ."],["🔠","އަކުރުގެ ސައިޒު","އަކުރު ކުޑަކޮށް ނުވަތަ ބޮޑުކޮށްލާ."],["🗣️","English އަދި ދިވެހި","ސައިޓް އިނގިރޭސިން ނުވަތަ ދިވެހިން ބޭނުންކުރޭ."]]});
+ why:((window.BRAND&&BRAND.nameDv)||"ޑޯންލައިން")+" ހެދީ ދިވެހިރާއްޖޭގެ ލޯކަލް ޚަބަރުތަކާއި ދުނިޔޭގެ ޚަބަރު، ޓެކް، ސައިންސް، ކޯސްތަކާއި އިޢުލާންތައް، ފަސޭހަ އަދި ހިލޭ އެއް ތަނަކުން ލިބޭނެ ގޮތަށް. ކޮންމެ 30 މިނިޓަކުން ޚަބަރުތައް އަމިއްލައަށް އާވޭ.",
+ features:[["clock","30 މިނިޓުން އަޕްޑޭޓް","ކޮންމެ 30 މިނިޓަކުން އާ ސުރުޚީތައް އަމިއްލައަށް ލިބޭ."],["maldives","120 އަށްވުރެ ގިނަ ދިވެހި ޚަބަރު","ގިނަ ދިވެހި ނޫސްތަކުގެ ޚަބަރު އެއް ޓެބަކުން."],["globe","ދުނިޔޭގެ އާބާދީ","ދުނިޔޭގެ އާބާދީ، އުފަންވުމާއި މަރުވުމުގެ ލައިވް އަންދާޒާ."],["phone","ޓެކް އަދި ގެޖެޓްސް","ފޯނު، އިލެކްޓްރޯނިކްސް އަދި އާ ޓެކްނޮލޮޖީ."],["cap","ކޯސްތަކާއި އިޢުލާންތައް","ކޯސް، އެޑްމިޝަން އަދި ކޮލެޖާއި ސްކޫލުތަކުގެ ޚަބަރު."],["flask","ސައިންސާއި ހޯދުންތައް","އާ ހޯދުންތައް، ޔޫކޭގެ ކާމިޔާބީތައް ފުރަތަމަ."],["contrast","ޑާކް އަދި ލައިޓް މޯޑް","ލޮލަށް ފަސޭހަ ކުލަ ހޮވާ."],["type","އަކުރުގެ ސައިޒު","އަކުރު ކުޑަކޮށް ނުވަތަ ބޮޑުކޮށްލާ."],["lang","English އަދި ދިވެހި","ސައިޓް އިނގިރޭސިން ނުވަތަ ދިވެހިން ބޭނުންކުރޭ."]]});
 const $=id=>document.getElementById(id),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-const TABLINK={"🏝️":"Maldives","🌍":"Population","📱":"Tech","🎓":"Courses","🔬":"Science"};
+const TABLINK={maldives:"Maldives",globe:"Population",phone:"Tech",cap:"Courses",flask:"Science"};
 function draw(){
   setLangAttrs();
   document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+  const go=document.getElementById('go');
+  if(go&&!go.querySelector('svg'))go.insertAdjacentHTML('beforeend',uiIcon('chevronRight','ui-icon-chevron'));
   document.title=t('site');
   const o=Object.keys(LANGS).find(l=>l!=LANG);
   $('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
   $('grid').innerHTML=(STR[LANG].features).map(([i,h,p],idx)=>{
     const tb=TABLINK[i];
-    const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;
+    const inner=`<span class="ic" aria-hidden="true">${uiIcon(i)}</span><b>${esc(h)}</b>${esc(p)}`;
     return tb?`<a class="card" style="animation-delay:${idx*45}ms" href="index.html?tab=${tb}" onclick="safeSet('introSeen','1');safeSet('country','${tb}')">${inner}</a>`:`<div class="card" style="animation-delay:${idx*45}ms">${inner}</div>`;
   }).join('');
   if(window.renderDock)renderDock();
@@ -57,4 +132,4 @@ const go=e=>{safeSet('introSeen','1');location.href='index.html'};
 $('go').onclick=e=>{e.preventDefault();go()};
 $('go2').onclick=go;
 draw();
-</script><script src="dock.js"></script></body></html>
+</script><script src="dock.js"></script><script src="glass.js"></script></body></html>

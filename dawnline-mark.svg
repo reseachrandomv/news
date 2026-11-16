@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Dawnline" fill="none">
+<defs>
+    <linearGradient id="dawnline-dark-rim" x1="12%" y1="0%" x2="88%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="38%" stop-color="#C9DCFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#6E95D8" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="dawnline-dark-glass" x1="18%" y1="0%" x2="82%" y2="100%">
+      <stop offset="0%" stop-color="#EEF0F6" stop-opacity="0.78"/>
+      <stop offset="42%" stop-color="#9FC3FF" stop-opacity="0.58"/>
+      <stop offset="100%" stop-color="#3A4A72" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="dawnline-dark-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3A3B4F" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#9FC3FF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#3A3B4F" stop-opacity="0.75"/>
+    </linearGradient>
+    <radialGradient id="dawnline-dark-sun" cx="36%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="28%" stop-color="#EEF0F6" stop-opacity="0.96"/>
+      <stop offset="62%" stop-color="#9FC3FF" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#6E95D8" stop-opacity="0.92"/>
+    </radialGradient>
+    <radialGradient id="dawnline-dark-lagoon" cx="50%" cy="48%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="40%" stop-color="#9FC3FF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#9FC3FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dawnline-dark-gem" cx="34%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#EEF0F6" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#9FC3FF" stop-opacity="0.82"/>
+      <stop offset="68%" stop-color="#3E527C" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#12121A" stop-opacity="0.98"/>
+    </radialGradient>
+    <linearGradient id="dawnline-dark-facet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.72"/>
+      <stop offset="55%" stop-color="#C9DCFF" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#9FC3FF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="dawnline-dark-glow-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="
+        0 0 0 0 0.62
+        0 0 0 0 0.76
+        0 0 0 0 1
+        0 0 0 0.7 0"/>
+    </filter>
+    <filter id="dawnline-dark-dot-glow" x="-140%" y="-140%" width="380%" height="380%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.05" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+<g transform="translate(0 0)" aria-hidden="true">
+    <circle cx="32" cy="28.2" r="13.4" fill="#9FC3FF" opacity="0.55" filter="url(#dawnline-dark-glow-soft)"/>
+    <circle cx="32" cy="28.2" r="12.0" fill="url(#dawnline-dark-sun)"/>
+    <circle cx="32" cy="28.2" r="12.0" fill="none" stroke="url(#dawnline-dark-rim)" stroke-width="1.2"/>
+    <ellipse cx="27.4" cy="23.4" rx="3.8" ry="2.3" fill="#FFFFFF" opacity="0.78"/>
+    <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="url(#dawnline-dark-bar)"/>
+    <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="none" stroke="url(#dawnline-dark-rim)" stroke-width="0.9"/>
+    <rect x="13" y="43.9" width="16" height="0.85" rx="0.4" fill="#FFFFFF" opacity="0.55"/>
+  </g>
+</svg>

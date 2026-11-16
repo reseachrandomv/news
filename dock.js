@@ -26,7 +26,9 @@
 
   function reserve() {
     const bottom = parseFloat(getComputedStyle(dock).bottom) || 12;
-    document.body.style.paddingBottom = (dock.offsetHeight + bottom + 18) + "px";
+    const pad = dock.offsetHeight + bottom + 72;
+    document.body.style.paddingBottom = pad + "px";
+    document.documentElement.style.scrollPaddingBottom = pad + "px";
   }
   function currentTab() {
     const pressed = document.querySelector("#countries button[aria-pressed='true']");
