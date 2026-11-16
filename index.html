@@ -1,11 +1,11 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><script>try{if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale);const q=new URLSearchParams(location.search).get("theme");if(q)localStorage.theme=q;if(localStorage.theme!="dark")document.documentElement.dataset.theme="light"}catch(e){document.documentElement.dataset.theme="light"}</script><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Raajjé Digest – Made by Fathimath Malaak Jaufar</title>
+<title>Dawnline – Made by Fathimath Malaak Jaufar</title>
 <script>try{if(!localStorage.introSeen&&!/[?&]tab=/.test(location.search))location.replace("about.html")}catch(e){}</script><script src="brand.js"></script><script src="i18n.js"></script>
-<link rel="icon" href="logo-mark.svg" type="image/svg+xml"><meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="dawnline-favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="favicon-192.png" sizes="192x192" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta property="og:title" content="Dawnline"><meta property="og:description" content="Dawnline — Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/plus-jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#07080D}html[data-theme=light]{background:#EEF0F6}</style>
+<style>html{background:#07080D}html[data-theme=light]{background:#DDE4F2}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="home">
 <div class="ambient-bg" aria-hidden="true">
   <div class="jelly jelly-1"></div>
@@ -36,12 +36,42 @@
 </div>
 <header><div class="w">
   <div class="brand">
-    <div class="brand-logo" aria-hidden="true">
-      <img data-brand-logo src="logo-mark.svg" alt="" width="36" height="36">
+    <div class="brand-logo">
+      <svg class="brand-mark" data-brand-logo viewBox="0 0 64 64" role="img" aria-label="Dawnline" fill="none" width="36" height="36">
+        <defs>
+          <linearGradient id="logo-rim" x1="12%" y1="0%" x2="88%" y2="100%">
+            <stop offset="0%" stop-color="var(--logo-rim-0)" stop-opacity=".95"/>
+            <stop offset="38%" stop-color="var(--logo-rim-1)" stop-opacity=".8"/>
+            <stop offset="100%" stop-color="var(--logo-rim-2)" stop-opacity=".35"/>
+          </linearGradient>
+          <linearGradient id="logo-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="var(--logo-bar-0)" stop-opacity=".95"/>
+            <stop offset="35%" stop-color="var(--logo-bar-1)" stop-opacity=".95"/>
+            <stop offset="100%" stop-color="var(--logo-bar-2)" stop-opacity=".8"/>
+          </linearGradient>
+          <radialGradient id="logo-sun" cx="36%" cy="32%" r="70%">
+            <stop offset="0%" stop-color="var(--logo-sun-0)"/>
+            <stop offset="28%" stop-color="var(--logo-sun-1)"/>
+            <stop offset="62%" stop-color="var(--logo-sun-2)"/>
+            <stop offset="100%" stop-color="var(--logo-sun-3)"/>
+          </radialGradient>
+          <filter id="logo-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.4" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <circle cx="32" cy="28.2" r="13.4" fill="var(--logo-glow)" opacity=".55" filter="url(#logo-glow)"/>
+        <circle cx="32" cy="28.2" r="12" fill="url(#logo-sun)"/>
+        <circle cx="32" cy="28.2" r="12" fill="none" stroke="url(#logo-rim)" stroke-width="1.2"/>
+        <ellipse cx="27.4" cy="23.4" rx="3.8" ry="2.3" fill="var(--logo-sheen)" opacity=".78"/>
+        <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="url(#logo-bar)"/>
+        <rect x="7" y="43.35" width="50" height="3.4" rx="1.7" fill="none" stroke="url(#logo-rim)" stroke-width=".9"/>
+        <rect x="13" y="43.9" width="16" height=".85" rx=".4" fill="var(--logo-sheen)" opacity=".55"/>
+      </svg>
     </div>
     <div class="brand-meta">
       <div class="title-row">
-        <h1 data-t="site">Raajjé Digest</h1>
+        <h1 data-t="site">Dawnline</h1>
         <span class="live-pill system-badge"><span class="live-dot"></span><span data-t="livePulse">Auto-updates every 30m</span></span>
       </div>
       <div class="sub-row">
@@ -53,9 +83,9 @@
   </div>
   <div class="tools">
     <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="search" id="qSearch" autocomplete="off">
-      <button type="button" id="qClear" class="search-clear" aria-label="Clear search">✕</button>
+      <button type="button" id="qClear" class="search-clear" aria-label="Clear search"><svg class="ui-icon ui-icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <button type="button" id="viewMode" aria-pressed="false"></button>
     <button type="button" id="savedBtn" aria-pressed="false"><span id="savedLb"></span><span class="badge-cnt" id="savedCnt">0</span></button>
@@ -65,7 +95,7 @@
     <button type="button" id="tm"></button>
   </div>
 </div></header>
-<nav id="countries"></nav>
+<div class="countries-shell" id="countriesShell"><nav id="countries"></nav></div>
 <div class="ticker-wrap" id="tickerBar" aria-label="Latest headlines">
   <span class="ticker-badge"><span class="live-dot"></span><span data-t="breaking">Latest Pulse</span></span>
   <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
@@ -127,6 +157,7 @@ function applyTheme(x){
   else delete document.documentElement.dataset.theme;
   tm.textContent=x=='light'?t('dark'):t('light');
   tm.setAttribute('aria-label',x=='light'?t('toDark'):t('toLight'));
+  if(window.applyBrand)applyBrand();
   if(window.renderDock)renderDock();
 }
 let theme=safeGet('theme','light');
@@ -262,7 +293,7 @@ function render(){
     const T=tr?i.title_dv:i.title,S=tr?(i.summary_dv||i.summary):i.summary;
     const hasImg=/^https:/.test(i.image||"");
     const extraCls=(k===''&&idx%5===0)?'bento-wide':(k||'');
-    return `<article class="${extraCls}">${hasImg?`<a class="thumb" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${k==='mini'?`<span class="rank-badge">0${idx+1}</span>`:''}<img src="${esc(safeHref(i.image))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row">${k==='hero'?`<span class="hero-tag">✦ ${esc(t('featuredStory'))}</span>`:''}<span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span><div class="row-end"><button type="button" class="save-btn" data-save="${esc(safeHref(i.link))}" aria-pressed="${isSaved}" aria-label="${esc(t('saveStory'))}">★</button></div></div>${tr?`<button type="button" class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}<div class="card-foot"><a class="read" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}</a></div></article>`;
+    return `<article class="${extraCls}">${hasImg?`<a class="thumb" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">${k==='mini'?`<span class="rank-badge">0${idx+1}</span>`:''}<img src="${esc(safeHref(i.image))}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.remove()"></a>`:""}<div class="row">${k==='hero'?`<span class="hero-tag">${uiIcon('sparkle')}${esc(t('featuredStory'))}</span>`:''}<span class="src" dir="auto">${esc(i.source)}</span><span class="meta">${esc(cat(i.category))} · ${ago(i.published)}</span><div class="row-end"><button type="button" class="save-btn" data-save="${esc(safeHref(i.link))}" aria-pressed="${isSaved}" aria-label="${esc(t('saveStory'))}">${uiIcon('star')}</button></div></div>${tr?`<button type="button" class="trp" data-o="${esc(i.title)}" data-os="${esc(i.summary||'')}" aria-label="${esc(t('showOrig'))}">${esc(t('translated'))} · ${esc(t('showOrig'))}</button>`:''}<h2 dir="auto"><a href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(T)}</a></h2>${S?`<p dir="auto">${esc(S)}</p>`:''}<div class="card-foot"><a class="read" href="${esc(safeHref(i.link))||"#"}" target="_blank" rel="noopener">${esc(t('readAt',{s:i.source}))}${uiIcon('chevronRight','ui-icon-chevron')}</a></div></article>`;
   };
   $('list').innerHTML=`<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(head)}</h2><span class="count-pill">${esc(t('storiesCount',{n:items.length}))}</span></div>${filt}</div>`+(items.length?layout(items,cardTpl):`<article class="wide-card"><p>${esc(onlySaved?t('savedEmpty'):t('empty'))}</p></article>`);
   reveal();
@@ -293,7 +324,7 @@ function layout(it,f){
   if(it.length<4||streamMode)return it.map((i,idx)=>f(i,'',idx)).join('');
   const dv=LANG=='dv';
   const top=it.slice(1,9),rest=it.slice(9);
-  return f(it[0],'hero',0)+`<section class="tops"><div class="tops-head"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="carousel-nav"><button type="button" id="cPrev" aria-label="Previous">‹</button><button type="button" id="cNext" aria-label="Next">›</button></div></div><div class="trow" id="trowEl">${top.map((i,idx)=>f(i,'mini',idx)).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map((i,idx)=>f(i,'',idx)).join(''):'');
+  return f(it[0],'hero',0)+`<section class="tops"><div class="tops-head"><h3>${dv?'މުހިންމު ޚަބަރުތައް':'Top stories'}</h3><div class="carousel-nav"><button type="button" id="cPrev" aria-label="Previous">${uiIcon('chevronLeft')}</button><button type="button" id="cNext" aria-label="Next">${uiIcon('chevronRight')}</button></div></div><div class="trow" id="trowEl">${top.map((i,idx)=>f(i,'mini',idx)).join('')}</div></section>`+(rest.length?`<h3 class="more">${dv?'އިތުރު ޚަބަރުތައް':'More stories'}</h3>`+rest.map((i,idx)=>f(i,'',idx)).join(''):'');
 }
 
 function reveal(){
@@ -327,14 +358,14 @@ const nf=n=>Math.round(n).toLocaleString('en-US');
 function renderPop(){
   const w=pop.world,b=w.pop.value,y0=Date.UTC(w.pop.year,6,1),yr=365.25*864e5,g=Math.log(1+w.growth.value/100);
   const now=new Date(),ys=Date.UTC(now.getUTCFullYear(),0,1);
-  const cards=[["popLive","pop","🌍"],["popBirths","b","🌱"],["popDeaths","d","🕯️"],["popGrowth","n","📈"]];
+  const cards=[["popLive","pop","globe"],["popBirths","b","sprout"],["popDeaths","d","sunset"],["popGrowth","n","trend"]];
   const src=`${esc(t('source'))} <a href="${esc(safeHref(pop.source_url))||"#"}" target="_blank" rel="noopener">${esc(pop.source)}</a>`;
   const maxTop=Math.max(...pop.top.map(x=>x.pop));
   $('list').innerHTML=
     `<div class="sec-bar"><div class="sec-title-wrap"><h2>${esc(t('popTitle'))}</h2><span class="live-pill"><span class="live-dot"></span>Live Counter</span></div></div>`+
     `<p class="meta">${t('popNote',{y:w.pop.year,b:nf(b),gy:w.growth.year,g:w.growth.value.toFixed(2),br:w.birth_rate.value.toFixed(1),dr:w.death_rate.value.toFixed(1)})} ${src}</p>`+
-    cards.map(([k1,k,ic])=>`<article class="pop-stat-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">${ic}</span><span class="meta">${esc(t(k1))}</span></div><h2 id="pc-${k}" dir="ltr" style="margin:6px 0;text-align:start">…</h2></article>`).join('')+
-    `<article class="side-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">🇲🇻</span><span class="meta">${esc(t('mvPop',{y:pop.maldives.pop.year}))}</span></div><h2 style="font-size:1.85em;margin:6px 0;color:var(--teal)">${nf(pop.maldives.pop.value)}</h2><p>${esc(t('mvGrowth',{g:pop.maldives.growth.value.toFixed(2),y:pop.maldives.growth.year}))} ${src}</p><div class="gauge-row"><div class="gauge-box"><span class="gauge-val">${w.life_exp.value.toFixed(1)}</span><span class="meta">${esc(t('life'))} (${esc(t('years'))})</span></div><div class="gauge-box"><span class="gauge-val">${w.urban_pct.value.toFixed(1)}%</span><span class="meta">${esc(t('urban'))}</span></div></div></article>`+
+    cards.map(([k1,k,ic])=>`<article class="pop-stat-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">${uiIcon(ic)}</span><span class="meta">${esc(t(k1))}</span></div><h2 id="pc-${k}" dir="ltr" style="margin:6px 0;text-align:start">…</h2></article>`).join('')+
+    `<article class="side-card"><div class="row"><span class="pop-stat-icon" aria-hidden="true">${uiIcon("maldives")}</span><span class="meta">${esc(t('mvPop',{y:pop.maldives.pop.year}))}</span></div><h2 style="font-size:1.85em;margin:6px 0;color:var(--teal)">${nf(pop.maldives.pop.value)}</h2><p>${esc(t('mvGrowth',{g:pop.maldives.growth.value.toFixed(2),y:pop.maldives.growth.year}))} ${src}</p><div class="gauge-row"><div class="gauge-box"><span class="gauge-val">${w.life_exp.value.toFixed(1)}</span><span class="meta">${esc(t('life'))} (${esc(t('years'))})</span></div><div class="gauge-box"><span class="gauge-val">${w.urban_pct.value.toFixed(1)}%</span><span class="meta">${esc(t('urban'))}</span></div></div></article>`+
     `<article class="wide-card"><span class="meta">${esc(t('top',{y:pop.top[0].year}))}</span><ol class="country-bar-list">${pop.top.map((x,idx)=>`<li class="country-bar-item"><div class="country-bar-top"><span><strong>#${idx+1} ${esc(x.name)}</strong></span><strong dir="ltr">${nf(x.pop)}</strong></div><div class="country-bar-track"><div class="country-bar-fill" style="--w:${Math.max(8,Math.round(x.pop/maxTop*100))}%"></div></div></li>`).join('')}</ol><p class="meta">${src}</p></article>`;
   const tick=()=>{
     const T=Date.now(),P=b*Math.exp(g*(T-y0)/yr),Ps=b*Math.exp(g*(ys-y0)/yr),f=(T-ys)/yr;

@@ -42,6 +42,23 @@
     }
   }
 
+  function updateCountriesFade() {
+    const nav = document.getElementById("countries");
+    const shell = document.getElementById("countriesShell") || (nav && nav.parentElement);
+    if (!nav || !shell || !shell.classList.contains("countries-shell")) return;
+    const buttons = nav.querySelectorAll("button");
+    if (!buttons.length) {
+      shell.classList.remove("fade-left", "fade-right");
+      return;
+    }
+    const nr = nav.getBoundingClientRect();
+    const first = buttons[0].getBoundingClientRect();
+    const last = buttons[buttons.length - 1].getBoundingClientRect();
+    const slop = 2;
+    shell.classList.toggle("fade-left", first.left < nr.left - slop);
+    shell.classList.toggle("fade-right", last.right > nr.right + slop);
+  }
+
   function syncGlassPills() {
     const nav = document.getElementById("countries");
     if (nav) {
@@ -49,6 +66,7 @@
       const active = nav.querySelector("button[aria-pressed='true']");
       placePill(nav, active);
     }
+    updateCountriesFade();
     const dock = document.getElementById("dock");
     if (dock) {
       dock.classList.add("has-tab-pill");
@@ -63,6 +81,7 @@
   }
 
   window.syncGlassPills = syncGlassPills;
+  window.updateCountriesFade = updateCountriesFade;
 
   function animatePanel(el) {
     if (!el || reduce()) return;
