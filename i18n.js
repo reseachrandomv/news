@@ -6,6 +6,8 @@ en:{site:"Raajjé Digest",madeBy:"Made by Fathimath Malaak Jaufar",light:"Light 
  chooseTab:"Choose a section",loading:"Loading headlines…",loadFail:"Could not load news. Please try again.",empty:"No stories here right now.",
  tabNews:"{c} news",readAt:"Read at {s} →",minAgo:"{n} min ago",hAgo:"{n} h ago",
  filter:"Show",fAll:"All",fDv:"Dhivehi news only",fEn:"English only",translated:"Translated",showOrig:"Show original",showDv:"Show Dhivehi",
+ searchPh:"Search headlines or sources…",clearSearch:"Clear search",bentoView:"Bento view",listView:"Compact stream",saved:"Saved",saveStory:"Save story",savedEmpty:"No saved stories yet. Tap the bookmark icon on any card to save it for later.",
+ livePulse:"Auto-updates every 30m",breaking:"Latest Pulse",storiesCount:"{n} stories",featuredStory:"Featured Lead",
  contact:"Contact:",email:"Email",srcNote:"Headlines and links come from each outlet's public RSS feed or headline page (Sun, Mihaaru, Avas, Edition, Raajje); full stories belong to the named source.",
  updated:"Updated {t}. Refreshes every 30 minutes.",
  popTitle:"World Population",popLive:"World population (live estimate)",popBirths:"Births this year (estimate)",popDeaths:"Deaths this year (estimate)",popGrowth:"Population growth this year (estimate)",
@@ -18,6 +20,8 @@ dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު 
  chooseTab:"ބައެއް ހޮވާ",loading:"ސުރުޚީތައް ލޯޑުވަނީ…",loadFail:"ޚަބަރުތައް ލޯޑެއް ނުވި. އަލުން މަސައްކަތްކޮށްލައްވާ.",empty:"މިވަގުތު މިބައިގައި ޚަބަރެއް ނެތް.",
  tabNews:"{c} ޚަބަރު",readAt:"{s} ގައި ކިޔާލާ ←",minAgo:"{n} މިނިޓު ކުރިން",hAgo:"{n} ގަޑިއިރު ކުރިން",
  filter:"ދައްކާ",fAll:"ހުރިހާ ޚަބަރެއް",fDv:"ދިވެހި ޚަބަރު އެކަނި",fEn:"އިނގިރޭސި އެކަނި",translated:"ތަރުޖަމާ",showOrig:"އަސްލު ބަލާ",showDv:"ދިވެހިން ބަލާ",
+ searchPh:"ސުރުޚީ ނުވަތަ ނޫސް ހޯދާ…",clearSearch:"ފޮހެލާ",bentoView:"ބެންޓޯ ގްރިޑް",listView:"ލިސްޓް ގޮތަށް",saved:"ރައްކާކުރި",saveStory:"ޚަބަރު ރައްކާކުރޭ",savedEmpty:"ރައްކާކޮށްފައިވާ ޚަބަރެއް ނެތް.",
+ livePulse:"ކޮންމެ 30 މިނިޓަކުން އާވޭ",breaking:"އެންމެ ފަހުގެ",storiesCount:"{n} ޚަބަރު",featuredStory:"ޚާއްޞަ ޚަބަރު",
  contact:"ގުޅުއްވުމަށް:",email:"އީމެއިލް",srcNote:"ސުރުޚީތަކާއި ލިންކުތައް ނަގަނީ ކޮންމެ ނޫހެއްގެ ޢާއްމު RSS ފީޑު ނުވަތަ ސުރުޚީގެ ޞަފްޙާއިން (ސަން، މިހާރު، އަވަސް، އެޑިޝަން، ރާއްޖެ). ފުރިހަމަ ޚަބަރުތައް ނިސްބަތްވަނީ އެ ނޫސްތަކަށް.",
  updated:"އަޕްޑޭޓްކުރީ {t}. ކޮންމެ 30 މިނިޓަކުން އާވޭ.",
  popTitle:"ދުނިޔޭގެ އާބާދީ",popLive:"ދުނިޔޭގެ އާބާދީ (ލައިވް އަންދާޒާ)",popBirths:"މިއަހަރު އުފަންވި ކުދިން (އަންދާޒާ)",popDeaths:"މިއަހަރު މަރުވި މީހުން (އަންދާޒާ)",popGrowth:"މިއަހަރު އާބާދީ އިތުރުވި މިންވަރު (އަންދާޒާ)",
@@ -26,7 +30,9 @@ dv:{site:"ރާއްޖެ ޑައިޖެސްޓް",madeBy:"ހެދީ: ފާތިމަތު 
  tabs:{Maldives:"ދިވެހިރާއްޖެ",Courses:"ކޯސްތަކާއި އިޢުލާންތައް",Tech:"ޓެކް އަދި ގެޖެޓްސް",Science:"ސައިންސާއި ހޯދުންތައް",Population:"ދުނިޔޭގެ އާބާދީ",World:"ދުނިޔެ",UK:"ޔޫކޭ",USA:"އެމެރިކާ",India:"އިންޑިއާ","Sri Lanka":"ސްރީ ލަންކާ",Pakistan:"ޕާކިސްތާން",UAE:"ޔޫއޭއީ",Australia:"އޮސްޓްރޭލިއާ"},
  cats:{"Top stories":"މުހިއްމު ޚަބަރު",World:"ދުނިޔެ","Science & Tech":"ސައިންސް އަދި ޓެކް",Gadgets:"ގެޖެޓްސް",Phones:"ފޯނު",Tech:"ޓެކް",Announcements:"އިޢުލާން","Courses & admissions":"ކޯސް އަދި އެޑްމިޝަން",Education:"ތަޢުލީމު",UK:"ޔޫކޭ",Discoveries:"ހޯދުންތައް",Space:"ޖައްވު",Business:"ވިޔަފާރި"}}
 };
-let LANG=LANGS[localStorage.lang]?localStorage.lang:"en";
+let safeGet=(k,fb)=>{try{return localStorage.getItem(k)||fb}catch(e){return fb}};
+let safeSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+let LANG=LANGS[safeGet("lang","en")]?safeGet("lang","en"):"en";
 function t(k,v){let s=(STR[LANG][k]??STR.en[k]??k);for(const x in v||{})s=s.split("{"+x+"}").join(v[x]);return s}
 function setLangAttrs(){const h=document.documentElement;h.lang=LANG;h.dir=LANGS[LANG].dir}
 setLangAttrs();

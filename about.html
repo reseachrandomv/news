@@ -1,32 +1,60 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<script>if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)</script><script src="i18n.js"></script>
-<title>Raajjé Digest</title><link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+<script>try{if(localStorage.theme!="dark")document.documentElement.dataset.theme="light";if(+localStorage.fontScale)document.documentElement.style.setProperty("--scale",localStorage.fontScale)}catch(e){document.documentElement.dataset.theme="light"}</script><script src="i18n.js"></script>
+<title>Raajjé Digest – About</title><link rel="icon" href="logo-mark.svg" type="image/svg+xml">
 <meta property="og:title" content="Raajjé Digest"><meta property="og:description" content="Maldives local news plus world, tech, science, courses and announcements, updated every 30 minutes. Made by Fathimath Malaak Jaufar."><meta property="og:image" content="https://reseachrandomv.github.io/raajje-digest/og.png"><meta name="twitter:card" content="summary_large_image">
 
 <link rel="preload" href="fonts/Faruma.woff2" as="font" type="font/woff2" crossorigin>
-<style>html{background:#0f1726}html[data-theme=light]{background:#f6f1e6}</style>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>html{background:#09111f}html[data-theme=light]{background:#f3efe6}</style>
 <link rel="stylesheet" href="styles.css"></head><body class="about">
-<div class="top"><button id="lg"></button><button id="go2" data-t="skip"></button></div>
-<main><img class="logo" src="logo-mark.svg" alt="Raajjé Digest logo"><h1 class="about-title" data-t="site"></h1><p class="made" data-t="madeBy"></p>
-<p class="intro" data-t="intro"></p><p class="intro" data-t="why"></p>
-<a class="cta" href="./" id="go" data-t="read"></a>
-<h2 data-t="feat"></h2><div class="grid" id="grid"></div>
-<div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
+<div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="top"><button type="button" id="lg"></button><button type="button" id="go2" data-t="skip"></button></div>
+<main>
+  <div class="about-hero-card">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 36 36" width="52" height="52" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="11.5" r="4.2" fill="currentColor" stroke="none"/>
+        <path d="M4 22.5c3.2-3 5.2-3 8.4 0s5.2 3 8.4 0 5.2-3 8.4 0"/>
+        <path d="M6 28.5c3-2.4 4.8-2.4 7.8 0s4.8 2.4 7.8 0 4.8-2.4 7.8 0" opacity=".75"/>
+      </svg>
+    </div>
+    <h1 class="about-title" data-t="site"></h1>
+    <p class="made" data-t="madeBy"></p>
+    <p class="intro" data-t="intro"></p>
+    <p class="intro" data-t="why"></p>
+    <a class="cta" href="./" id="go" data-t="read"></a>
+  </div>
+  <h2 data-t="feat"></h2>
+  <div class="grid" id="grid"></div>
+  <div class="contact"><strong data-t="contactH"></strong><br>WhatsApp <a href="https://wa.me/9609424572" dir="ltr">+960 9424572</a> · <span data-t="email"></span> <a href="mailto:malaak.office@gmail.com">malaak.office@gmail.com</a></div>
 </main>
 <script>
-Object.assign(STR.en,{read:"Read the news",skip:"Go to the news",feat:"What you'll find",contactH:"Say hello",
- intro:"Hi! I'm Fathimath Malaak Jaufar from the Maldives, and this is my news site.",
- why:"I made it to bring Maldives local news together with world news, tech, science, courses and announcements, all in one easy, free place that updates itself every 30 minutes.",
+Object.assign(STR.en,{read:"Explore the news →",skip:"Go to the news",feat:"What you'll find inside",contactH:"Say hello",
+ intro:"Hi! I'm Fathimath Malaak Jaufar from the Maldives, and this is my news & live-data digest.",
+ why:"I built Raajjé Digest to bring Maldives local headlines together with world news, tech, science, courses and live population estimates in one calm, soft-cornered space that updates automatically every 30 minutes.",
  features:[["⏱️","30-minute updates","New headlines are fetched automatically every 30 minutes."],["🏝️","120+ Maldives stories","Local news from many Maldivian outlets in one tab."],["🌍","World Population","A live estimate of the world's population, births and deaths."],["📱","Tech & Gadgets","Phones, electronics and the latest tech."],["🎓","Courses & Announcements","Courses, admissions and news from colleges and schools."],["🔬","Science & Discoveries","New discoveries, with UK breakthroughs first."],["🌗","Dark & light mode","Pick the look that's easiest on your eyes."],["🔠","Text size","Make the text smaller or larger."],["🗣️","English & ދިވެހި","Use the site in English or Dhivehi."]]});
-Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ",skip:"ޚަބަރަށް ދާ",feat:"މިތަނުން ލިބޭ ތަކެތި",contactH:"ގުޅުއްވާ",
+Object.assign(STR.dv,{read:"ޚަބަރު ކިޔާލާ ←",skip:"ޚަބަރަށް ދާ",feat:"މިތަނުން ލިބޭ ތަކެތި",contactH:"ގުޅުއްވާ",
  intro:"އައްސަލާމު ޢަލައިކުމް! އަހަރެންނަކީ ދިވެހިރާއްޖެއިން ފާތިމަތު މަލާކް ޖައުފަރު. މިއީ އަހަރެންގެ ޚަބަރު ސައިޓް.",
  why:"މި ސައިޓް ހެދީ ދިވެހިރާއްޖޭގެ ލޯކަލް ޚަބަރުތަކާއި ދުނިޔޭގެ ޚަބަރު، ޓެކް، ސައިންސް، ކޯސްތަކާއި އިޢުލާންތައް، ފަސޭހަ އަދި ހިލޭ އެއް ތަނަކުން ލިބޭނެ ގޮތަށް. ކޮންމެ 30 މިނިޓަކުން ޚަބަރުތައް އަމިއްލައަށް އާވޭ.",
  features:[["⏱️","30 މިނިޓުން އަޕްޑޭޓް","ކޮންމެ 30 މިނިޓަކުން އާ ސުރުޚީތައް އަމިއްލައަށް ލިބޭ."],["🏝️","120 އަށްވުރެ ގިނަ ދިވެހި ޚަބަރު","ގިނަ ދިވެހި ނޫސްތަކުގެ ޚަބަރު އެއް ޓެބަކުން."],["🌍","ދުނިޔޭގެ އާބާދީ","ދުނިޔޭގެ އާބާދީ، އުފަންވުމާއި މަރުވުމުގެ ލައިވް އަންދާޒާ."],["📱","ޓެކް އަދި ގެޖެޓްސް","ފޯނު، އިލެކްޓްރޯނިކްސް އަދި އާ ޓެކްނޮލޮޖީ."],["🎓","ކޯސްތަކާއި އިޢުލާންތައް","ކޯސް، އެޑްމިޝަން އަދި ކޮލެޖާއި ސްކޫލުތަކުގެ ޚަބަރު."],["🔬","ސައިންސާއި ހޯދުންތައް","އާ ހޯދުންތައް، ޔޫކޭގެ ކާމިޔާބީތައް ފުރަތަމަ."],["🌗","ޑާކް އަދި ލައިޓް މޯޑް","ލޮލަށް ފަސޭހަ ކުލަ ހޮވާ."],["🔠","އަކުރުގެ ސައިޒު","އަކުރު ކުޑަކޮށް ނުވަތަ ބޮޑުކޮށްލާ."],["🗣️","English އަދި ދިވެހި","ސައިޓް އިނގިރޭސިން ނުވަތަ ދިވެހިން ބޭނުންކުރޭ."]]});
 const $=id=>document.getElementById(id),esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const TABLINK={"🏝️":"Maldives","🌍":"Population","📱":"Tech","🎓":"Courses","🔬":"Science"};
-function draw(){setLangAttrs();document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));document.title=t('site');
- const o=Object.keys(LANGS).find(l=>l!=LANG);$('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
- $('grid').innerHTML=(STR[LANG].features).map(([i,h,p])=>{const tb=TABLINK[i];const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;return tb?`<a class="card" style="color:inherit;text-decoration:none;display:block" href="./?tab=${tb}" onclick="localStorage.introSeen='1';localStorage.country='${tb}'">${inner}</a>`:`<div class="card">${inner}</div>`}).join('');if(window.renderDock)renderDock()}
-$('lg').onclick=()=>{LANG=$('lg').lang;localStorage.lang=LANG;draw()};
-const go=e=>{localStorage.introSeen="1";location.href="./"};$('go').onclick=e=>{e.preventDefault();go()};$('go2').onclick=go;draw();
+function draw(){
+  setLangAttrs();
+  document.querySelectorAll('[data-t]').forEach(e=>e.textContent=t(e.dataset.t));
+  document.title=t('site');
+  const o=Object.keys(LANGS).find(l=>l!=LANG);
+  $('lg').textContent=LANGS[o].label;$('lg').lang=o;$('lg').setAttribute('aria-label',t('langAria'));
+  $('grid').innerHTML=(STR[LANG].features).map(([i,h,p],idx)=>{
+    const tb=TABLINK[i];
+    const inner=`<span class="ic" aria-hidden="true">${i}</span><b>${esc(h)}</b>${esc(p)}`;
+    return tb?`<a class="card" style="animation-delay:${idx*45}ms" href="index.html?tab=${tb}" onclick="safeSet('introSeen','1');safeSet('country','${tb}')">${inner}</a>`:`<div class="card" style="animation-delay:${idx*45}ms">${inner}</div>`;
+  }).join('');
+  if(window.renderDock)renderDock();
+}
+$('lg').onclick=()=>{LANG=$('lg').lang;safeSet('lang',LANG);draw()};
+const go=e=>{safeSet('introSeen','1');location.href='index.html'};
+$('go').onclick=e=>{e.preventDefault();go()};
+$('go2').onclick=go;
+draw();
 </script><script src="dock.js"></script></body></html>
