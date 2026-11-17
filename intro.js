@@ -29,6 +29,8 @@
   const force = /(?:\?|&)intro=1(?:&|$)/.test(location.search);
   const reduce = matchMedia(REDUCE).matches;
 
+  try { localStorage.setItem("introSeen", "1"); } catch (e) {}
+
   if (reduce && !force) {
     clearIntro();
     return;
