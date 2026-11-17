@@ -1433,3 +1433,149 @@ html[lang=dv] .dock-lb{line-height:1.45}
   .tab-pill{transition:none !important}
   .panel-in{animation:none !important;opacity:1;transform:none}
 }
+
+
+/* Dawnline opening intro — shown only when JS sets data-intro on <html>.
+   No-JS never hides page content. Overlay CSS is inert without that hook. */
+html[data-intro=pending] body,
+html[data-intro=playing] body{overflow:hidden}
+.dawn-intro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  padding:max(24px, env(safe-area-inset-top)) 28px max(24px, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(720px 480px at 50% 42%, rgba(28,28,40,.9) 0%, transparent 62%),
+    radial-gradient(900px 600px at 18% -10%, rgba(159,195,255,.14), transparent 58%),
+    radial-gradient(800px 520px at 88% 110%, rgba(107,140,255,.12), transparent 55%),
+    #07080D;
+  color:var(--ink);
+  pointer-events:auto;
+  -webkit-user-select:none;
+  user-select:none;
+  will-change:opacity,filter;
+}
+html[data-theme=light] .dawn-intro{
+  background:
+    radial-gradient(720px 480px at 50% 42%, rgba(255,255,255,.42) 0%, transparent 62%),
+    radial-gradient(900px 600px at 18% -10%, rgba(110,155,234,.26), transparent 58%),
+    radial-gradient(800px 520px at 88% 110%, rgba(79,127,217,.16), transparent 55%),
+    #DDE4F2;
+}
+.dawn-intro-bg{
+  position:absolute;
+  inset:-55%;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 48%, var(--pop-glow), transparent 68%);
+  opacity:.9;
+}
+.dawn-intro-lockup{
+  isolation:isolate;
+}
+.dawn-intro-lockup::before{
+  content:"";
+  position:absolute;
+  inset:-70% -40%;
+  background:radial-gradient(ellipse at 50% 48%, var(--pop-glow), transparent 66%);
+  pointer-events:none;
+  z-index:-1;
+}
+.dawn-intro-lockup{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px, 3.2vw, 28px);
+  will-change:transform,opacity;
+}
+.dawn-intro-mark{
+  flex:0 0 auto;
+  width:clamp(88px, 16vw, 128px);
+  height:clamp(88px, 16vw, 128px);
+  filter:drop-shadow(0 12px 28px rgba(0,0,0,.35));
+}
+html[data-theme=light] .dawn-intro-mark{
+  filter:drop-shadow(0 10px 20px rgba(28,28,40,.12));
+}
+.dawn-intro-svg{display:block;width:100%;height:100%}
+.dawn-intro-bar,
+.dawn-intro-sun,
+.dawn-intro-glow{
+  transform-box:fill-box;
+  transform-origin:50% 50%;
+}
+.dawn-intro-bar{transform:scaleX(0);opacity:.35}
+.dawn-intro-sun{transform:translateY(22px) scale(.9);opacity:.15}
+.dawn-intro-glow{opacity:0;transform:scale(.55)}
+.dawn-intro-word{
+  margin:0;
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  font-weight:680;
+  font-size:clamp(2.15rem, 6.2vw, 4.25rem);
+  line-height:1;
+  letter-spacing:.16em;
+  color:var(--ink);
+  opacity:0;
+  transform:translateY(14px);
+  will-change:transform,opacity,letter-spacing;
+}
+.dawn-intro-i{
+  position:relative;
+  display:inline-block;
+}
+.dawn-intro-dot{
+  position:absolute;
+  left:50%;
+  top:.02em;
+  width:.26em;
+  height:.26em;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 32%, var(--logo-sun-0) 0%, var(--logo-sun-1) 28%, var(--logo-sun-2) 70%, var(--logo-sun-3) 100%);
+  box-shadow:0 0 10px 2px var(--logo-glow);
+  transform:translate(-50%,0) scale(0);
+  transform-origin:50% 50%;
+  pointer-events:none;
+  will-change:transform,opacity;
+  opacity:0;
+}
+html[data-intro=pending] .dawn-panel,
+html[data-intro=playing] .dawn-panel{
+  opacity:0;
+  transform:translateY(18px);
+}
+html[data-intro=entering] .dawn-panel{
+  /* keep the starting pose until the staggered animation fills in */
+  opacity:0;
+  transform:translateY(18px);
+}
+html[data-intro=entering] .dawn-panel-in{
+  animation:dawnPanelIn .82s cubic-bezier(.22,1.12,.36,1) both;
+  animation-delay:var(--dawn-delay,0ms);
+}
+@keyframes dawnPanelIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+
+@media (max-width:520px){
+  .dawn-intro-lockup{flex-direction:column;gap:10px}
+  .dawn-intro-word{letter-spacing:.12em}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .dawn-intro{display:none !important}
+  html[data-intro=pending] .dawn-panel,
+  html[data-intro=playing] .dawn-panel,
+  html[data-intro=entering] .dawn-panel,
+  html[data-intro=entering] .dawn-panel-in{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
